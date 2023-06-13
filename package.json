@@ -1,0 +1,28 @@
+{
+  "name": "bunpou",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fast-glob": "^3.2.12",
+    "gray-matter": "^4.0.3",
+    "vitepress": "1.0.0-beta.2"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search",
+        "search-insights"
+      ]
+    }
+  }
+}
