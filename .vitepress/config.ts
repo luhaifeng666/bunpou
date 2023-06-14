@@ -24,7 +24,7 @@ const sidebar = {}
  * @returns 
  */
 function getFiles(link: string): string[] {
-  return fg.sync([`docs/kosoado/*.md`])
+  return fg.sync([`${link}/*.md`])
 }
 
 function getText(path: string): string {
@@ -69,6 +69,10 @@ const SIDEBAR_CONFIG: {
 } = {
   'docs/': [
     { text: 'こそあど系列', path: 'kosoado' },
+    { text: '助词', path: 'auxiliary' },
+    { text: '动词', path: 'verb' },
+    { text: '形容词', path: 'adjective' },
+    { text: '语法', path: 'bunpou' },
   ]
 }
 
