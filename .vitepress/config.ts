@@ -76,6 +76,8 @@ const SIDEBAR_CONFIG: {
   ]
 }
 
+console.log(sidebar)
+
 // TODO Object.entires
 Object.keys(SIDEBAR_CONFIG).forEach(key => {
   const config = SIDEBAR_CONFIG[key]
@@ -90,10 +92,11 @@ Object.keys(SIDEBAR_CONFIG).forEach(key => {
 export default defineConfig({
   title: "Bunpou",
   description: "用于查阅日语语法",
+  lastUpdated: true,
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '文法', link: '/docs/' }
+      { text: '文法', link: '/docs/kosoado/こ' }
     ],
 
     search: {
