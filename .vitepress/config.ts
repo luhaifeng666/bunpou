@@ -93,6 +93,7 @@ export default defineConfig({
   title: "Bunpou",
   description: "用于查阅日语语法",
   lastUpdated: true,
+  base: '/bunpou/',
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
