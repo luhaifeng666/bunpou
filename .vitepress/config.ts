@@ -76,8 +76,6 @@ const SIDEBAR_CONFIG: {
   ]
 }
 
-console.log(sidebar)
-
 // TODO Object.entires
 Object.keys(SIDEBAR_CONFIG).forEach(key => {
   const config = SIDEBAR_CONFIG[key]
