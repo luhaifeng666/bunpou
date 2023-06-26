@@ -14,6 +14,7 @@ const members = [
     avatar: 'https://www.github.com/luhaifeng666.png',
     name: 'luhaifeng666',
     title: 'Creator',
+    sponsor: 'https://www.buymeacoffee.com/luhaifeng',
     links: [
       { icon: 'github', link: 'https://github.com/luhaifeng666' }
     ]
