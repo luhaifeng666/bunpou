@@ -15,9 +15,6 @@ interface Items {
   items?: Items[]
 }
 
-// 侧边栏
-const sidebar = {}
-
 /**
  * 获取目标目录下的所有 markdown 文件
  * @param link 
@@ -57,7 +54,7 @@ function getItems(type: string, path: string, leaves: Array<SidebarConfig>): Arr
     const files = getFiles(link)
     items.push(...files.map(file => ({
       text: getText(file),
-      link: file.replace('', '')
+      link: `/${file}`
     })))
   }
 
@@ -76,16 +73,15 @@ const SIDEBAR_CONFIG: {
   ]
 }
 
-// TODO Object.entires
-Object.keys(SIDEBAR_CONFIG).forEach(key => {
-  const config = SIDEBAR_CONFIG[key]
-  sidebar[key] = []
-  config.forEach(cfg => {
+// 侧边栏
+const sidebar = Object.entries(SIDEBAR_CONFIG).reduce((res, [key, config]) => ({
+  ...res,
+  [key]: config.map(cfg => {
     const { text, path, leaves = [] } = cfg
     const items: Items[] = getItems(key, path, leaves)
-    sidebar[key].push({ text, items, collapsed: true })
+    return { text, items, collapsed: true }
   })
-})
+}), {})
 
 export default defineConfig({
   title: "Bunpou",
@@ -95,8 +91,13 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '文法', link: '/docs/kosoado/こ' }
+      { text: '文法', link: '/docs/' }
     ],
+
+    // carbonAds: {
+    //   code: 'your-carbon-code',
+    //   placement: 'your-carbon-placement'
+    // },
 
     search: {
       provider: 'local'
