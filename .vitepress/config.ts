@@ -69,6 +69,7 @@ const SIDEBAR_CONFIG: {
     { text: '助词', path: 'auxiliary' },
     { text: '动词', path: 'verb' },
     { text: '形容词', path: 'adjective' },
+    { text: '术语', path: 'term' },
     { text: '语法', path: 'bunpou' },
   ]
 }
