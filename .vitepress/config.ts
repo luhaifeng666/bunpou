@@ -37,12 +37,12 @@ function getText(path: string): string {
  * @returns 
  */
 function getItems(type: string, path: string, leaves: Array<SidebarConfig>): Array<Items> {
-  const linkPre = '/'
   const link = `${type}${path}`
   const items: Array<Items> = []
+
   // 单文件直接插入
   if (path.includes('.md')) {
-    items.push({ text: getText(`${linkPre}${link}`), link })
+    items.push({ text: getText(`${link}`), link })
   } else {
     if (leaves.length) {
       // 有子目录的情况
@@ -50,7 +50,7 @@ function getItems(type: string, path: string, leaves: Array<SidebarConfig>): Arr
         items.push({ text: leaf.text, collapsible: true, items: getItems(type, `${path}/${leaf.path}`, leaf.leaves || [])})
       })
     }
-    // 没有字目录的情况
+    // 没有子目录的情况
     const files = getFiles(link)
     items.push(...files.map(file => ({
       text: getText(file),
@@ -65,7 +65,7 @@ const SIDEBAR_CONFIG: {
   [key: string]: Array<SidebarConfig>
 } = {
   'docs/': [
-    { text: 'こそあど系列', path: 'kosoado' },
+    { text: 'こそあど系列', path: 'kosoado.md' },
     { text: '助词', path: 'auxiliary' },
     { text: '动词', path: 'verb' },
     { text: '形容词', path: 'adjective' },
@@ -80,7 +80,7 @@ const sidebar = Object.entries(SIDEBAR_CONFIG).reduce((res, [key, config]) => ({
   [key]: config.map(cfg => {
     const { text, path, leaves = [] } = cfg
     const items: Items[] = getItems(key, path, leaves)
-    return { text, items, collapsed: true }
+    return path.includes('.md') ? items[0] : { text, items, collapsed: true }
   })
 }), {})
 
