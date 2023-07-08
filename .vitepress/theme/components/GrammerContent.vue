@@ -18,7 +18,7 @@ const props = defineProps({
 })
 
 const sentenceElement = computed(() => {
-  const { sentence, trans } = props
+  const { sentence, trans = '' } = props
   // 转换 ruby & strong 标签
   return `${sentence} ${trans}`.replace(/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g, word => {
     const [rb, rt] = word.replace(/\[|\]/g, '').split('/')
