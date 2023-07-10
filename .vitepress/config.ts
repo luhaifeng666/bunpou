@@ -66,9 +66,9 @@ const SIDEBAR_CONFIG: {
 } = {
   'docs/': [
     { text: 'こそあど系列', path: 'kosoado.md' },
+    { text: '形容词', path: 'adjective.md' },
     { text: '助词', path: 'auxiliary' },
     { text: '动词', path: 'verb' },
-    { text: '形容词', path: 'adjective' },
     { text: '术语', path: 'term' },
     { text: '语法', path: 'bunpou' },
   ]
