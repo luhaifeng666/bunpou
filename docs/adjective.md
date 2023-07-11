@@ -23,7 +23,7 @@ title: 形容词
 
 ::: tip 例句
 
-<grammer-content sentence="[図書館/としょかん]はあの[白/しろ]い[建物/たてもの]です。" trans="那栋建筑是图书馆。" />
+<grammer-content sentence="[図書館/としょかん]はあの**[白/しろ]い[建物/たてもの]**です。" trans="那栋建筑是图书馆。" />
 
 :::
 
@@ -45,6 +45,6 @@ title: 形容词
 
 ::: tip 例句：
 
-<grammer-content sentence="[立派/りっぱ]な[図書館/としょかん]ですね。" trans="真是个气派的图书馆啊。" />
+<grammer-content sentence="**[立派/りっぱ]な[図書館/としょかん]**ですね。" trans="真是个气派的图书馆啊。" />
 
 :::
