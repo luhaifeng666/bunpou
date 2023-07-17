@@ -6,7 +6,7 @@ title: こそあど系列
 
 以 `こそあど` 开头的表示指示的词，称为 `こそあど系列`。它们分别对应近称，中称，远称以及疑问称，根据说话人与听者之间的距离关系区别使用。
 
-::: warning 说明
+::: tip 说明
 
 `こそあど系列` 在回答时需要区分以下两种情况：
 
@@ -35,7 +35,7 @@ title: こそあど系列
 
 :::
 
-::: tip 例句
+::: info 例句
 
 1. <grammer-content sentence="A: **この**[方/かた]はどなたですか。" trans='那个人是谁啊？' />
    <grammer-content sentence="B: ああ、**その**人は[姉/あね]の[婚約者/こんやくじゃ]です。" trans='啊，那个人是我姐姐的未婚夫。' />
@@ -59,7 +59,7 @@ title: こそあど系列
 
 :::
 
-::: tip 例句
+::: info 例句
 
 1. <grammer-content sentence="A: [売店/ばいてん]は**どこ**ですか。" trans='小卖部在哪儿？' />
    <grammer-content sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
@@ -84,7 +84,7 @@ title: こそあど系列
 
 :::
 
-::: tip 例句
+::: info 例句
 
 1. <grammer-content sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
    <grammer-content sentence="A: ああ、**あれ**ですね。" trans='啊，在那儿啊。' />
@@ -113,7 +113,7 @@ title: こそあど系列
 
 :::
 
-::: tip 例句
+::: info 例句
 
 1. <grammer-content sentence="**そちら**は[劇/げき][場/じょう]です。" trans='那边是剧场。' />
 2. <grammer-content sentence="**こちら**は[寒/さむ]いです。" trans='我们这儿冷。' />
