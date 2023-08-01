@@ -7,4 +7,19 @@ MD025: false
 
 MD033:
   # Allowed elements
-  allowed_elements: ['a', 'img', 'div', 'grammer-content', 'ruby', 'rb', 'rt', 'VPTeamMembers', 'script', 'p']
+  allowed_elements:
+    [
+      "a",
+      "img",
+      "div",
+      "grammer-content",
+      "ruby",
+      "rb",
+      "rt",
+      "VPTeamMembers",
+      "script",
+      "p",
+      "h1",
+      "h3",
+      "b",
+    ]

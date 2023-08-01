@@ -6,6 +6,9 @@ hero:
   name: "Bunpou"
   text: "文法"
   tagline: 日语语法收录
+  image:
+    src: imgs/BP.svg
+    alt: Bunpou
   actions:
     - theme: brand
       text: 语法文档
