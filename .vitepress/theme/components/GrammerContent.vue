@@ -26,7 +26,7 @@ const props = defineProps({
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
 	// 转换 ruby & strong 标签
-	return `${sentence} <p style="margin: 6px 0;line-height:0.5;">${trans}</p>`
+	return `${sentence} <p style="margin: 6px 0;line-height:1.5;">${trans}</p>`
 		.replace(
 			/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g,
 			(word) => {
