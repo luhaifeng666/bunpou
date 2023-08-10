@@ -1,3 +1,7 @@
-.custom-page-class u {
-  text-decoration: #10b981 underline;
+u {
+  text-decoration: #10b981 underline !important;
+}
+
+.vp-doc a {
+  text-decoration-style: unset;
 }
