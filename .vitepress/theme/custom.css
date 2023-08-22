@@ -5,3 +5,9 @@ u {
 .vp-doc a {
   text-decoration-style: unset;
 }
+
+.bunpu-block {
+  padding: 20px;
+  border-radius: 8px;
+  background: #161618;
+}
