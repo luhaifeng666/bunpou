@@ -2,7 +2,7 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-06-14 08:39:33
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-08-02 18:14:10
+ * @LastEditTime: 2023-08-22 13:20:27
  * @Description: 
 -->
 <template>
@@ -10,7 +10,7 @@
 </template>
 
 <style>
-.grammer-container {
+.grammer-container:not(:last-of-type) {
 	margin-bottom: 16px !important;
 }
 </style>
@@ -26,7 +26,7 @@ const props = defineProps({
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
 	// 转换 ruby & strong 标签
-	return `${sentence} <p style="margin: 6px 0;line-height:1.5;">${trans}</p>`
+	return `${sentence} <p style="margin-top: 6px;line-height:1.5;">${trans}</p>`
 		.replace(
 			/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g,
 			(word) => {
