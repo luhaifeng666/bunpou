@@ -1,6 +1,6 @@
 [package]
 name = "Bunpou"
-version = "0.1.0"
+version = "0.1.1"
 description = "日语语法词典"
 authors = ["you"]
 license = ""
