@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "bunpou",
-    "version": "0.1.2"
+    "version": "0.1.3"
   },
   "tauri": {
     "allowlist": {
@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "io.github.luhaifeng666",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
