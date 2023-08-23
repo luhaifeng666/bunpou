@@ -9,7 +9,8 @@
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview",
-    "docs:menu": "node utils/generateMenu.js"
+    "docs:menu": "node utils/generateMenu.js",
+    "build": "tauri build"
   },
   "keywords": [],
   "author": "",
