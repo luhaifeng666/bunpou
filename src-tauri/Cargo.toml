@@ -1,11 +1,11 @@
 [package]
-name = "Bunpou"
+name = "bunpou"
 version = "0.1.1"
 description = "日语语法词典"
 authors = ["you"]
 license = ""
 repository = ""
-default-run = "Bunpou"
+default-run = "bunpou"
 edition = "2021"
 rust-version = "1.60"
 
