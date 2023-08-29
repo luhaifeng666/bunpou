@@ -2,7 +2,7 @@
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-08-01 11:24:47
  * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2023-08-01 11:30:31
+ * @LastEditTime: 2023-08-29 16:01:31
  * @FilePath: /bunpou/utils/index.js
  * @Description: 
  * 
@@ -70,8 +70,8 @@ const SIDEBAR_CONFIG = {
 	"docs/": [
 		{ text: "こそあど系列", path: "kosoado.md" },
 		{ text: "形容词", path: "adjective.md" },
+		{ text: "动词", path: "verb.md" },
 		{ text: "助词", path: "auxiliary" },
-		{ text: "动词", path: "verb" },
 		{ text: "术语", path: "term" },
 		{ text: "语法", path: "bunpou" },
 	],
