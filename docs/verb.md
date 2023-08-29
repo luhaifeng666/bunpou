@@ -39,7 +39,7 @@ title: 动词
 - <grammer-content sentence="[切/き]る；切" />
 - <grammer-content sentence="[喋/しゃべ]る；聊天" />
 
-<grammer-content sentence="**走、知、要、归、入、切、喋。**" />
+<grammer-content sentence="速记口诀： **走、知、要、归、入、切、喋。**" />
 
 :::
 
