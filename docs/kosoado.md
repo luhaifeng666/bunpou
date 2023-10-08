@@ -23,7 +23,7 @@ title: こそあど系列
 
 ::: danger 注意
 
-この・その・あの・どの 是连体词，不可以单独使用，只能与名词一起使用!!
+この・その・あの・どの 是连体词，不可以单独使用，只能与名词一起使用！！
 
 :::
 
@@ -38,7 +38,7 @@ title: こそあど系列
 ::: info 例句
 
 1. <grammer-content sentence="A: **この**[方/かた]はどなたですか。" trans='那个人是谁啊？' />
-   <grammer-content sentence="B: ああ、**その**人は[姉/あね]の[婚約者/こんやくじゃ]です。" trans='啊，那个人是我姐姐的未婚夫。' />
+   <grammer-content sentence="B: ああ、**その**人は[姉/あね]の[婚約者/こんやくしゃ]です。" trans='啊，那个人是我姐姐的未婚夫。' />
 2. <grammer-content sentence="**あの**[方/かた]は[鈴木/すずき]さんです。" trans='那位是铃木。' />
 3. <grammer-content sentence="A: [高橋/たかはし]さんは**どの**[人/ひと]ですか。" trans='高桥是哪位啊？' />
    <grammer-content sentence="B: [高橋/たかはし]さんは**あの**[人/ひと]です。" trans='高桥是那位。' />
