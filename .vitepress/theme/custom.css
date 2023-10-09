@@ -11,3 +11,8 @@ u {
   border-radius: 8px;
   background: #161618;
 }
+
+.grammer-container-inline {
+  margin: 0 !important;
+  line-height: 14px !important;
+}

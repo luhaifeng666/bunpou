@@ -2,11 +2,14 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-06-14 08:39:33
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-08-22 13:20:27
+ * @LastEditTime: 2023-10-09 10:58:40
  * @Description: 
 -->
 <template>
-	<p v-html="sentenceElement" class="grammer-container"></p>
+	<p
+		v-html="sentenceElement"
+		:class="['grammer-container', inline ? 'grammer-container-inline' : '']"
+	></p>
 </template>
 
 <style>
@@ -21,6 +24,7 @@ import { computed } from "vue";
 const props = defineProps({
 	sentence: String,
 	trans: String,
+	inline: Boolean,
 });
 
 const sentenceElement = computed(() => {
