@@ -2,7 +2,7 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-06-14 08:39:33
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-10-09 10:58:40
+ * @LastEditTime: 2023-10-10 10:50:00
  * @Description: 
 -->
 <template>
@@ -30,7 +30,9 @@ const props = defineProps({
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
 	// 转换 ruby & strong 标签
-	return `${sentence} <p style="margin-top: 6px;line-height:1.5;">${trans}</p>`
+	return `${sentence} ${
+		trans ? `<p style="margin-top: 6px;line-height:1.5;">${trans}</p>` : ""
+	}`
 		.replace(
 			/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g,
 			(word) => {

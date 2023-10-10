@@ -12,7 +12,10 @@ u {
   background: #161618;
 }
 
-.grammer-container-inline {
+li > .grammer-container-inline {
   margin: 0 !important;
-  line-height: 14px !important;
+}
+
+.grammer-container-inline {
+  display: inline-block;
 }
