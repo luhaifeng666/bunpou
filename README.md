@@ -1,8 +1,8 @@
 <!--
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-06-08 15:34:23
- * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2023-08-25 15:22:46
+ * @LastEditors: luhaifeng666 youzui@hotmail.com
+ * @LastEditTime: 2023-10-23 15:08:32
  * @FilePath: /bunpou/README.md
  * @Description: 
  * 
@@ -36,4 +36,4 @@
 
 <p align=center>由于文档部署的是 Github Page, 因此在没有梯子的帮助下，访问速度可能会比较慢，甚至会有打不开的情况。</p>
 
-<p align=center>有类似问题的小伙伴儿可以在右侧 `Releases` 中下载最新版本的桌面应用。</p>
+<p align=center>有类似问题的小伙伴儿可以在右侧 `Releases` 中下载最新版本的桌面应用。我会在每周一发布新的版本。</p>
