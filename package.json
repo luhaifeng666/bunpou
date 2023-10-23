@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev",
+    "docs:Dev": "vitepress dev",
     "docs:build": "vitepress build --base=/bunpou/",
     "docs:build:nobase": "vitepress build",
     "docs:preview": "vitepress preview",
