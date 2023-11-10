@@ -78,6 +78,6 @@ title: 助词「か/が」的用法
 
 1. <grammer-content sentence="たまに[電話/でんわ]**が**[鳴/な]ります。" trans='偶尔，电话会响。' />
 2. <grammer-content sentence="ベル**が**[鳴/な]ります。" trans='铃声响了。' />
-3. <grammer-content sentence="よく[友達/ともだち]**が**[来/く]ます。" trans='朋友经常来。' />
+3. <grammer-content sentence="よく[友達/ともだち]**が*[来/き]ます。" trans='朋友经常来。' />
 
 :::

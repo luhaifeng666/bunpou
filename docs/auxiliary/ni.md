@@ -12,7 +12,7 @@ title: 助词「に」的用法
 
 ::: info 例句
 
-1. <grammer-content sentence="[李/リ]さんも[王/おう]さんもよくここ**に**[来/く]ますか。" trans='小李和小王都经常来这里吗？' />
+1. <grammer-content sentence="[李/リ]さんも[王/おう]さんもよくここ**に**[来/き]ますか。" trans='小李和小王都经常来这里吗？' />
 1. <grammer-content sentence="[明日/あした][図書館/としょかん]**に**[行/い]きます。" trans='明天去图书馆。' />
 1. <grammer-content sentence="[鈴木/すずき]さんはよく[映画館/えいがかん]**に**[行/き]ます。" trans='铃木经常去电影院。' />
 
