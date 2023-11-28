@@ -2,7 +2,7 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-11-28 14:44:46
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-11-28 14:59:20
+ * @LastEditTime: 2023-11-28 15:12:21
  * @FilePath: /bunpou/.vitepress/theme/components/Comment.vue
  * @Description: 
  * 
@@ -53,7 +53,6 @@ function setComments() {
 		script.setAttribute("repo", "luhaifeng666/bunpou");
 		script.setAttribute("issue-term", "title");
 		script.setAttribute("label", "💬评论");
-		script.setAttribute("issue-label", "pathname");
 		script.setAttribute("comment-order", "desc");
 		script.setAttribute("input-position", "top");
 		script.setAttribute("crossorigin", "anonymous");
