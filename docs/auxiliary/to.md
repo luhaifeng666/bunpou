@@ -61,3 +61,17 @@ title: 助词「と」的用法
 </div>
 
 :::
+
+## 3. と<引用>
+
+<grammer-content sentence="表示直接引用（直接引语）或提示内容,在书写时，所引用的内容**大多用「」**表示。" />
+
+::: info 例句
+
+1. <grammer-content sentence="A: **「ファイル」**は[中国語/ちゅうごくご]で[何/なん]**と**[言/い]うんですか。" trans="A: 「ファイル」用中文怎么说？" />
+2. <grammer-content sentence="B: “文件”です。" trans="B: 叫“文件”。" />
+3. <grammer-content sentence="A: “手机”は[日本語/にほんご]で[何/なん]**と**[言/い]いますか。" trans="A: “手机”用日语怎么说？" />
+4. <grammer-content sentence="B: **「[携帯電話/けいたいでんわ]」と**[言/い]います。" trans="B: 说成「携帯電話」。" />
+5. <grammer-content sentence="[王/おう]**と**[申/もう]します。どうぞよろしくお[願/ねが]いします。" trans="我是小王。还请多多关照。" />
+
+:::
