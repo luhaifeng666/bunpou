@@ -28,7 +28,7 @@ title: 助词「へ」的用法
 
 两者在使用时可以互相替换，翻译上也没有太大的区别，只是强调的点不同。以上述的第一个例句为例：
 
-<div class="bunpu-block">
+<div class="bunpou-block">
 
   <grammer-content sentence="[夏休/なつやす]みには[国/くに]**<del>へ</del> → に**[帰/かえ]らなかった。" trans='暑假没回国。' />
 
