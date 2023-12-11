@@ -2,7 +2,7 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-11-29 11:07:39
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-11-29 12:18:36
+ * @LastEditTime: 2023-12-11 12:01:14
  * @FilePath: /bunpou/.vitepress/theme/components/GiscusComment.vue
  * @Description: 
  * 
@@ -33,7 +33,7 @@ const setComments = () => {
 		"data-emit-metadata": "0",
 		"data-input-position": "bottom",
 		"data-lang": "zh-CN",
-		"data-theme": "preferred_color_scheme",
+		"data-theme": "noborder_dark",
 		crossorigin: "anonymous",
 		async: true,
 	};
@@ -47,7 +47,7 @@ const setComments = () => {
 };
 
 const setTheme = () => {
-	const theme = isDark.value ? "preferred_color_scheme" : "light";
+	const theme = isDark.value ? "noborder_dark" : "light";
 	const iframe = document.querySelector("iframe.giscus-frame");
 	if (iframe) {
 		iframe.contentWindow?.postMessage(
