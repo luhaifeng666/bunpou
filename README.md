@@ -2,15 +2,16 @@
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-06-08 15:34:23
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-10-23 15:08:32
+ * @LastEditTime: 2023-12-11 10:42:01
  * @FilePath: /bunpou/README.md
  * @Description: 
  * 
 -->
 
-<div align=center><img src='./public/imgs/BP.svg' width=100 /></div>
-
-<h1 align=center> Bunpou </h1>
+<h1 align=center>
+  <img src='./public/imgs/BP.svg' width=100 alt="bunpou" />
+  <p>Bunpou</p>
+</h1>
 
 <p align=center>日语语法整理</p>
 
