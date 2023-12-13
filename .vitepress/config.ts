@@ -1,8 +1,8 @@
 /*
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-07-11 09:52:29
- * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2023-08-24 14:34:01
+ * @LastEditors: luhaifeng666 youzui@hotmail.com
+ * @LastEditTime: 2023-12-13 17:05:43
  * @FilePath: /bunpou/.vitepress/config.ts
  * @Description:
  *
@@ -16,6 +16,13 @@ export default defineConfig({
 	lastUpdated: true,
 	head: [
 		["link", { rel: "icon", type: "image/x-icon", href: "imgs/favicon.ico" }],
+		[
+			"script",
+			{
+				type: "text/javascript",
+				src: "//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",
+			},
+		],
 	],
 	themeConfig: {
 		logo: "/imgs/BP.svg",
