@@ -1,8 +1,8 @@
 <!--
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-11-29 11:07:39
- * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-12-11 12:01:14
+ * @LastEditors: haifeng.lu
+ * @LastEditTime: 2023-12-15 22:16:25
  * @FilePath: /bunpou/.vitepress/theme/components/GiscusComment.vue
  * @Description: 
  * 
@@ -13,12 +13,14 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, toRef, watch } from "vue";
+import { onMounted, onUnmounted, ref, toRef, watch, computed } from "vue";
 import { useData } from "vitepress";
 
 const isDark = toRef(useData(), "isDark");
 const page = toRef(useData(), "page");
 const comments = ref();
+
+const themeName = computed(() => isDark.value ? "noborder_dark" : "light")
 
 const setComments = () => {
 	const script = document.createElement("script");
@@ -33,7 +35,7 @@ const setComments = () => {
 		"data-emit-metadata": "0",
 		"data-input-position": "bottom",
 		"data-lang": "zh-CN",
-		"data-theme": "noborder_dark",
+		"data-theme": themeName.value,
 		crossorigin: "anonymous",
 		async: true,
 	};
@@ -47,14 +49,13 @@ const setComments = () => {
 };
 
 const setTheme = () => {
-	const theme = isDark.value ? "noborder_dark" : "light";
 	const iframe = document.querySelector("iframe.giscus-frame");
 	if (iframe) {
 		iframe.contentWindow?.postMessage(
 			{
 				giscus: {
 					setConfig: {
-						theme: `https://giscus.app/themes/${theme}.css`,
+						theme: `https://giscus.app/themes/${themeName.value}.css`,
 					},
 				},
 			},
