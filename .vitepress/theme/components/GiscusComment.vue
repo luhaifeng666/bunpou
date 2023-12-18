@@ -1,8 +1,8 @@
 <!--
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-11-29 11:07:39
- * @LastEditors: haifeng.lu
- * @LastEditTime: 2023-12-15 22:16:25
+ * @LastEditors: luhaifeng666 youzui@hotmail.com
+ * @LastEditTime: 2023-12-18 13:53:25
  * @FilePath: /bunpou/.vitepress/theme/components/GiscusComment.vue
  * @Description: 
  * 
@@ -13,14 +13,13 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref, toRef, watch, computed } from "vue";
+import { onMounted, onUnmounted, ref, toRef, watch } from "vue";
 import { useData } from "vitepress";
 
 const isDark = toRef(useData(), "isDark");
 const page = toRef(useData(), "page");
 const comments = ref();
-
-const themeName = computed(() => isDark.value ? "noborder_dark" : "light")
+const themeName = ref("noborder_dark");
 
 const setComments = () => {
 	const script = document.createElement("script");
@@ -48,7 +47,8 @@ const setComments = () => {
 	comments.value.appendChild(script);
 };
 
-const setTheme = () => {
+const setTheme = (val) => {
+	themeName.value = val ? "noborder_dark" : "light";
 	const iframe = document.querySelector("iframe.giscus-frame");
 	if (iframe) {
 		iframe.contentWindow?.postMessage(
@@ -74,7 +74,9 @@ watch(page, (val) => {
 	val.relativePath && val.relativePath !== "index.md" && setComments();
 });
 
-watch(isDark, setTheme);
+watch(isDark, setTheme, {
+	immediate: true,
+});
 
 onMounted(() => {
 	setComments();
