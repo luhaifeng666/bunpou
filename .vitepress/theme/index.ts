@@ -10,6 +10,7 @@ import GrammerContent from "./components/GrammerContent.vue";
 import Visitors from "./components/Visitors.vue";
 // import Readers from "./components/Readers.vue";
 import GiscusComment from "./components/GiscusComment.vue";
+import Ad from './components/Ad.vue'
 import { h } from "vue";
 import "./custom.css";
 
@@ -20,6 +21,7 @@ export default {
 			// "doc-before": h(Readers),
 			"doc-after": () => h(GiscusComment),
 			"home-features-after": () => h(Visitors),
+			// "aside-bottom": () => h(Ad)
 		});
 	},
 	enhanceApp(ctx) {
