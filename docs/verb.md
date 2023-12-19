@@ -130,3 +130,28 @@ title: 动词
 | 一类动词     | <grammer-content sentence="词尾**う**段变**え**段 + **る**" />    | <grammer-content sentence="[買/か]**う** -> [買/か]**える** 、 [行/い]**く** -> [行/い]**ける**" />     |
 | 二类动词     | <grammer-content sentence="去**词尾る** + **られる**" />    | <grammer-content sentence="[起/お]き**る** -> [起/お]き**られる** 、 [寝/ね]**る** -> [寝/ね]**られる**" />     |
 | 三类动词     | <grammer-content sentence="**[来/く]る -> [来/こ]られる /　する -> できる**" />    | <grammer-content sentence="**[来/く]る** -> **[来/く]られる** 、 [勉強/べんきょう]**する** -> [勉強/べんきょう]**できる**" />     |
+
+::: tip 补充
+
+<grammer-content sentence="1. **他动词**涉及的对象，在能动态的句子中大多由**「を」**变为**「が」**;" />
+
+<div class="bunpou-block">
+
+   1. <grammer-content sentence="300[元/げん]ぐらいでシルクのスカート**<u> が </u>買かえますよ**。" trans="300块左右就可以买丝绸的裙子了。" />
+   2. <grammer-content sentence="[私/わたし]はさしみ**<u> が </u>[食/た]べられません**。" trans="我吃不了刺身。" />
+   3. <grammer-content sentence="[王/おう]さんは[英語/えいご]**<u> が </u>[話/はな]せます**。" trans="小王能说英语。" />
+
+</div>
+
+<grammer-content sentence="2. **非生物名词做主语**的句子，一般**不能使用动词的能动态**（表示**主语性质、特征的除外**）;" />
+
+<div class="bunpou-block">
+
+   1. <grammer-content sentence="[３日/みっか][間/かん]で[荷物/にもつ]が **[届/とど]ける ❌／[届/とど]く**。" trans="货物3日内能到。" />
+   2. <grammer-content sentence="[会議/かいぎ]は９[時/じ]に **[始/はじ]まれる ❌／[始/はじ]まる**。" trans="会议9点能开始。" />
+
+</div>
+
+<grammer-content sentence="3. 本身已包含“可能”含义的词没有能动态。如：「[見/み]える」「[聞/き]こえる（听见）」「わかる」等。" />
+
+:::
