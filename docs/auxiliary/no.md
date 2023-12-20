@@ -46,3 +46,31 @@ title: 「の」的用法
 3. <grammer-content sentence="こちらはの[後輩/こうはい]**の**[高橋/たかはし]さんです。" trans='这位是学妹高桥。' />
 
 :::
+
+## 3. の<形式名词>
+
+- 意义：构成名词词组，代替上文中提到的名词内容；
+- 接续：名词 + の
+
+::: info 例句
+
+1. <grammer-content sentence="A: [私/わたし]、**チャイナドレス**が[買/か]いたいんですが。" trans="我想买件旗袍。" />
+   <grammer-content sentence="B: 300[元/げん]ぐらいでシルク**の**が[買/か]えますよ。" trans="300块左右就可以买丝绸的旗袍了哟。" />
+2. <grammer-content sentence="A: [今晩/こんばん]、**[中華/ちゅうか][料理/りょうり]**はいかがですか。" trans="今晚吃中餐如何？" />
+   <grammer-content sentence="B: いいですね。[本場/ほんば]**の**が[食/た]べたいです。" trans="不错诶。我想吃正宗的。" />
+
+:::
+
+::: tip 补充
+
+<grammer-content sentence="**动词、形容词的连体形**后也可接「の」，将动词、形容词**名词化**。" />
+
+<div class="bunpou-block">
+
+  1. <grammer-content sentence="[日本/にほん]へ[留学/りゅうがく]に**[行/い]ったの**は[誰/だれ]ですか。" trans="谁去日本留学了。" />
+  2. <grammer-content sentence="[四川料理/しせんりょうり]をよく[食/た]べます。**[辛/から]いの**が[好/す]きですから" trans="我经常吃川菜，因为我喜欢吃辣的。" />
+  3. <grammer-content sentence="もっと**[地味/じみ]なの**がほしいですが。" trans="想要更朴素的。" />
+
+</div>
+
+:::
