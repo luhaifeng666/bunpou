@@ -36,7 +36,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: gh-pages
-          folder: docs/.vitepress/dist
+          folder: .vitepress/dist
           # enable single-commit to reduce the repo size
           single-commit: true
           clean: true
