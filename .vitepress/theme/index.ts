@@ -1,13 +1,8 @@
 /*
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-06-14 08:38:26
-<<<<<<< Updated upstream
- * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-12-27 16:22:15
-=======
  * @LastEditors: haifeng.lu
- * @LastEditTime: 2023-12-27 22:26:05
->>>>>>> Stashed changes
+ * @LastEditTime: 2023-12-27 23:12:05
  * @Description:
  */
 import DefaultTheme from "vitepress/theme";
