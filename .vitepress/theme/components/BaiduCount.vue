@@ -5,15 +5,36 @@
  * @LastEditTime: 2023-12-27 22:48:50
  * @Description: 
 -->
-<script setup>
-import { onMounted } from "vue"
 
-let _hmt = _hmt || [];
+<template>
+	<section ref="account" style="width:0;height:0;"></section>
+</template>
+
+<script>
+var _hmt = _hmt || [];
+</script>
+
+<script setup>
+import { onMounted, ref, toRef, watch } from "vue";
+import { useData } from "vitepress";
+
+const page = toRef(useData(), "page");
+const account = ref();
+
+const setAccount = () => {
+	const script = document.createElement("script");
+	script.src = "https://hm.baidu.com/hm.js?b1dde12f85d5564e11ddfea63a559b6f";
+  account.value && (account.value.innerHTML = "");
+	account.value.appendChild(script);
+};
+
+watch(page, (val) => {
+	val.relativePath && setAccount();
+});
 
 onMounted(() => {
-  const hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?b1dde12f85d5564e11ddfea63a559b6f";
-  const s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})
+	setAccount();
+});
+
 </script>
+
