@@ -2,7 +2,7 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-06-14 08:38:26
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-12-27 16:14:27
+ * @LastEditTime: 2023-12-27 16:22:15
  * @Description:
  */
 import DefaultTheme from "vitepress/theme";
@@ -19,7 +19,7 @@ export default {
 	Layout() {
 		return h(DefaultTheme.Layout, null, {
 			// "doc-before": h(Readers),
-			"doc-after": () => ["luhaifeng666.github.io", "localhost"].includes(window.location.hostname) && h(GiscusComment),
+			"doc-after": () => h(GiscusComment),
 			"home-features-after": () => h(Visitors),
 			// "aside-bottom": () => h(Ad)
 		});

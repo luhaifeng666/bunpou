@@ -2,7 +2,7 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-11-29 11:07:39
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-12-18 13:53:25
+ * @LastEditTime: 2023-12-27 16:23:38
  * @FilePath: /bunpou/.vitepress/theme/components/GiscusComment.vue
  * @Description: 
  * 
@@ -20,6 +20,7 @@ const isDark = toRef(useData(), "isDark");
 const page = toRef(useData(), "page");
 const comments = ref();
 const themeName = ref("noborder_dark");
+const visible = ref(true);
 
 const setComments = () => {
 	const script = document.createElement("script");
@@ -79,6 +80,7 @@ watch(isDark, setTheme, {
 });
 
 onMounted(() => {
+	visible.value = ["luhaifeng666.github.io", "localhost"].includes(window.location.hostname)
 	setComments();
 	window.addEventListener("message", watchMsg);
 });
