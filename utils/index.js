@@ -2,7 +2,7 @@
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-08-01 11:24:47
  * @LastEditors: haifeng.lu
- * @LastEditTime: 2023-12-28 23:04:24
+ * @LastEditTime: 2023-12-31 10:21:43
  * @FilePath: /bunpou/utils/index.js
  * @Description: 
  * 
@@ -87,6 +87,7 @@ const SIDEBAR_CONFIG = {
       { path: 'course6', text: '第 6 課' },
       { path: 'course7', text: '第 7 課' },
       { path: 'course8', text: '第 8 課' },
+      { path: 'course9', text: '第 9 課' },
     ]},
 	],
 };
