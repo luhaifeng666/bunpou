@@ -2,7 +2,7 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-12-13 16:31:07
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-12-14 11:32:43
+ * @LastEditTime: 2024-01-02 15:02:05
  * @FilePath: /bunpou/.vitepress/theme/components/Visitors.vue
  * @Description: 
  * 
@@ -36,8 +36,8 @@ const page = toRef(useData(), "page");
 
 const loadData = () => {
 	const script = document.createElement("script");
-	script.src =
-		"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+	script.src = "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
+		// "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
 	script.async = true;
 	script.onload = () => {
 		setTimeout(() => {
