@@ -1,6 +1,6 @@
 {
   "name": "bunpou",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -21,7 +21,7 @@
     "@tauri-apps/cli": "^1.4.0",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
-    "vitepress": "1.0.0-beta.2"
+    "vitepress": "1.0.0-rc.34"
   },
   "pnpm": {
     "peerDependencyRules": {

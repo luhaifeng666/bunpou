@@ -1,8 +1,8 @@
 /*
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-07-11 09:52:29
- * @LastEditors: haifeng.lu
- * @LastEditTime: 2023-12-28 23:04:35
+ * @LastEditors: luhaifeng666 youzui@hotmail.com
+ * @LastEditTime: 2024-01-02 16:05:56
  * @FilePath: /bunpou/.vitepress/config.ts
  * @Description:
  *
@@ -13,11 +13,13 @@ import { getSideBar } from "../utils";
 export default defineConfig({
   title: "Bunpou",
   description: "用于查阅日语语法",
-  lastUpdated: true,
   head: [
     ["link", { rel: "icon", type: "image/x-icon", href: "imgs/favicon.ico" }],
   ],
   themeConfig: {
+    lastUpdated: {
+      text: '最終更新日'
+    },
     logo: "/imgs/BP.svg",
     editLink: {
       pattern: ({ filePath }) =>
@@ -37,6 +39,11 @@ export default defineConfig({
 
     search: {
       provider: "local",
+    },
+
+    docFooter: {
+      prev: '前のページ',
+      next: '次のページ'
     },
 
     sidebar: getSideBar(),
