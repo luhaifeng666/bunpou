@@ -2,13 +2,13 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-12-13 16:31:07
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2024-01-02 15:02:05
+ * @LastEditTime: 2024-01-02 17:40:21
  * @FilePath: /bunpou/.vitepress/theme/components/Visitors.vue
  * @Description: 
  * 
 -->
 <template>
-	<div class="busuanzi">
+	<!-- <div class="busuanzi">
 		<span id="busuanzi_container_site_pv">
 			总访问量
 			<strong id="busuanzi_value_site_pv" class="busuanzi_value"
@@ -20,6 +20,24 @@
 		<span id="busuanzi_container_site_uv">
 			访客数
 			<strong id="busuanzi_value_site_uv" class="busuanzi_value"
+				><i class="loading"></i
+			></strong>
+			人
+		</span>
+	</div> -->
+
+	<div class="busuanzi">
+		<span id="busuanzi_container_site_pv">
+			总访问量
+			<strong id="page_pv" class="busuanzi_value"
+				><i class="loading"></i
+			></strong>
+			次
+		</span>
+		<span class="division"></span>
+		<span id="busuanzi_container_site_uv">
+			访客数
+			<strong id="page_uv" class="busuanzi_value"
 				><i class="loading"></i
 			></strong>
 			人
@@ -36,7 +54,8 @@ const page = toRef(useData(), "page");
 
 const loadData = () => {
 	const script = document.createElement("script");
-	script.src = "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
+	script.src = "https://webviso.yestool.org/js/index.min.js"
+	  // "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
 		// "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
 	script.async = true;
 	script.onload = () => {
@@ -65,7 +84,7 @@ watch(page, () => {
 	font-size: 14px;
 }
 .busuanzi .busuanzi_value {
-	color: #10b981;
+	color: rgb(52, 81, 178);
 }
 .division {
 	display: inline-block;
