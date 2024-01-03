@@ -161,9 +161,9 @@ title: 动词
 
 <div class="bunpou-block">
 
-1.  <grammer-content sentence="300[元/げん]ぐらいでシルクのスカート**<u> が </u>[買/か]えますよ**。" trans="300块左右就可以买丝绸的裙子了。" />
-2.  <grammer-content sentence="[私/わたし]はさしみ**<u> が </u>[食/た]べられません**。" trans="我吃不了刺身。" />
-3.  <grammer-content sentence="[王/おう]さんは[英語/えいご]**<u> が </u>[話/はな]せます**。" trans="小王能说英语。" />
+1.  <grammer-content sentence="300[元/げん]ぐらいでシルクのスカート** が [買/か]えますよ**。" trans="300块左右就可以买丝绸的裙子了。" />
+2.  <grammer-content sentence="[私/わたし]はさしみ** が [食/た]べられません**。" trans="我吃不了刺身。" />
+3.  <grammer-content sentence="[王/おう]さんは[英語/えいご]** が [話/はな]せます**。" trans="小王能说英语。" />
 
 </div>
 
