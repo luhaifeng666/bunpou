@@ -34,3 +34,24 @@ title: 「は」的用法
 3. <grammer-content sentence="姉あね**は**[医者/いしゃ]です**が**、[兄/あに]**は**[公務員/こうむいん]です。" trans='姐姐是医生，哥哥是公务员。' />
 
 :::
+
+## 4. は＜部分否定＞
+
+- 意义：表示部分否定；
+- <grammer-content sentence="接续：表示**统括意义的名词或副词** + は + 否定的谓语形式。" />
+
+::: tip 补充
+
+<grammer-content sentence="诸如 [毎日/まいにち]、[全員/ぜんいん]、[全部/ぜんぶ]、[毎年/まいとし]、毎月まいげつ等此类的词具有统括意义。" />
+
+:::
+
+::: info 例句
+
+1. <grammer-content sentence="[全部/ぜんぶ]**は**[飲/の]まなくてもいいです。" trans="不用全喝掉。" />
+2. <grammer-content sentence="A: [毎日/まいにち][運動/うんどう]をしますか。" trans="A: 你每天都运动么？" />
+   <grammer-content sentence="B: いいえ、[毎日/まいにち]**は**しません。" trans="B: 不，也不是每天都会运动。" />
+3. <grammer-content sentence="A: [全員/ぜんいん]、[来/く]ましたか。" trans="A: 所有人都来了么？" />
+   <grammer-content sentence="B: いいえ、[全員/ぜんいん]**は**[来/く]ませんでした。" trans="B: 不，只来了一部分。" />
+
+:::
