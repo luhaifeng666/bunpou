@@ -95,3 +95,41 @@ title: 「か/が」的用法
 4. <grammer-content sentence="すみません、[駅/えき]に[行/い]きたいんです**が**。" trans="抱歉，我想去车站。" />
 
 :::
+
+## 6. 作对象格助词的常见用法
+
+::: info が作格助词的常见用法
+
+<grammer-content sentence="1. 表示**感情的对象**（[好/す]き＆[嫌/きら]い「**一二三人称通用**」，其它的感情形容词**「第一人称」**）" />
+
+<div class="bunpou-block">
+
+   <grammer-content sentence="[王/おう]さんは[野菜/やさい]**が**[嫌/きら]いです。" trans="小王讨厌吃蔬菜。" />
+
+</div>
+
+<grammer-content sentence="2. 表示**能力的对象**（[上手/じょうず]、[下手/へた]、[得意/とくい]、[苦手/にがて]、[見/み]える、[聞/き]こえる、动词能动态）" />
+
+<div class="bunpou-block">
+
+   <grammer-content sentence="[私/わたし]は[辛/から]いもの**が**[食/た]べられる。" trans="我能吃辣的东西。" />
+
+</div>
+
+<grammer-content sentence="3. 表示**第一人称的愿望、希望的对象**（たい、ほしい）" />
+
+<div class="bunpou-block">
+
+   <grammer-content sentence="お[菓子/かし]**が**[食/た]べたい。" trans="我想吃点心" />
+
+</div>
+
+<grammer-content sentence="4. 表示**了解、懂的对象**（わかる）" />
+
+<div class="bunpou-block">
+
+   <grammer-content sentence="[高橋/たかはし]さんは[中国語/ちゅうごくご]**が**わかります。" trans="高桥会中文。" />
+
+</div>
+
+:::
