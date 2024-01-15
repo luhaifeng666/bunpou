@@ -2,13 +2,13 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-12-13 16:31:07
  * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2024-01-02 17:40:21
+ * @LastEditTime: 2024-01-15 15:15:58
  * @FilePath: /bunpou/.vitepress/theme/components/Visitors.vue
  * @Description: 
  * 
 -->
 <template>
-	<!-- <div class="busuanzi">
+	<div class="busuanzi">
 		<span id="busuanzi_container_site_pv">
 			总访问量
 			<strong id="busuanzi_value_site_pv" class="busuanzi_value"
@@ -24,9 +24,9 @@
 			></strong>
 			人
 		</span>
-	</div> -->
+	</div>
 
-	<div class="busuanzi">
+	<!-- <div class="busuanzi">
 		<span id="busuanzi_container_site_pv">
 			总访问量
 			<strong id="page_pv" class="busuanzi_value"
@@ -42,7 +42,7 @@
 			></strong>
 			人
 		</span>
-	</div>
+	</div> -->
 </template>
 
 <script setup>
@@ -54,9 +54,10 @@ const page = toRef(useData(), "page");
 
 const loadData = () => {
 	const script = document.createElement("script");
-	script.src = "https://webviso.yestool.org/js/index.min.js"
-	  // "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
-		// "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
+	script.src =
+		// "https://webviso.yestool.org/js/index.min.js"
+		// "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
+		"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
 	script.async = true;
 	script.onload = () => {
 		setTimeout(() => {
