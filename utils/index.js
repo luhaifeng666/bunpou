@@ -1,8 +1,8 @@
 /*
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-08-01 11:24:47
- * @LastEditors: haifeng.lu
- * @LastEditTime: 2023-12-31 10:21:43
+ * @LastEditors: luhaifeng666 youzui@hotmail.com
+ * @LastEditTime: 2024-01-15 11:20:47
  * @FilePath: /bunpou/utils/index.js
  * @Description: 
  * 
@@ -50,10 +50,10 @@ function getItems(
 					text: leaf.text,
 					collapsed: true,
 					items: getItems(type, `${path}/${leaf.path}`, leaf.leaves || []).sort((pre, next) => {
-            const getNumber = path => Number(path.replace(/.*\d*-\d*-(\d*).md/g, '$1'))
+						const getNumber = path => Number(path.replace(/.*\d*-\d*-(\d*).md/g, '$1'))
 
-            return getNumber(pre.link) < getNumber(next.link) ? -1 : 1
-          }),
+						return getNumber(pre.link) < getNumber(next.link) ? -1 : 1
+					}),
 				});
 			});
 		}
@@ -78,17 +78,20 @@ const SIDEBAR_CONFIG = {
 		{ text: "方位处所词", path: "directions.md" },
 		{ text: "助词", path: "auxiliary" },
 		{ text: "术语", path: "term" },
-		{ text: "语法", path: "bunpou", leaves: [
-      { path: 'course1', text: '第 1 課' },
-      { path: 'course2', text: '第 2 課' },
-      { path: 'course3', text: '第 3 課' },
-      { path: 'course4', text: '第 4 課' },
-      { path: 'course5', text: '第 5 課' },
-      { path: 'course6', text: '第 6 課' },
-      { path: 'course7', text: '第 7 課' },
-      { path: 'course8', text: '第 8 課' },
-      { path: 'course9', text: '第 9 課' },
-    ]},
+		{
+			text: "语法", path: "bunpou", leaves: [
+				{ path: 'course1', text: '第 1 課' },
+				{ path: 'course2', text: '第 2 課' },
+				{ path: 'course3', text: '第 3 課' },
+				{ path: 'course4', text: '第 4 課' },
+				{ path: 'course5', text: '第 5 課' },
+				{ path: 'course6', text: '第 6 課' },
+				{ path: 'course7', text: '第 7 課' },
+				{ path: 'course8', text: '第 8 課' },
+				{ path: 'course9', text: '第 9 課' },
+				{ path: 'course10', text: '第 10 課' },
+			]
+		},
 	],
 };
 
