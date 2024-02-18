@@ -11,7 +11,7 @@ title: 「へ」的用法
 - <grammer-content sentence="意义：表示移动的方向。此时读作「e」" inline />
 - 接续：表示处所的名词 + へ。
 
-::: info 例句
+::: info :books: 例句
 
 1. <grammer-content sentence="[夏休/なつやす]みには[国/くに]**へ**[帰/かえ]らなかった。" trans='暑假没回国。' />
 1. <grammer-content sentence="どこ**へ**[行/い]きますか。" trans='要去哪儿？' />
@@ -20,7 +20,7 @@ title: 「へ」的用法
 
 :::
 
-::: tip 与 に＜目的地＞ 的区别
+::: tip :bookmark: 与 に＜目的地＞ 的区别
 
 [に＜目的地＞](./ni.md#1-に＜目的地＞) 也有接在表示处所名词后面的用法，强调的是 `移动的目的地`，可以理解成 `移动行为的结果`;
 
