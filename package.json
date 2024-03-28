@@ -21,7 +21,7 @@
     "@tauri-apps/cli": "^1.4.0",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
-    "vitepress": "1.0.0-rc.34"
+    "vitepress": "^1.0.1"
   },
   "pnpm": {
     "peerDependencyRules": {
