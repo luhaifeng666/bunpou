@@ -9,6 +9,7 @@
 	<p
 		v-html="sentenceElement"
 		:class="['grammer-container', inline ? 'grammer-container-inline' : '']"
+		@click="speak"
 	></p>
 </template>
 
@@ -19,13 +20,49 @@
 </style>
 
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted, onBeforeUnmount } from "vue";
+import Speech from "speak-tts";
 
 const props = defineProps({
 	sentence: String,
 	trans: String,
 	inline: Boolean,
 });
+
+const speech = new Speech();
+
+onMounted(() => {
+	speechInit();
+});
+
+onBeforeUnmount(() => {
+	speech.cancel();
+	speech.dispose();
+});
+
+const speechInit = () => {
+	speech
+		.init({
+			lang: "ja-JP",
+			rate: 0.6,
+			pitch: 0.8,
+		})
+		.then(() => {});
+};
+
+const speak = () => {
+	speech
+		.speak({
+			text: props.sentence.replace(
+				/[A|B]:|\*|\[|\/[\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*]|(\<del\>.*\<\/del\>)|(\(.*\))/g,
+				""
+			),
+		})
+		.then(() => {})
+		.catch((e) => {
+			console.error("An error occurred:", e);
+		});
+};
 
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
