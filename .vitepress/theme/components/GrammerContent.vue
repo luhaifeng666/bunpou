@@ -76,7 +76,7 @@ const speak = () => {
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
 	// 转换 ruby & strong 标签
-	return `<div><p>${sentence}</p>${trans ? '<img class="bunpou-speak" src="../../../public/imgs/speak.svg" />' : ""}</div> ${
+	return `<div><p>${sentence}</p>${trans ? '<img class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />' : ""}</div> ${
 		trans ? `<p style="margin-top: 6px;line-height:1.5;">${trans}</p>` : ""
 	}`
 		.replace(
