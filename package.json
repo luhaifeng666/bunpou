@@ -30,5 +30,8 @@
         "search-insights"
       ]
     }
+  },
+  "dependencies": {
+    "speak-tts": "^2.0.8"
   }
 }

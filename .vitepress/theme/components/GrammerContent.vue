@@ -6,10 +6,11 @@
  * @Description: 
 -->
 <template>
-	<p
+	<div
 		v-html="sentenceElement"
 		:class="['grammer-container', inline ? 'grammer-container-inline' : '']"
-	></p>
+		@click="speak"
+	></div>
 </template>
 
 <style>
@@ -19,7 +20,8 @@
 </style>
 
 <script setup>
-import { computed } from "vue";
+import { computed, onMounted, onBeforeUnmount, ref } from "vue";
+import Speech from "speak-tts";
 
 const props = defineProps({
 	sentence: String,
@@ -27,10 +29,54 @@ const props = defineProps({
 	inline: Boolean,
 });
 
+const isPlaying = ref(false);
+
+const speech = new Speech();
+
+onMounted(() => {
+	speechInit();
+});
+
+onBeforeUnmount(() => {
+	speech.cancel();
+});
+
+const speechInit = () => {
+	speech
+		.init({
+			lang: "ja-JP",
+			rate: 0.9,
+			pitch: 0.8,
+			listeners: {
+				onend: () => {
+					isPlaying.value = false;
+				}
+			}
+		})
+		.then(() => {});
+};
+
+const speak = () => {
+	if (props.trans && !isPlaying.value) {
+		isPlaying.value = true;
+		speech
+			.speak({
+				text: props.sentence.replace(
+					/[A|B]:|\*|\[|\/[\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*]|(\<del\>.*\<\/del\>)|(\(.*\))/g,
+					""
+				),
+			})
+			.then(() => {})
+			.catch((e) => {
+				console.error("An error occurred:", e);
+			});
+	}
+};
+
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
 	// 转换 ruby & strong 标签
-	return `${sentence} ${
+	return `<div><p>${sentence}</p>${trans ? '<img class="bunpou-speak" src="../../../public/imgs/speak.svg" />' : ""}</div> ${
 		trans ? `<p style="margin-top: 6px;line-height:1.5;">${trans}</p>` : ""
 	}`
 		.replace(

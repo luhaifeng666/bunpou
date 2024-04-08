@@ -16,10 +16,20 @@ u {
   background: #161618;
 }
 
-li > .grammer-container-inline {
+.grammer-container>div:first-child {
+  display: flex;
+  align-items: center;
+}
+
+li>.grammer-container-inline {
   margin: 0 !important;
 }
 
 .grammer-container-inline {
   display: inline-block;
+}
+
+.bunpou-speak {
+  display: inline-block;
+  width: 1.5em;
 }
