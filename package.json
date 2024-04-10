@@ -12,7 +12,8 @@
     "docs:build:nobase": "vitepress build",
     "docs:preview": "vitepress preview",
     "docs:menu": "node utils/generateMenu.js",
-    "build": "tauri build"
+    "build": "tauri build",
+    "generate:voice": "node utils/generateVoice.js"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     }
   },
   "dependencies": {
+    "microsoft-cognitiveservices-speech-sdk": "^1.36.0",
     "speak-tts": "^2.0.8"
   }
 }
