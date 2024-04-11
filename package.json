@@ -12,13 +12,15 @@
     "docs:build:nobase": "vitepress build",
     "docs:preview": "vitepress preview",
     "docs:menu": "node utils/generateMenu.js",
-    "build": "tauri build"
+    "build": "tauri build",
+    "generate:voice": "node utils/generateVoice.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
+    "@types/mdast": "^4.0.3",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
     "vitepress": "^1.0.1"
@@ -32,6 +34,8 @@
     }
   },
   "dependencies": {
+    "mdast-util-from-markdown": "^2.0.0",
+    "microsoft-cognitiveservices-speech-sdk": "^1.36.0",
     "speak-tts": "^2.0.8"
   }
 }
