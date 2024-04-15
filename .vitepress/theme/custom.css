@@ -21,6 +21,10 @@ u {
   align-items: flex-start;
 }
 
+.grammer-container>div:first-child p {
+  margin: 0;
+}
+
 li>.grammer-container-inline {
   margin: 0 !important;
 }
