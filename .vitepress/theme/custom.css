@@ -18,7 +18,7 @@ u {
 
 .grammer-container>div:first-child {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .grammer-container>div:first-child p {
@@ -36,5 +36,5 @@ li>.grammer-container-inline {
 .bunpou-speak {
   display: inline-block;
   width: 1.5em;
-  margin-top: 2px;
+  margin-bottom: 2px;
 }
