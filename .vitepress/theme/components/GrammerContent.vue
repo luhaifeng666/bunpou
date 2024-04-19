@@ -31,9 +31,8 @@ const props = defineProps({
 
 const isPlaying = ref(false);
 
-const speech = new Speech();
-
 onMounted(() => {
+	const speech = new Speech();
 	speechInit();
 });
 
@@ -50,8 +49,8 @@ const speechInit = () => {
 			listeners: {
 				onend: () => {
 					isPlaying.value = false;
-				}
-			}
+				},
+			},
 		})
 		.then(() => {});
 };
@@ -76,7 +75,11 @@ const speak = () => {
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
 	// 转换 ruby & strong 标签
-	return `<div><p>${sentence}</p>${trans ? '<img alt="speak" class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />' : ""}</div> ${
+	return `<div><p>${sentence}</p>${
+		trans
+			? '<img alt="speak" class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />'
+			: ""
+	}</div> ${
 		trans ? `<p style="margin-top: 6px;line-height:1.5;">${trans}</p>` : ""
 	}`
 		.replace(
