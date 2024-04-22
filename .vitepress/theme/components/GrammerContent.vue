@@ -9,7 +9,6 @@
 	<div
 		v-html="sentenceElement"
 		:class="['grammer-container', inline ? 'grammer-container-inline' : '']"
-		@click="speak"
 	></div>
 </template>
 
@@ -21,7 +20,6 @@
 
 <script setup>
 import { computed, onMounted, onBeforeUnmount, ref } from "vue";
-import Speech from "speak-tts";
 
 const props = defineProps({
 	sentence: String,
@@ -32,45 +30,10 @@ const props = defineProps({
 const isPlaying = ref(false);
 
 onMounted(() => {
-	const speech = new Speech();
-	speechInit();
+	console.log(props);
 });
 
-onBeforeUnmount(() => {
-	speech.cancel();
-});
-
-const speechInit = () => {
-	speech
-		.init({
-			lang: "ja-JP",
-			rate: 0.9,
-			pitch: 0.8,
-			listeners: {
-				onend: () => {
-					isPlaying.value = false;
-				},
-			},
-		})
-		.then(() => {});
-};
-
-const speak = () => {
-	if (props.trans && !isPlaying.value) {
-		isPlaying.value = true;
-		speech
-			.speak({
-				text: props.sentence.replace(
-					/[A|B]:|\*|\[|\/[\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*]|(\<del\>.*\<\/del\>)|(\(.*\))/g,
-					""
-				),
-			})
-			.then(() => {})
-			.catch((e) => {
-				console.error("An error occurred:", e);
-			});
-	}
-};
+onBeforeUnmount(() => {});
 
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
