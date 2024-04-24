@@ -2,14 +2,14 @@
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-12-13 16:31:07
  * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2024-04-24 21:25:38
+ * @LastEditTime: 2024-04-24 23:28:05
  * @FilePath: /bunpou/.vitepress/theme/components/Visitors.vue
  * @Description: 
  * 
 -->
 <template>
   <div class="bunpou-start">
-    <grammer-content id="start" sentence="**さあ、[一緒/いっしょ]に[頑張り/がんばり]ましょう!**" trans="来吧，让我们一起加油吧！" />
+    <grammer-content id="start" sentence="**さあ、[一緒/いっしょ]に[頑張り/がんばり]ましょう!**" trans="来吧，让我们一起加油吧！" center />
   </div>
 	<div class="busuanzi">
 		<span id="busuanzi_container_site_pv">
@@ -105,12 +105,7 @@ watch(page, () => {
 }
 
 .bunpou-start {
-  text-align: center;
   margin: 30px 0;
-}
-
-.bunpou-start .grammer-container > div {
-  justify-content: center;
 }
 
 @keyframes loading {

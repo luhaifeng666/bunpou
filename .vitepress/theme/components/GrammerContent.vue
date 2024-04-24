@@ -1,8 +1,8 @@
 <!--
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-06-14 08:39:33
- * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-10-10 10:50:00
+ * @LastEditors: haifeng.lu haifeng.lu@ly.com
+ * @LastEditTime: 2024-04-24 23:27:24
  * @Description: 
 -->
 <template>
@@ -36,6 +36,7 @@ const props = defineProps({
 	trans: String,
 	inline: Boolean,
 	id: String,
+  center: Boolean
 });
 
 const audio = ref(null);
@@ -64,14 +65,14 @@ const handleIconVisible = () => {
 };
 
 const sentenceElement = computed(() => {
-	const { sentence, trans = "" } = props;
+	const { sentence, trans = "", center } = props;
 	// 转换 ruby & strong 标签
-	return `<div><p>${sentence}</p>${
+	return `<div ${center ? 'style="justify-content: center;"' : ''}><p>${sentence}</p>${
 		iconVisible.value && trans
 			? '<img alt="speak" class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />'
 			: ""
 	}</div> ${
-		trans ? `<p style="margin-top: 6px;line-height:1.5;">${trans}</p>` : ""
+		trans ? `<p style="margin-top: 6px;line-height:1.5;${center ? 'text-align: center;' : ''}">${trans}</p>` : ""
 	}`
 		.replace(
 			/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g,
