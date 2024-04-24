@@ -1,22 +1,22 @@
 ---
 title: 「へ」的用法
 ---
-
+            
 # 「へ」的用法
 
 助词 へ 主要有以下几种用法。
 
 ## 1. へ<方向>
 
-- <grammer-content sentence="意义：表示移动的方向。此时读作「e」" inline />
-- 接续：表示处所的名词 + へ。
+* <grammer-content sentence="意义：表示移动的方向。此时读作「e」" inline />
+* 接续：表示处所的名词 + へ。
 
 ::: info :books: 例句
 
-1. <grammer-content sentence="[夏休/なつやす]みには[国/くに]**へ**[帰/かえ]らなかった。" trans='暑假没回国。' />
-1. <grammer-content sentence="どこ**へ**[行/い]きますか。" trans='要去哪儿？' />
-1. <grammer-content sentence="[毎日/まいにち]7[時/じ]ごろ[家/うち]**へ**[帰/かえ]る。" trans='每天七点左右回家。' />
-1. <grammer-content sentence="[授業/じゅぎょう]のあと、[図書館/としょかん]**へ**[本/ほん]を[借/か]りに[行/い]きます。" trans='下课后去图书馆借书。' />
+1. <grammer-content id='he-0' sentence="[夏休/なつやす]みには[国/くに]**へ**[帰/かえ]らなかった。" trans='暑假没回国。' />
+2. <grammer-content id='he-1' sentence="どこ**へ**[行/い]きますか。" trans='要去哪儿？' />
+3. <grammer-content id='he-2' sentence="[毎日/まいにち]7[時/じ]ごろ[家/うち]**へ**[帰/かえ]る。" trans='每天七点左右回家。' />
+4. <grammer-content id='he-3' sentence="[授業/じゅぎょう]のあと、[図書館/としょかん]**へ**[本/ほん]を[借/か]りに[行/い]きます。" trans='下课后去图书馆借书。' />
 
 :::
 
@@ -30,7 +30,7 @@ title: 「へ」的用法
 
 <div class="bunpou-block">
 
-  <grammer-content sentence="[夏休/なつやす]みには[国/くに]**<del>へ</del> → に**[帰/かえ]らなかった。" trans='暑假没回国。' />
+  <grammer-content id='he-4' sentence="[夏休/なつやす]みには[国/くに]**<del>へ</del> → に**[帰/かえ]らなかった。" trans='暑假没回国。' />
 
 </div>
 

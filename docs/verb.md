@@ -1,7 +1,7 @@
 ---
 title: 动词
 ---
-
+            
 # 动词
 
 动词是描述动作、状态、变化、存在的一类词。
@@ -13,17 +13,17 @@ title: 动词
 1. <grammer-content sentence="**持续动词**：在一段时间内能持续动作。这类动词有明显的“开始→进行→结束”的持续过程。如「[読む/よむ]、[書く/かく]、[話す/はなす]、[降る/ふる]」等" />
 
 <div class='bunpou-block'>
-   
-<grammer-content sentence='[読ん/よん]でいる。' trans='正在读书。' />
-   
+
+<grammer-content id='verb-0' sentence='[読ん/よん]でいる。' trans='正在读书。' />
+
 </div>
 
 2. <grammer-content sentence="**瞬间动词**：动作行为瞬间结束，不能持续进行。如「[始まる/はじまる]、[終わ/るおわる]、[立つ/たつ]、[座る/すわる]、[卒業/そつぎょう]する、[消える/きえる]、[死ぬ/しぬ]」等。" />
 
 <div class='bunpou-block'>
-   
-<grammer-content sentence='[橋/はし]が[落ち/おち]ている。' trans='桥梁塌陷了。' />
-   
+
+<grammer-content id='verb-1' sentence='[橋/はし]が[落ち/おち]ている。' trans='桥梁塌陷了。' />
+
 </div>
 
 3. <grammer-content sentence="**状态动词**：" />
@@ -40,12 +40,12 @@ title: 动词
 
 1. 一类动词: 词尾在「う」段：**`う、く、ぐ、す、つ、ぬ、ぶ、む、る`**;
 2. 二类动词:
-   - 以「る」结尾；
-   - 「る」前的假名是 `い段` 或 `え段`;
+   * 以「る」结尾；
+   * 「る」前的假名是 `い段` 或 `え段`;
 3. 三类动词:
-   - <grammer-content sentence="[来/く]る；" />
-   - <grammer-content sentence="する；" />
-   - <grammer-content sentence="动作性名词 + **する**，例如：**勉強する、買い物する**。" />
+   * <grammer-content sentence="[来/く]る；" />
+   * <grammer-content sentence="する；" />
+   * <grammer-content sentence="动作性名词 + **する**，例如：**勉強する、買い物する**。" />
 
 :::
 
@@ -55,13 +55,13 @@ title: 动词
 
 有几个看上去是二类动词，实际上却是 `一类动词` 的词需要特别注意：
 
-- <grammer-content sentence="[知/し]る；知道" />
-- <grammer-content sentence="[要/い]る；需要" />
-- <grammer-content sentence="[走/はし]る；跑" />
-- <grammer-content sentence="[帰/かえ]る；回家" />
-- <grammer-content sentence="[入/はい]る；进入" />
-- <grammer-content sentence="[切/き]る；切" />
-- <grammer-content sentence="[喋/しゃべ]る；聊天" />
+* <grammer-content sentence="[知/し]る；知道" />
+* <grammer-content sentence="[要/い]る；需要" />
+* <grammer-content sentence="[走/はし]る；跑" />
+* <grammer-content sentence="[帰/かえ]る；回家" />
+* <grammer-content sentence="[入/はい]る；进入" />
+* <grammer-content sentence="[切/き]る；切" />
+* <grammer-content sentence="[喋/しゃべ]る；聊天" />
 
 <grammer-content sentence="速记口诀： **走、知、要、归、入、切、喋。**" />
 
@@ -70,15 +70,14 @@ title: 动词
 ## 动词的体
 
 <grammer-content sentence="**体**是通过词形的变化表示**运动（动作、变化、状态）处于何种状态**的语法范畴。日语的体由**完整体**和**持续体**构成，**完整体**表示**完整的动作、变化、状态**，**持续体**则表示**动作、状态的持续以及动作的结果或变化结果的持续**。
-" />
-<grammer-content sentence="持续体的表达方式： Ｖて +「いる／いない、いた／いなかった、います／いません、いました／いませんでした」。
+" /> <grammer-content sentence="持续体的表达方式： Ｖて +「いる／いない、いた／いなかった、います／いません、いました／いませんでした」。
 " />
 
 ## 动词的形态汇总
 
 ### 1. 动词的非过去式
 
-- 意义：表示将来的动作或者未来的状态。
+* 意义：表示将来的动作或者未来的状态。
 
 ::: tip :bookmark: 说明
 
@@ -88,10 +87,10 @@ title: 动词
 
 ::: info :books: 例句
 
-1. <grammer-content sentence="[私/わたし]、**[明日/あした]**の**[授業/じゅぎょう]**のあと、ここで[宿題/しゅくだい]をします。" trans='我明天的课程结束后，在这里写作业。' />
-1. <grammer-content sentence="**[来週/らいしゅう]**、クラスで**[発表/はっぴょう]**します。" trans='下周，在班上发表。' />
-1. <grammer-content sentence="**[明日/あした]**、[宿題/しゅくだい]を**[提出/ていしゅつ]**します。" trans='明天交作业。' />
-1. <grammer-content sentence="[高橋/たかはし]さんは**[行/い]きます**が、[鈴木/すずき]さんは**[行/い]きません**。" trans='高桥**会去**，但是，铃木**不会去**。' />
+1. <grammer-content id='verb-2' sentence="[私/わたし]、**[明日/あした]**の**[授業/じゅぎょう]**のあと、ここで[宿題/しゅくだい]をします。" trans='我明天的课程结束后，在这里写作业。' />
+2. <grammer-content id='verb-3' sentence="**[来週/らいしゅう]**、クラスで**[発表/はっぴょう]**します。" trans='下周，在班上发表。' />
+3. <grammer-content id='verb-4' sentence="**[明日/あした]**、[宿題/しゅくだい]を**[提出/ていしゅつ]**します。" trans='明天交作业。' />
+4. <grammer-content id='verb-5' sentence="[高橋/たかはし]さんは**[行/い]きます**が、[鈴木/すずき]さんは**[行/い]きません**。" trans='高桥**会去**，但是，铃木**不会去**。' />
 
 :::
 
@@ -105,9 +104,9 @@ title: 动词
 
 <div class="bunpou-block">
 
-1. <grammer-content sentence="[本体/ほんたい]に[単4電池/たんよんでんち]を2[本/ほん]**[入/い]れ**、「[電源/でんげん]」キーを[押/お]してください。" trans="请在本体内放入2节7号电池，按下“电源”键。" />
-2. <grammer-content sentence="100[万円/まんえん]を[箱/はこ]に**[入/い]れ**、[鍵/かぎ]を**かけ**、[保管/ほかん]した。" trans="将100万日元放入箱中，上锁保管。" />
-3. <grammer-content sentence="ドアが**[開/あ]き**、[男/おとこ]が[現/あらわ]れた。" trans="门开了，一个男人进来了。" />
+1. <grammer-content id='verb-6' sentence="[本体/ほんたい]に[単4電池/たんよんでんち]を2[本/ほん]**[入/い]れ**、「[電源/でんげん]」キーを[押/お]してください。" trans="请在本体内放入2节7号电池，按下“电源”键。" />
+2. <grammer-content id='verb-7' sentence="100[万円/まんえん]を[箱/はこ]に**[入/い]れ**、[鍵/かぎ]を**かけ**、[保管/ほかん]した。" trans="将100万日元放入箱中，上锁保管。" />
+3. <grammer-content id='verb-8' sentence="ドアが**[開/あ]き**、[男/おとこ]が[現/あらわ]れた。" trans="门开了，一个男人进来了。" />
 
 </div>
 
@@ -123,8 +122,8 @@ title: 动词
 
 <div class="bunpou-block">
 
-1. <grammer-content sentence="[家/うち]へ**[帰/かえ]って**、[宿題/しゅくだい]をします。" trans='回家后开始写作业。(**强调相继发生**)' />
-2. <grammer-content sentence="お[爺/じい]さんは[山.やま]へ**[行/い]って**、お[婆/ばあ]さんは[川/かわ]へ[行/い]きました。" trans='爷爷去了山那边，奶奶去了河边儿。(**强调并列**)' />
+1. <grammer-content id='verb-9' sentence="[家/うち]へ**[帰/かえ]って**、[宿題/しゅくだい]をします。" trans='回家后开始写作业。(**强调相继发生**)' />
+2. <grammer-content id='verb-10' sentence="お[爺/じい]さんは[山.やま]へ**[行/い]って**、お[婆/ばあ]さんは[川/かわ]へ[行/い]きました。" trans='爷爷去了山那边，奶奶去了河边儿。(**强调并列**)' />
 
 </div>
 
@@ -132,33 +131,33 @@ title: 动词
 
 ::: info :books: 2. 表示动作进行的 `附带状况`
 
-1. <grammer-content sentence="[眼鏡/めがね]を**かけて**[本/ほん]を[読/よ]みます" trans='戴着眼镜读书。' />
-2. <grammer-content sentence="[手/て]を**[上/あげ]て**[道路/どうろ]を[渡/わた]った。" trans='举着手过了马路。' />
+1. <grammer-content id='verb-11' sentence="[眼鏡/めがね]を**かけて**[本/ほん]を[読/よ]みます" trans='戴着眼镜读书。' />
+2. <grammer-content id='verb-12' sentence="[手/て]を**[上/あげ]て**[道路/どうろ]を[渡/わた]った。" trans='举着手过了马路。' />
 
 :::
 
 ::: info :books: 3. 表示 `原因理由`
 
-<grammer-content sentence="[風邪/かぜ]を**[引/ひ]いて**[学校/がっこう]を[休/やす]みました。" trans='我感冒了，所以没去上学。' />
+<grammer-content id='verb-13' sentence="[風邪/かぜ]を**[引/ひ]いて**[学校/がっこう]を[休/やす]みました。" trans='我感冒了，所以没去上学。' />
 
 :::
 
 ::: info :books: 4. 表示 `手段`
 
-<grammer-content sentence="バスに**[乗/の]って**[会社/かいしゃ]に[行/い]きます。" trans='我坐公交上班儿。' />
+<grammer-content id='verb-14' sentence="バスに**[乗/の]って**[会社/かいしゃ]に[行/い]きます。" trans='我坐公交上班儿。' />
 
 :::
 
 ### 4. 动词的连体形(简体)＜连体修饰语＞
 
-- 意义：充当连[体](./term/ty.md)修饰语，对名词起修饰限定的作用。连体修饰语从句中的主语`不能用「は」表示，而要用「が」或者「の」`；
-- 接续：动词简体 + 名词。
+* 意义：充当连[体](./term/ty.md)修饰语，对名词起修饰限定的作用。连体修饰语从句中的主语`不能用「は」表示，而要用「が」或者「の」`；
+* 接续：动词简体 + 名词。
 
 ::: info :books: 例句
 
-1. <grammer-content sentence="あそこは、[李/り]さん**が**いつも**[行/い]く[喫茶店/きっさてん]**です。" trans="那儿是小李常去的咖啡店。" />
-2. <grammer-content sentence="[学校/がっこう]**に[行/い]かない[日/にち]**はうちで[勉強/べんきょう]します。" trans="我放假的时候在家学习。" />
-3. <grammer-content sentence="**[昨日/きのう][来/く]なかった[人/ひと]**は[誰/だれ]ですか。" trans="昨天谁没来？" />
+1. <grammer-content id='verb-15' sentence="あそこは、[李/り]さん**が**いつも**[行/い]く[喫茶店/きっさてん]**です。" trans="那儿是小李常去的咖啡店。" />
+2. <grammer-content id='verb-16' sentence="[学校/がっこう]**に[行/い]かない[日/にち]**はうちで[勉強/べんきょう]します。" trans="我放假的时候在家学习。" />
+3. <grammer-content id='verb-17' sentence="**[昨日/きのう][来/く]なかった[人/ひと]**は[誰/だれ]ですか。" trans="昨天谁没来？" />
 
 :::
 
@@ -171,10 +170,10 @@ title: 动词
 虽然动词形态上的变化比较多，但也算得上有迹可循。我整理了一些自己在记忆时候的技巧，希望对你有帮助。
 
 1. <grammer-content sentence="**简体否定词尾**形式为**ない**，与之对应的**过去简体否定词尾**形式为**なかった**；**敬体否定词尾**形式为**ません**，与之相对应的**敬体否定词尾**形式为**ませんでした**；" />
-1. <grammer-content sentence="**不区分时态**，一二类动词的变化都体现在**词尾**上：" />
+2. <grammer-content sentence="**不区分时态**，一二类动词的变化都体现在**词尾**上：" />
    - <grammer-content sentence="**1类动词**，在**敬体**的情况下，词尾由**う段变为い段**；在**简体**的情况下，词尾由**う段变为あ段**。" />
    - <grammer-content sentence="**2类动词**，都是将**词尾的る去掉**后再进行变化。" />
-1. <grammer-content sentence="**3类动词**主要分为くる与する的变化，词尾的る最终都会变成其他词缀，主要的区别在**く**与**す**上：" />
+3. <grammer-content sentence="**3类动词**主要分为くる与する的变化，词尾的る最终都会变成其他词缀，主要的区别在**く**与**す**上：" />
    - <grammer-content sentence="**不区分时态**，く的变化规律为：**简体时く变为こ，敬体时く变为き**；" />
    - <grammer-content sentence="**不区分时态**，**す变为し**。" />
 
@@ -198,9 +197,9 @@ title: 动词
 
 <div class="bunpou-block">
 
-1. <grammer-content sentence="300[元/げん]ぐらいでシルクのスカート** が [買/か]えますよ**。" trans="300块左右就可以买丝绸的裙子了。" />
-2. <grammer-content sentence="[私/わたし]はさしみ** が [食/た]べられません**。" trans="我吃不了刺身。" />
-3. <grammer-content sentence="[王/おう]さんは[英語/えいご]** が [話/はな]せます**。" trans="小王能说英语。" />
+1. <grammer-content id='verb-18' sentence="300[元/げん]ぐらいでシルクのスカート** が [買/か]えますよ**。" trans="300块左右就可以买丝绸的裙子了。" />
+2. <grammer-content id='verb-19' sentence="[私/わたし]はさしみ** が [食/た]べられません**。" trans="我吃不了刺身。" />
+3. <grammer-content id='verb-20' sentence="[王/おう]さんは[英語/えいご]** が [話/はな]せます**。" trans="小王能说英语。" />
 
 </div>
 
@@ -208,8 +207,8 @@ title: 动词
 
 <div class="bunpou-block">
 
-1. <grammer-content sentence="[３日/みっか][間/かん]で[荷物/にもつ]が **[届/とど]ける ❌／[届/とど]く**。" trans="货物3日内能到。" />
-2. <grammer-content sentence="[会議/かいぎ]は９[時/じ]に **[始/はじ]まれる ❌／[始/はじ]まる**。" trans="会议9点能开始。" />
+1. <grammer-content id='verb-21' sentence="[３日/みっか][間/かん]で[荷物/にもつ]が **[届/とど]ける ❌／[届/とど]く**。" trans="货物3日内能到。" />
+2. <grammer-content id='verb-22' sentence="[会議/かいぎ]は９[時/じ]に **[始/はじ]まれる ❌／[始/はじ]まる**。" trans="会议9点能开始。" />
 
 </div>
 
@@ -231,14 +230,14 @@ title: 动词
 
 <grammer-content sentence="A. 动词的意志形用于第一人称句时，表示说话人(第一人称)要进行该动作的意志；用于第一、二人称句时，表示说话人(第一人称)建议对方(第二人称)与自己共同进行该动作，它是**「Vましょう」的简体形式**；" />
 
-1. <grammer-content sentence="[遣使/けんし]の[会/かい]で[忘年会/ぼうねんかい]を**[開こう/ひらこう]**と[思って/おもって]、[計画/けいかく]を[立て/たて]ているんです。" trans="我想在遣使会上开忘年会，正在制定计划。" />
-2. <grammer-content sentence="[明日/あした][朝/あさ][早い/はやい]から、[今晩/こんばん][早く/はやく]**[寝よう/ねよう]**。" trans="明晚要早起，今晚早点睡吧。" />
-3. <grammer-content sentence="みんなで**[頑張ろう/がんばろう]**。" trans="大家一起加油吧。" />
-4. <grammer-content sentence="[人数/にんずう]が[足り/たり]ないから、[王/おう]さんも[一緒/いっしょ]に**[行/こういこう]**。" trans="人数不够，小王也一起去吧。" />
+1. <grammer-content id='verb-23' sentence="[遣使/けんし]の[会/かい]で[忘年会/ぼうねんかい]を**[開こう/ひらこう]**と[思って/おもって]、[計画/けいかく]を[立て/たて]ているんです。" trans="我想在遣使会上开忘年会，正在制定计划。" />
+2. <grammer-content id='verb-24' sentence="[明日/あした][朝/あさ][早い/はやい]から、[今晩/こんばん][早く/はやく]**[寝よう/ねよう]**。" trans="明晚要早起，今晚早点睡吧。" />
+3. <grammer-content id='verb-25' sentence="みんなで**[頑張ろう/がんばろう]**。" trans="大家一起加油吧。" />
+4. <grammer-content id='verb-26' sentence="[人数/にんずう]が[足り/たり]ないから、[王/おう]さんも[一緒/いっしょ]に**[行/こういこう]**。" trans="人数不够，小王也一起去吧。" />
 
 <grammer-content sentence="B. 「Ｖ(よ)う」后接「と思う」构成**「Ｖ(よ)うと思う」**这个句式，表示说话人(第一人称)的意志，即决定要做某事，相当于汉语的**“我想要……；我决心……”**等。" />
 
-1. <grammer-content sentence="[今日/きょう]は[早く/はやく]**[帰ろう/かえろう]と[思/おも]います**。" trans="今天想早点回家。" />
-2. <grammer-content sentence="**[運動/うんどう]しようと[思/おも]います**けど、[時間/じかん]がありません。" trans="我想运动，但没有时间。" />
+1. <grammer-content id='verb-27' sentence="[今日/きょう]は[早く/はやく]**[帰ろう/かえろう]と[思/おも]います**。" trans="今天想早点回家。" />
+2. <grammer-content id='verb-28' sentence="**[運動/うんどう]しようと[思/おも]います**けど、[時間/じかん]がありません。" trans="我想运动，但没有时间。" />
 
 :::

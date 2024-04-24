@@ -1,7 +1,7 @@
 ---
 title: こそあど系列
 ---
-
+            
 # こそあど系列
 
 以 `こそあど` 开头的表示指示的词，称为 `こそあど系列`。它们分别对应近称，中称，远称以及疑问称，根据说话人与听者之间的距离关系区别使用。
@@ -10,16 +10,16 @@ title: こそあど系列
 
 `こそあど系列` 在回答时需要区分以下两种情况：
 
-- **对立型**：指说话人与听者双方在感官上存在一定距离，此时回答提问遵照 `こ问そ答，そ问こ答，あ问あ答` 的规则；
-- **融合性**：指说话人与听者双方在感官上距离比较近，比如手拉手，肩并肩这种距离，此时回答提问遵照`こ问こ答，そ问そ答，あ问あ答`的规则：
+* **对立型**：指说话人与听者双方在感官上存在一定距离，此时回答提问遵照 `こ问そ答，そ问こ答，あ问あ答` 的规则；
+* **融合性**：指说话人与听者双方在感官上距离比较近，比如手拉手，肩并肩这种距离，此时回答提问遵照`こ问こ答，そ问そ答，あ问あ答`的规则：
 
 :::
 
 ## この・その・あの・どの <指示>
 
-- 意义： 用于指示、限定 **名词** 所指代的 **人或事物**。
-- 接续： `この・その・あの・どの + 名词`。
-- 译文： `这个......，那个......，哪个......`。
+* 意义： 用于指示、限定 **名词** 所指代的 **人或事物**。
+* 接续： `この・その・あの・どの + 名词`。
+* 译文： `这个......，那个......，哪个......`。
 
 ::: danger :warning: 注意
 
@@ -37,19 +37,19 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content sentence="A: **この**[方/かた]はどなたですか。" trans='那个人是谁啊？' />
-   <grammer-content sentence="B: ああ、**その**人は[姉/あね]の[婚約者/こんやくしゃ]です。" trans='啊，那个人是我姐姐的未婚夫。' />
-2. <grammer-content sentence="**あの**[方/かた]は[鈴木/すずき]さんです。" trans='那位是铃木。' />
-3. <grammer-content sentence="A: [高橋/たかはし]さんは**どの**[人/ひと]ですか。" trans='高桥是哪位啊？' />
-   <grammer-content sentence="B: [高橋/たかはし]さんは**あの**[人/ひと]です。" trans='高桥是那位。' />
+1. <grammer-content id='kosoado-0' id='kosoado-0' sentence="A: **この**[方/かた]はどなたですか。" trans='那个人是谁啊？' />
+   <grammer-content id='kosoado-1' id='kosoado-1' sentence="B: ああ、**その**人は[姉/あね]の[婚約者/こんやくしゃ]です。" trans='啊，那个人是我姐姐的未婚夫。' />
+2. <grammer-content id='kosoado-2' id='kosoado-2' sentence="**あの**[方/かた]は[鈴木/すずき]さんです。" trans='那位是铃木。' />
+3. <grammer-content id='kosoado-3' id='kosoado-3' sentence="A: [高橋/たかはし]さんは**どの**[人/ひと]ですか。" trans='高桥是哪位啊？' />
+   <grammer-content id='kosoado-4' id='kosoado-4' sentence="B: [高橋/たかはし]さんは**あの**[人/ひと]です。" trans='高桥是那位。' />
 
 :::
 
 ## ここ・そこ・あそこ・どこ <指示>
 
-- 意义： 用于指示 **处所**。
-- 接续： `ここ・そこ・あそこ・どこ + 助词` / `ここ・そこ・あそこ・どこ + の + 名词`。
-- 译文： `这里......，那里......，哪里......`。
+* 意义： 用于指示 **处所**。
+* 接续： `ここ・そこ・あそこ・どこ + 助词` / `ここ・そこ・あそこ・どこ + の + 名词`。
+* 译文： `这里......，那里......，哪里......`。
 
 ::: warning :danger: 近/中/远/疑
 
@@ -61,20 +61,20 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content sentence="A: [売店/ばいてん]は**どこ**ですか。" trans='小卖部在哪儿？' />
-   <grammer-content sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
-2. <grammer-content sentence="A: [検索用/けんさくよう]のコンピューターは**どこ**ですか。" trans='检索用的电脑在哪儿？' />
-   <grammer-content sentence="B: （[検索用/けんさくよう]のコンピューターは）**あそこ**です。" trans='（检索用的电脑）在那儿。' />
-3. <grammer-content sentence="A: [貸/か]し[出/だ]しカウンターは**どこ**ですか。" trans='借书处在哪儿？' />
-   <grammer-content sentence="B: （[貸/か]し[出/だ]しカウンターは）**そこ**です。" trans='（借书处）在那儿。' />
+1. <grammer-content id='kosoado-5' id='kosoado-5' sentence="A: [売店/ばいてん]は**どこ**ですか。" trans='小卖部在哪儿？' />
+   <grammer-content id='kosoado-6' id='kosoado-6' sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
+2. <grammer-content id='kosoado-7' id='kosoado-7' sentence="A: [検索用/けんさくよう]のコンピューターは**どこ**ですか。" trans='检索用的电脑在哪儿？' />
+   <grammer-content id='kosoado-8' id='kosoado-8' sentence="B: （[検索用/けんさくよう]のコンピューターは）**あそこ**です。" trans='（检索用的电脑）在那儿。' />
+3. <grammer-content id='kosoado-9' id='kosoado-9' sentence="A: [貸/か]し[出/だ]しカウンターは**どこ**ですか。" trans='借书处在哪儿？' />
+   <grammer-content id='kosoado-10' id='kosoado-10' sentence="B: （[貸/か]し[出/だ]しカウンターは）**そこ**です。" trans='（借书处）在那儿。' />
 
 :::
 
 ## これ・それ・あれ・どれ <指示>
 
-- 意义： 用于指示 **事物**。
-- 接续： 只可接除`「の」`以外的助词。
-- 译文： `这个......，那个......，哪个......`。
+* 意义： 用于指示 **事物**。
+* 接续： 只可接除`「の」`以外的助词。
+* 译文： `这个......，那个......，哪个......`。
 
 ::: warning :danger: 近/中/远/疑
 
@@ -86,24 +86,24 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
-   <grammer-content sentence="A: ああ、**あれ**ですね。" trans='啊，在那儿啊。' />
-2. <grammer-content sentence="A: **それ**は[何/なん]ですか。" trans='那是个啥？' />
-   <grammer-content sentence="B: **これ**は[日本語/にほんご]の[辞書/じしょ]です。" trans='这是日语词典。' />
-3. <grammer-content sentence="A: [検測用/けんさくよう]のコンピュターは**どれ**ですか。" trans='搜索用的电脑在哪儿？' />
-   <grammer-content sentence="B: [検測用/けんさくよう]のコンピュターは**あれ**です。" trans='搜索用的电脑在那儿。' />
+1. <grammer-content id='kosoado-11' id='kosoado-11' sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
+   <grammer-content id='kosoado-12' id='kosoado-12' sentence="A: ああ、**あれ**ですね。" trans='啊，在那儿啊。' />
+2. <grammer-content id='kosoado-13' id='kosoado-13' sentence="A: **それ**は[何/なん]ですか。" trans='那是个啥？' />
+   <grammer-content id='kosoado-14' id='kosoado-14' sentence="B: **これ**は[日本語/にほんご]の[辞書/じしょ]です。" trans='这是日语词典。' />
+3. <grammer-content id='kosoado-15' id='kosoado-15' sentence="A: [検測用/けんさくよう]のコンピュターは**どれ**ですか。" trans='搜索用的电脑在哪儿？' />
+   <grammer-content id='kosoado-16' id='kosoado-16' sentence="B: [検測用/けんさくよう]のコンピュターは**あれ**です。" trans='搜索用的电脑在那儿。' />
 
 :::
 
 ## こちら・そちら・あちら・どちら <指示>
 
-- 意义： 指代方向、场所、事物和人物。是以上三种用法的集合，也是以上三种用法的尊敬用法。在使用　`「どちら」` 时要注意，由于它是疑问词，需要使用 `「が」` 来提示。
-- 接续： `こちら・そちら・あちら・どちら + 助词` / `こちら・そちら・あちら・どちら + の + 名词`。
-- 译文： 根据指示内容的不同，翻译也有所区别：
-  - <grammer-content sentence="指代**方向**，可译成“这边、那边、那边、哪边”。" />
-  - <grammer-content sentence="指代**场所**，比ここ、そこ、あそこ、どこ更为郑重礼貌，可译成“这里、那里、那里、哪里”。" />
-  - <grammer-content sentence="指代**事物**，把事物作为比较的一方或另一方。" />
-  - <grammer-content sentence="指代**人称**，一般用`「こちら」`表示第一人称或第一人称方面的人，`「そちら」`表示第二人称或第二人称方面的人，`「あちら」`表示第三人称或第三人称方面的人。" />
+* 意义： 指代方向、场所、事物和人物。是以上三种用法的集合，也是以上三种用法的尊敬用法。在使用　`「どちら」` 时要注意，由于它是疑问词，需要使用 `「が」` 来提示。
+* 接续： `こちら・そちら・あちら・どちら + 助词` / `こちら・そちら・あちら・どちら + の + 名词`。
+* 译文： 根据指示内容的不同，翻译也有所区别：
+  * <grammer-content sentence="指代**方向**，可译成“这边、那边、那边、哪边”。" />
+  * <grammer-content sentence="指代**场所**，比ここ、そこ、あそこ、どこ更为郑重礼貌，可译成“这里、那里、那里、哪里”。" />
+  * <grammer-content sentence="指代**事物**，把事物作为比较的一方或另一方。" />
+  * <grammer-content sentence="指代**人称**，一般用`「こちら」`表示第一人称或第一人称方面的人，`「そちら」`表示第二人称或第二人称方面的人，`「あちら」`表示第三人称或第三人称方面的人。" />
 
 ::: warning :danger: 近/中/远/疑
 
@@ -115,9 +115,9 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content sentence="**そちら**は[劇/げき][場/じょう]です。" trans='那边是剧场。' />
-2. <grammer-content sentence="**こちら**は[寒/さむ]いです。" trans='我们这儿冷。' />
-3. <grammer-content sentence="**そちら**はよくないと[思/おも]います。" trans='我觉得那个不好。' />
-4. <grammer-content sentence="**こちら**は[趙/ちょう]さんです。 " trans='这位是赵先生。' />
+1. <grammer-content id='kosoado-17' id='kosoado-17' sentence="**そちら**は[劇/げき][場/じょう]です。" trans='那边是剧场。' />
+2. <grammer-content id='kosoado-18' id='kosoado-18' sentence="**こちら**は[寒/さむ]いです。" trans='我们这儿冷。' />
+3. <grammer-content id='kosoado-19' id='kosoado-19' sentence="**そちら**はよくないと[思/おも]います。" trans='我觉得那个不好。' />
+4. <grammer-content id='kosoado-20' id='kosoado-20' sentence="**こちら**は[趙/ちょう]さんです。 " trans='这位是赵先生。' />
 
 :::

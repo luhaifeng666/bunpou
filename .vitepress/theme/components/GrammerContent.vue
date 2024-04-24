@@ -9,8 +9,14 @@
 	<div
 		v-html="sentenceElement"
 		:class="['grammer-container', inline ? 'grammer-container-inline' : '']"
-		@click="speak"
+		@click="play"
 	></div>
+	<audio
+		:src="`../../../public/voices/${props.id}.wav`"
+		ref="audio"
+		@ended="isPlaying = false"
+		@error="isPlaying = false"
+	></audio>
 </template>
 
 <style>
@@ -20,57 +26,21 @@
 </style>
 
 <script setup>
-import { computed, onMounted, onBeforeUnmount, ref } from "vue";
-import Speech from "speak-tts";
+import { computed, ref, onBeforeUnmount } from "vue";
+import { isPlaying } from "../store";
 
 const props = defineProps({
 	sentence: String,
 	trans: String,
 	inline: Boolean,
-});
-
-const isPlaying = ref(false);
-
-onMounted(() => {
-	const speech = new Speech();
-	speechInit();
+	id: String,
 });
 
 onBeforeUnmount(() => {
-	speech.cancel();
+	isPlaying.value = false;
 });
 
-const speechInit = () => {
-	speech
-		.init({
-			lang: "ja-JP",
-			rate: 0.9,
-			pitch: 0.8,
-			listeners: {
-				onend: () => {
-					isPlaying.value = false;
-				},
-			},
-		})
-		.then(() => {});
-};
-
-const speak = () => {
-	if (props.trans && !isPlaying.value) {
-		isPlaying.value = true;
-		speech
-			.speak({
-				text: props.sentence.replace(
-					/[A|B]:|\*|\[|\/[\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*]|(\<del\>.*\<\/del\>)|(\(.*\))/g,
-					""
-				),
-			})
-			.then(() => {})
-			.catch((e) => {
-				console.error("An error occurred:", e);
-			});
-	}
-};
+const audio = ref(null);
 
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
@@ -91,4 +61,9 @@ const sentenceElement = computed(() => {
 		)
 		.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #fb923c">$1</strong>');
 });
+
+const play = () => {
+	!isPlaying.value && audio.value.play();
+	isPlaying.value = true;
+};
 </script>
