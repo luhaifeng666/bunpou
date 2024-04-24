@@ -8,7 +8,10 @@
  * 
  */
 import fg from "fast-glob";
+import path from "node:path";
+import fs from 'node:fs/promises'
 import matter from "gray-matter";
+import audioLoader from 'audio-loader';
 
 /**
  * 获取目标目录下的所有 markdown 文件
@@ -120,3 +123,28 @@ export const getSideBar = () =>
 		}),
 		{}
 	);
+
+// 获取指定目录下的文件
+export const getAllDocs = async (fn, pathName = "docs") => {
+	const files = await fs.readdir(path.resolve(pathName), {
+		recursive: true
+	})
+	return files.filter(fn)
+}
+
+export const checkUsableAudios = async () => {
+	const voices = await getAllDocs(file => file.endsWith('.wav'), "public/voices");
+	for (const voice of voices) {
+		const voicePath = path.resolve(`public/voices/${voice}`)
+		const voiceInstance = await audioLoader(voicePath)
+		if (!isFinite(voiceInstance.duration) || !voiceInstance.duration) {
+			// 视频时长不合法，清空对应的音频文件
+			fs.unlink(voicePath).then(err => {
+				if (err) throw err;
+				console.log(`${voicePath} was deleted`);
+			}).catch(err => {
+				console.error(`Delete failed: ${voicePath}`)
+			})
+		}
+	}
+}

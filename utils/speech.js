@@ -16,20 +16,23 @@ export const generateVoice = function (text, filename) {
     // Start the synthesizer and wait for a result.
     synthesizer.speakTextAsync(text,
       function (result) {
+        let success = true;
         if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-          resolve("synthesis finished.");
+          console.log("synthesis finished. File path is " + audioFile);
         } else {
-          reject("Speech synthesis canceled, " + result.errorDetails +
+          console.error("Speech synthesis canceled, " + result.errorDetails +
             "\nDid you set the speech resource key and region values?");
+          success = false
         }
         synthesizer.close();
         synthesizer = null;
+        success ? resolve(success) : reject(success)
       },
       function (err) {
-        reject("err - " + err);
+        console.error("err - " + err);
         synthesizer.close();
         synthesizer = null;
+        reject(false)
       });
-    console.log("Now synthesizing to: " + audioFile);
   })
 };

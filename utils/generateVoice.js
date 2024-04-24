@@ -3,16 +3,9 @@ import path from "node:path";
 import fs from 'node:fs/promises'
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { toMarkdown } from 'mdast-util-to-markdown'
+import { getAllDocs } from './index.js'
 
 const BASE_URL = path.resolve('docs');
-
-// 获取所有文件
-const getAllDocs = async (fn, pathName = "docs") => {
-    const files = await fs.readdir(path.resolve(pathName), {
-        recursive: true
-    })
-    return files.filter(fn)
-}
 
 /**
  * 设置Id
@@ -21,7 +14,7 @@ const getAllDocs = async (fn, pathName = "docs") => {
  */
 const setId = (tree, fileBaseName) => {
     let count = 0;
-    return tree.replace(/(grammer-content)(.*?\/>)/gi, (data, str1, str2) => {
+    return tree.replace(/(grammer-content)\sid\=\'.*?\'(.*?\/>)/gi, (data, str1, str2) => {
         if (!data.includes("trans")) {
             return data
         } else {
@@ -43,13 +36,17 @@ const getAllSentences = (tree) => (tree
         sentence => sentence.replace(/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g, (word) => {
             const [rb, rt] = word.replace(/\[|\]/g, "").split("/");
             return rb;
-        }).replace(/\*\*(.*?)\*\*/g, '$1').replace(/.*sentence=\\"(.*?)\\".*/g, "$1")
+        }).replace(/\*\*(.*?)\*\*/g, '$1').replace(/.*sentence=[\\]{0,2}["|'](.*?)[\\]{0,2}["|'].*/g, "$1")
     )
 
 // 设置id，覆盖原文件内容
 const generate = async () => {
-    const docs = await getAllDocs(file => file.endsWith('.md') && !file.includes('index.md'));
-    const videos = await getAllDocs(file => file.endsWith('.wav'), "public/voices");
+    const voices = await getAllDocs(file => file.endsWith('.wav'), "public/voices");
+    // const videoPreNames = Array.from(new Set(videos.map(name => name.replace(/\-[0-9]{1,2}\.wav$/g, ''))))
+    const docs = (await getAllDocs(file => file.endsWith('.md') && !file.includes('index.md')))
+    // .filter(
+    //     doc => !videoPreNames.includes(path.basename(doc).replace('.md', ''))
+    // );
     for (const dir of docs) {
         const filePath = path.resolve(BASE_URL, dir)
         const doc = await fs.readFile(filePath, 'utf-8')
@@ -59,25 +56,22 @@ const generate = async () => {
         tree = setId(tree, fileBaseName);
         // 获取所有句子
         const sentences = getAllSentences(tree, fileBaseName)
-        // 生成语音
-        await Promise.allSettled(
-            sentences.reduce((arr, sentence, index) => {
-                !videos.includes(`${fileBaseName}-${index}.wav`) && arr.push({
-                    sentence, filename: `${fileBaseName}-${index}`
-                })
-                return arr
-            }, []).map(({ sentence, filename }) => generateVoice(sentence, filename))
-        )
-        tree = JSON.parse(tree)
-        // 文档标题
-        const docTitle = tree.children[1].children[0].value;
-        // 移除 thematicBreak + 第一个heading
-        tree.children.splice(0, 2);
-        // // 重新拼接文件内容
-        const fileContent = `---\n${docTitle}\n---
-            \n${toMarkdown(tree)}`;
-        // 写入文件
-        await fs.writeFile(filePath, fileContent, 'utf-8')
+        if (sentences.length) {
+            // 生成语音
+            for (const [index, sentence] of sentences.entries()) {
+                !voices.includes(`${fileBaseName}-${index}.wav`) && await generateVoice(sentence, `${fileBaseName}-${index}`)
+            }
+            tree = JSON.parse(tree)
+            // 文档标题
+            const docTitle = tree.children[1].children[0].value;
+            // 移除 thematicBreak + 第一个heading
+            tree.children.splice(0, 2);
+            // 重新拼接文件内容
+            const fileContent = `---\n${docTitle}\n---
+\n${toMarkdown(tree)}`;
+            // 写入文件
+            await fs.writeFile(filePath, fileContent, 'utf-8')
+        }
     }
 }
 

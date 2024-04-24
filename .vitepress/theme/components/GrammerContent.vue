@@ -12,9 +12,10 @@
 		@click="play"
 	></div>
 	<audio
-		v-if="props.id"
+		v-if="iconVisible"
 		ref="audio"
 		:src="audioSrc"
+		@canplay="handleIconVisible"
 		@ended="isPlaying = false"
 		@error="isPlaying = false"
 	></audio>
@@ -37,6 +38,10 @@ const props = defineProps({
 	id: String,
 });
 
+const audio = ref(null);
+const audioSrc = ref(null);
+const canplay = ref(true);
+
 onBeforeUnmount(() => {
 	isPlaying.value = false;
 });
@@ -54,14 +59,15 @@ watch(
 	}
 );
 
-const audio = ref(null);
-const audioSrc = ref(null);
+const handleIconVisible = () => {
+	canplay.value = isFinite(audio.value.duration);
+};
 
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
 	// 转换 ruby & strong 标签
 	return `<div><p>${sentence}</p>${
-		trans
+		iconVisible.value && trans
 			? '<img alt="speak" class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />'
 			: ""
 	}</div> ${
@@ -76,6 +82,8 @@ const sentenceElement = computed(() => {
 		)
 		.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #fb923c">$1</strong>');
 });
+
+const iconVisible = computed(() => props.id && canplay.value);
 
 const play = () => {
 	!isPlaying.value && audio.value.play();
