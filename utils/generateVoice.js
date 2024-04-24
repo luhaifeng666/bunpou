@@ -1,6 +1,7 @@
 import { generateVoice } from "./speech.js";
 import path from "node:path";
 import fs from 'node:fs/promises'
+import { argv } from "zx";
 import { fromMarkdown } from 'mdast-util-from-markdown'
 import { toMarkdown } from 'mdast-util-to-markdown'
 import { getAllDocs } from './index.js'
@@ -41,12 +42,16 @@ const getAllSentences = (tree) => (tree
 
 // 设置id，覆盖原文件内容
 const generate = async () => {
+    const { filter } = argv;
     const voices = await getAllDocs(file => file.endsWith('.wav'), "public/voices");
-    // const videoPreNames = Array.from(new Set(videos.map(name => name.replace(/\-[0-9]{1,2}\.wav$/g, ''))))
-    const docs = (await getAllDocs(file => file.endsWith('.md') && !file.includes('index.md')))
-    // .filter(
-    //     doc => !videoPreNames.includes(path.basename(doc).replace('.md', ''))
-    // );
+    const voicePreNames = Array.from(new Set(voices.map(name => name.replace(/\-[0-9]{1,2}\.wav$/g, ''))))
+    let docs = (await getAllDocs(file => file.endsWith('.md') && !file.includes('index.md')))
+    // 是否开启过滤模式， 不开启默认执行所有的doc文件
+    if (filter) {
+        docs = docs.filter(
+            doc => !voicePreNames.includes(path.basename(doc).replace('.md', ''))
+        );
+    }
     for (const dir of docs) {
         const filePath = path.resolve(BASE_URL, dir)
         const doc = await fs.readFile(filePath, 'utf-8')

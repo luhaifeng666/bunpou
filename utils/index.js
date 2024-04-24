@@ -1,12 +1,3 @@
-/*
- * @Author: haifeng.lu haifeng.lu@ly.com
- * @Date: 2023-08-01 11:24:47
- * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2024-01-24 17:04:13
- * @FilePath: /bunpou/utils/index.js
- * @Description: 
- * 
- */
 import fg from "fast-glob";
 import path from "node:path";
 import fs from 'node:fs/promises'
@@ -132,13 +123,14 @@ export const getAllDocs = async (fn, pathName = "docs") => {
 	return files.filter(fn)
 }
 
+// 校验音频是否合法
 export const checkUsableAudios = async () => {
 	const voices = await getAllDocs(file => file.endsWith('.wav'), "public/voices");
 	for (const voice of voices) {
 		const voicePath = path.resolve(`public/voices/${voice}`)
 		const voiceInstance = await audioLoader(voicePath)
 		if (!isFinite(voiceInstance.duration) || !voiceInstance.duration) {
-			// 视频时长不合法，清空对应的音频文件
+			// 音频时长不合法，清空对应的音频文件
 			fs.unlink(voicePath).then(err => {
 				if (err) throw err;
 				console.log(`${voicePath} was deleted`);

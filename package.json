@@ -14,6 +14,7 @@
     "docs:menu": "node utils/generateMenu.js",
     "build": "tauri build",
     "generate:voice": "node utils/generateVoice.js",
+    "generate:voice:filter": "node utils/generateVoice.js --filter",
     "check:voice": "node utils/checkVoice.js"
   },
   "keywords": [],
@@ -25,7 +26,8 @@
     "audio-loader": "^1.0.3",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
-    "vitepress": "^1.0.1"
+    "vitepress": "^1.0.1",
+    "zx": "^8.0.2"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -38,7 +40,6 @@
   "dependencies": {
     "mdast-util-from-markdown": "^2.0.0",
     "mdast-util-to-markdown": "^2.0.0",
-    "microsoft-cognitiveservices-speech-sdk": "^1.36.0",
-    "speak-tts": "^2.0.8"
+    "microsoft-cognitiveservices-speech-sdk": "^1.36.0"
   }
 }
