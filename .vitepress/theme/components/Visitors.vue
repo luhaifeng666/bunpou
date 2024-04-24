@@ -1,13 +1,16 @@
 <!--
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-12-13 16:31:07
- * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2024-01-15 15:15:58
+ * @LastEditors: haifeng.lu haifeng.lu@ly.com
+ * @LastEditTime: 2024-04-24 21:25:38
  * @FilePath: /bunpou/.vitepress/theme/components/Visitors.vue
  * @Description: 
  * 
 -->
 <template>
+  <div class="bunpou-start">
+    <grammer-content id="start" sentence="**さあ、[一緒/いっしょ]に[頑張り/がんばり]ましょう!**" trans="来吧，让我们一起加油吧！" />
+  </div>
 	<div class="busuanzi">
 		<span id="busuanzi_container_site_pv">
 			总访问量
@@ -81,7 +84,6 @@ watch(page, () => {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 64px;
 	font-size: 14px;
 }
 .busuanzi .busuanzi_value {
@@ -100,6 +102,15 @@ watch(page, () => {
 	height: 14px;
 	background: url(../../../public/imgs/loading.png) no-repeat center / contain;
 	animation: loading 1s linear infinite;
+}
+
+.bunpou-start {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.bunpou-start .grammer-container > div {
+  justify-content: center;
 }
 
 @keyframes loading {
