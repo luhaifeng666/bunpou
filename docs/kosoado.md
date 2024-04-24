@@ -37,11 +37,11 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content id='kosoado-0' id='kosoado-0' sentence="A: **この**[方/かた]はどなたですか。" trans='那个人是谁啊？' />
-   <grammer-content id='kosoado-1' id='kosoado-1' sentence="B: ああ、**その**人は[姉/あね]の[婚約者/こんやくしゃ]です。" trans='啊，那个人是我姐姐的未婚夫。' />
-2. <grammer-content id='kosoado-2' id='kosoado-2' sentence="**あの**[方/かた]は[鈴木/すずき]さんです。" trans='那位是铃木。' />
-3. <grammer-content id='kosoado-3' id='kosoado-3' sentence="A: [高橋/たかはし]さんは**どの**[人/ひと]ですか。" trans='高桥是哪位啊？' />
-   <grammer-content id='kosoado-4' id='kosoado-4' sentence="B: [高橋/たかはし]さんは**あの**[人/ひと]です。" trans='高桥是那位。' />
+1. <grammer-content id='kosoado-0' sentence="A: **この**[方/かた]はどなたですか。" trans='那个人是谁啊？' />
+   <grammer-content id='kosoado-1' sentence="B: ああ、**その**人は[姉/あね]の[婚約者/こんやくしゃ]です。" trans='啊，那个人是我姐姐的未婚夫。' />
+2. <grammer-content id='kosoado-2' sentence="**あの**[方/かた]は[鈴木/すずき]さんです。" trans='那位是铃木。' />
+3. <grammer-content id='kosoado-3' sentence="A: [高橋/たかはし]さんは**どの**[人/ひと]ですか。" trans='高桥是哪位啊？' />
+   <grammer-content id='kosoado-4' sentence="B: [高橋/たかはし]さんは**あの**[人/ひと]です。" trans='高桥是那位。' />
 
 :::
 
@@ -61,12 +61,12 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content id='kosoado-5' id='kosoado-5' sentence="A: [売店/ばいてん]は**どこ**ですか。" trans='小卖部在哪儿？' />
-   <grammer-content id='kosoado-6' id='kosoado-6' sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
-2. <grammer-content id='kosoado-7' id='kosoado-7' sentence="A: [検索用/けんさくよう]のコンピューターは**どこ**ですか。" trans='检索用的电脑在哪儿？' />
-   <grammer-content id='kosoado-8' id='kosoado-8' sentence="B: （[検索用/けんさくよう]のコンピューターは）**あそこ**です。" trans='（检索用的电脑）在那儿。' />
-3. <grammer-content id='kosoado-9' id='kosoado-9' sentence="A: [貸/か]し[出/だ]しカウンターは**どこ**ですか。" trans='借书处在哪儿？' />
-   <grammer-content id='kosoado-10' id='kosoado-10' sentence="B: （[貸/か]し[出/だ]しカウンターは）**そこ**です。" trans='（借书处）在那儿。' />
+1. <grammer-content id='kosoado-5' sentence="A: [売店/ばいてん]は**どこ**ですか。" trans='小卖部在哪儿？' />
+   <grammer-content id='kosoado-6' sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
+2. <grammer-content id='kosoado-7' sentence="A: [検索用/けんさくよう]のコンピューターは**どこ**ですか。" trans='检索用的电脑在哪儿？' />
+   <grammer-content id='kosoado-8' sentence="B: （[検索用/けんさくよう]のコンピューターは）**あそこ**です。" trans='（检索用的电脑）在那儿。' />
+3. <grammer-content id='kosoado-9' sentence="A: [貸/か]し[出/だ]しカウンターは**どこ**ですか。" trans='借书处在哪儿？' />
+   <grammer-content id='kosoado-10' sentence="B: （[貸/か]し[出/だ]しカウンターは）**そこ**です。" trans='（借书处）在那儿。' />
 
 :::
 
@@ -86,12 +86,12 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content id='kosoado-11' id='kosoado-11' sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
-   <grammer-content id='kosoado-12' id='kosoado-12' sentence="A: ああ、**あれ**ですね。" trans='啊，在那儿啊。' />
-2. <grammer-content id='kosoado-13' id='kosoado-13' sentence="A: **それ**は[何/なん]ですか。" trans='那是个啥？' />
-   <grammer-content id='kosoado-14' id='kosoado-14' sentence="B: **これ**は[日本語/にほんご]の[辞書/じしょ]です。" trans='这是日语词典。' />
-3. <grammer-content id='kosoado-15' id='kosoado-15' sentence="A: [検測用/けんさくよう]のコンピュターは**どれ**ですか。" trans='搜索用的电脑在哪儿？' />
-   <grammer-content id='kosoado-16' id='kosoado-16' sentence="B: [検測用/けんさくよう]のコンピュターは**あれ**です。" trans='搜索用的电脑在那儿。' />
+1. <grammer-content id='kosoado-11' sentence="B: [売店/ばいてん]はあの[建物/たてもの]です。" trans='那栋建筑是小卖部。' />
+   <grammer-content id='kosoado-12' sentence="A: ああ、**あれ**ですね。" trans='啊，在那儿啊。' />
+2. <grammer-content id='kosoado-13' sentence="A: **それ**は[何/なん]ですか。" trans='那是个啥？' />
+   <grammer-content id='kosoado-14' sentence="B: **これ**は[日本語/にほんご]の[辞書/じしょ]です。" trans='这是日语词典。' />
+3. <grammer-content id='kosoado-15' sentence="A: [検測用/けんさくよう]のコンピュターは**どれ**ですか。" trans='搜索用的电脑在哪儿？' />
+   <grammer-content id='kosoado-16' sentence="B: [検測用/けんさくよう]のコンピュターは**あれ**です。" trans='搜索用的电脑在那儿。' />
 
 :::
 
@@ -115,9 +115,9 @@ title: こそあど系列
 
 ::: info :books: 例句
 
-1. <grammer-content id='kosoado-17' id='kosoado-17' sentence="**そちら**は[劇/げき][場/じょう]です。" trans='那边是剧场。' />
-2. <grammer-content id='kosoado-18' id='kosoado-18' sentence="**こちら**は[寒/さむ]いです。" trans='我们这儿冷。' />
-3. <grammer-content id='kosoado-19' id='kosoado-19' sentence="**そちら**はよくないと[思/おも]います。" trans='我觉得那个不好。' />
-4. <grammer-content id='kosoado-20' id='kosoado-20' sentence="**こちら**は[趙/ちょう]さんです。 " trans='这位是赵先生。' />
+1. <grammer-content id='kosoado-17' sentence="**そちら**は[劇/げき][場/じょう]です。" trans='那边是剧场。' />
+2. <grammer-content id='kosoado-18' sentence="**こちら**は[寒/さむ]いです。" trans='我们这儿冷。' />
+3. <grammer-content id='kosoado-19' sentence="**そちら**はよくないと[思/おも]います。" trans='我觉得那个不好。' />
+4. <grammer-content id='kosoado-20' sentence="**こちら**は[趙/ちょう]さんです。 " trans='这位是赵先生。' />
 
 :::
