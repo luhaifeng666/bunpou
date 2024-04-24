@@ -12,8 +12,9 @@
 		@click="play"
 	></div>
 	<audio
-		:src="`../../../public/voices/${props.id}.wav`"
+		v-if="props.id"
 		ref="audio"
+		:src="audioSrc"
 		@ended="isPlaying = false"
 		@error="isPlaying = false"
 	></audio>
@@ -26,7 +27,7 @@
 </style>
 
 <script setup>
-import { computed, ref, onBeforeUnmount } from "vue";
+import { computed, ref, onBeforeUnmount, watch } from "vue";
 import { isPlaying } from "../store";
 
 const props = defineProps({
@@ -40,7 +41,21 @@ onBeforeUnmount(() => {
 	isPlaying.value = false;
 });
 
+watch(
+	() => props.id,
+	(id) => {
+		id &&
+			import(`../../../public/voices/${id}.wav?url`).then((module) => {
+				audioSrc.value = module.default;
+			});
+	},
+	{
+		immediate: true,
+	}
+);
+
 const audio = ref(null);
+const audioSrc = ref(null);
 
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
