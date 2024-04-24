@@ -10,10 +10,10 @@ title: 自主动词 & 非自助动词
 
 ::: info :books: 例句
 
-1. <grammer-content id='1-9-1-0' sentence="８[時/じ]に**[出/で]ましょう**。（自主）" trans="8点出来吧。" />
-   <grammer-content id='1-9-1-1' sentence="[星/ほし]が**[出/で]ている**。（非自主）" trans="星星出来了。" />
-2. <grammer-content id='1-9-1-2' sentence="[嫌/きら]なことを[早/はや]く**[忘/わす]れたい**。（自主）" trans="我想早点忘记讨厌的事情。" />
-   <grammer-content id='1-9-1-3' sentence="[宿題/しゅくだい]を**[忘/わす]れた**！（非自主）" trans="忘了做作业了！" />
+1. <grammer-content id='term-1-9-1-0' sentence="８[時/じ]に**[出/で]ましょう**。（自主）" trans="8点出来吧。" />
+   <grammer-content id='term-1-9-1-1' sentence="[星/ほし]が**[出/で]ている**。（非自主）" trans="星星出来了。" />
+2. <grammer-content id='term-1-9-1-2' sentence="[嫌/きら]なことを[早/はや]く**[忘/わす]れたい**。（自主）" trans="我想早点忘记讨厌的事情。" />
+   <grammer-content id='term-1-9-1-3' sentence="[宿題/しゅくだい]を**[忘/わす]れた**！（非自主）" trans="忘了做作业了！" />
 
 :::
 
