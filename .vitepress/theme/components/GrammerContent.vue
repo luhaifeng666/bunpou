@@ -25,6 +25,7 @@ const props = defineProps({
 	sentence: String,
 	trans: String,
 	inline: Boolean,
+	id: String,
 });
 
 const isPlaying = ref(false);
