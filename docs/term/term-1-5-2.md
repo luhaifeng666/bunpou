@@ -21,9 +21,9 @@ title: 自动词&他动词
 
 ::: info :books: 例句
 
-1. <grammer-content id='1-5-2-0' sentence="[雨/あね]が[降/ふ]ります。" trans="下雨 (自然现象)。" />
-2. <grammer-content id='1-5-2-1' sentence="[先生/せんせい]はたまに[怒/おこ]ります。" trans="老师非常生气。" />
-3. <grammer-content id='1-5-2-2' sentence="[授業/じゅぎょう][中/ちゅう]に[携帯/けいたい][電話/でんわ]が[鳴/な]ります。" trans="上课的时候电话响了。" />
+1. <grammer-content id='term-1-5-2-0' sentence="[雨/あね]が[降/ふ]ります。" trans="下雨 (自然现象)。" />
+2. <grammer-content id='term-1-5-2-1' sentence="[先生/せんせい]はたまに[怒/おこ]ります。" trans="老师非常生气。" />
+3. <grammer-content id='term-1-5-2-2' sentence="[授業/じゅぎょう][中/ちゅう]に[携帯/けいたい][電話/でんわ]が[鳴/な]ります。" trans="上课的时候电话响了。" />
 
 :::
 
@@ -42,9 +42,9 @@ title: 自动词&他动词
 
 ::: info :books: 例句
 
-1. <grammer-content id='1-5-2-3' sentence="[李/り]さんはリンゴを[食/た]べました。" trans="小李吃了苹果。" />
-2. <grammer-content id='1-5-2-4' sentence="[私/わたし]もよく[海外/かいがい]のニュースを[読/よ]みます。" trans="我也经常看海外的新闻。" />
-3. <grammer-content id='1-5-2-5' sentence="[李/り]さんはこのアプリを[使/つか]います。" trans="小李用这个软件。" />
+1. <grammer-content id='term-1-5-2-3' sentence="[李/り]さんはリンゴを[食/た]べました。" trans="小李吃了苹果。" />
+2. <grammer-content id='term-1-5-2-4' sentence="[私/わたし]もよく[海外/かいがい]のニュースを[読/よ]みます。" trans="我也经常看海外的新闻。" />
+3. <grammer-content id='term-1-5-2-5' sentence="[李/り]さんはこのアプリを[使/つか]います。" trans="小李用这个软件。" />
 
 :::
 
