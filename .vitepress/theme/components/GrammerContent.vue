@@ -9,7 +9,14 @@
 	<div
 		v-html="sentenceElement"
 		:class="['grammer-container', inline ? 'grammer-container-inline' : '']"
+		@click="play"
 	></div>
+	<audio
+		:src="`../../../public/voices/${props.id}.wav`"
+		ref="audio"
+		@ended="isPlaying = false"
+		@error="isPlaying = false"
+	></audio>
 </template>
 
 <style>
@@ -19,7 +26,8 @@
 </style>
 
 <script setup>
-import { computed, onMounted, onBeforeUnmount, ref } from "vue";
+import { computed, ref, onBeforeUnmount } from "vue";
+import { isPlaying } from "../store";
 
 const props = defineProps({
 	sentence: String,
@@ -28,13 +36,11 @@ const props = defineProps({
 	id: String,
 });
 
-const isPlaying = ref(false);
-
-onMounted(() => {
-	console.log(props);
+onBeforeUnmount(() => {
+	isPlaying.value = false;
 });
 
-onBeforeUnmount(() => {});
+const audio = ref(null);
 
 const sentenceElement = computed(() => {
 	const { sentence, trans = "" } = props;
@@ -55,4 +61,9 @@ const sentenceElement = computed(() => {
 		)
 		.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #fb923c">$1</strong>');
 });
+
+const play = () => {
+	!isPlaying.value && audio.value.play();
+	isPlaying.value = true;
+};
 </script>
