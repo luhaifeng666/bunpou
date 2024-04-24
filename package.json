@@ -13,8 +13,9 @@
     "docs:preview": "vitepress preview",
     "docs:menu": "node utils/generateMenu.js",
     "build": "tauri build",
-    "generate:voice": "node utils/generateVoice.js",
-    "generate:voice:filter": "node utils/generateVoice.js --filter",
+    "generate:voice": "node utils/generateVoice.js --cover",
+    "generate:voice:filter": "node utils/generateVoice.js --cover --filter",
+    "generate:voice:only": "node utils/generateVoice.js",
     "check:voice": "node utils/checkVoice.js"
   },
   "keywords": [],

@@ -42,7 +42,7 @@ const getAllSentences = (tree) => (tree
 
 // 设置id，覆盖原文件内容
 const generate = async () => {
-    const { filter } = argv;
+    const { filter, cover } = argv;
     const voices = await getAllDocs(file => file.endsWith('.wav'), "public/voices");
     const voicePreNames = Array.from(new Set(voices.map(name => name.replace(/\-[0-9]{1,2}\.wav$/g, ''))))
     let docs = (await getAllDocs(file => file.endsWith('.md') && !file.includes('index.md')))
@@ -66,16 +66,18 @@ const generate = async () => {
             for (const [index, sentence] of sentences.entries()) {
                 !voices.includes(`${fileBaseName}-${index}.wav`) && await generateVoice(sentence, `${fileBaseName}-${index}`)
             }
-            tree = JSON.parse(tree)
-            // 文档标题
-            const docTitle = tree.children[1].children[0].value;
-            // 移除 thematicBreak + 第一个heading
-            tree.children.splice(0, 2);
-            // 重新拼接文件内容
-            const fileContent = `---\n${docTitle}\n---
-\n${toMarkdown(tree)}`;
-            // 写入文件
-            await fs.writeFile(filePath, fileContent, 'utf-8')
+            if (cover) {
+              tree = JSON.parse(tree)
+              // 文档标题
+              const docTitle = tree.children[1].children[0].value;
+              // 移除 thematicBreak + 第一个heading
+              tree.children.splice(0, 2);
+              // 重新拼接文件内容
+              const fileContent = `---\n${docTitle}\n---
+  \n${toMarkdown(tree)}`;
+              // 写入文件
+              await fs.writeFile(filePath, fileContent, 'utf-8')
+            }
         }
     }
 }
