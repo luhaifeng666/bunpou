@@ -37,7 +37,10 @@ const getAllSentences = (tree) => (tree
         sentence => sentence.replace(/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g, (word) => {
             const [rb, rt] = word.replace(/\[|\]/g, "").split("/");
             return rb;
-        }).replace(/\*\*(.*?)\*\*/g, '$1').replace(/.*sentence=[\\]{0,2}["|'](.*?)[\\]{0,2}["|'].*/g, "$1")
+        })
+            .replace(/.*sentence=[\\]{0,2}["|'](.*?)[\\]{0,2}["|'].*/g, "$1") // 取 sentence 属性值
+            .replace(/\<del\>.*?\<\/del\>/g, '') // 删除del标签及其中的内容
+            .replace(/[^\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF\uFF00-\uFFEF\u4E00-\u9FAF\u3400-\u4DBF]|[\(|（](.*?)[）|\)]/g, '') // 只保留日文字符
     )
 
 // 设置id，覆盖原文件内容
@@ -67,16 +70,16 @@ const generate = async () => {
                 !voices.includes(`${fileBaseName}-${index}.wav`) && await generateVoice(sentence, `${fileBaseName}-${index}`)
             }
             if (cover) {
-              tree = JSON.parse(tree)
-              // 文档标题
-              const docTitle = tree.children[1].children[0].value;
-              // 移除 thematicBreak + 第一个heading
-              tree.children.splice(0, 2);
-              // 重新拼接文件内容
-              const fileContent = `---\n${docTitle}\n---
-  \n${toMarkdown(tree)}`;
-              // 写入文件
-              await fs.writeFile(filePath, fileContent, 'utf-8')
+                tree = JSON.parse(tree)
+                // 文档标题
+                const docTitle = tree.children[1].children[0].value;
+                // 移除 thematicBreak + 第一个heading
+                tree.children.splice(0, 2);
+                // 重新拼接文件内容
+                const fileContent = `---\n${docTitle}\n---
+          \n${toMarkdown(tree)}`;
+                // 写入文件
+                await fs.writeFile(filePath, fileContent, 'utf-8')
             }
         }
     }
