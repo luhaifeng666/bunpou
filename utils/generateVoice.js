@@ -15,7 +15,7 @@ const BASE_URL = path.resolve('docs');
  */
 const setId = (tree, fileBaseName) => {
     let count = 0;
-    return tree.replace(/(grammer-content)\sid\=\'.*?\'(.*?\/>)/gi, (data, str1, str2) => {
+    return tree.replace(/(grammer-content)\s[id\=\'.*?\']*(.*?\/>)/gi, (data, str1, str2) => {
         if (!data.includes("trans")) {
             return data
         } else {
@@ -77,7 +77,7 @@ const generate = async () => {
                 tree.children.splice(0, 2);
                 // 重新拼接文件内容
                 const fileContent = `---\n${docTitle}\n---
-          \n${toMarkdown(tree)}`;
+              \n${toMarkdown(tree)}`;
                 // 写入文件
                 await fs.writeFile(filePath, fileContent, 'utf-8')
             }
