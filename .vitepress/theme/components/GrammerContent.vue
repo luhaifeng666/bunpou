@@ -1,8 +1,8 @@
 <!--
  * @Author: luhaifeng666 youzui@hotmail.com
  * @Date: 2023-06-14 08:39:33
- * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2024-04-24 23:27:24
+ * @LastEditors: luhaifeng666 youzui@hotmail.com
+ * @LastEditTime: 2024-05-08 00:57:05
  * @Description: 
 -->
 <template>
@@ -30,6 +30,7 @@
 <script setup>
 import { computed, ref, onBeforeUnmount, watch } from "vue";
 import { isPlaying } from "../store";
+import { generateVoice } from "../../../utils/speech"
 
 const props = defineProps({
 	sentence: String,
@@ -42,6 +43,7 @@ const props = defineProps({
 const audio = ref(null);
 const audioSrc = ref(null);
 const canplay = ref(true);
+const loading = ref(false);
 
 onBeforeUnmount(() => {
 	isPlaying.value = false;
@@ -61,7 +63,7 @@ watch(
 );
 
 const handleIconVisible = () => {
-	canplay.value = isFinite(audio.value.duration);
+	canplay.value = !audio.value || isFinite(audio.value.duration);
 };
 
 const sentenceElement = computed(() => {
@@ -71,7 +73,9 @@ const sentenceElement = computed(() => {
 		iconVisible.value && trans
 			? '<img alt="speak" class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />'
 			: ""
-	}</div> ${
+	}<div class="bunpou-loading ${loading.value ? '' : 'hidden'}">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div></div>${
 		trans ? `<p style="margin-top: 6px;line-height:1.5;${center ? 'text-align: center;' : ''}">${trans}</p>` : ""
 	}`
 		.replace(
@@ -84,10 +88,29 @@ const sentenceElement = computed(() => {
 		.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #fb923c">$1</strong>');
 });
 
-const iconVisible = computed(() => props.id && canplay.value);
+const iconVisible = computed(() => !props.id || canplay.value);
 
-const play = () => {
-	!isPlaying.value && audio.value.play();
-	isPlaying.value = true;
+const play = async () => {
+  if (!isPlaying.value) {
+    isPlaying.value = true;
+    if (audioSrc.value) {
+      audio.value.play();
+    } else {
+      loading.value = true;
+      await generateVoice(props.sentence
+        .replace(/\[([^\[]*)\/([\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF]*)\]/g, (word) => {
+            const [rb, rt] = word.replace(/\[|\]/g, "").split("/");
+            return rb;
+          })
+        .replace(/\<del\>.*?\<\/del\>/g, '') // 删除del标签及其中的内容
+        .replace(/\<\/{0,1}u\>/g, "") // 移除 <u> 标签
+        .replace(/[^\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF\uFF00-\uFFEF\u4E00-\u9FAF\u3400-\u4DBF]|[\(|（](.*?)[）|\)]/g, ''), // 只保留日文字符
+        () => {
+          isPlaying.value = false;
+        }
+      )
+      loading.value = false;
+    }
+  }
 };
 </script>

@@ -38,3 +38,41 @@ li>.grammer-container-inline {
   width: 1.5em;
   margin-bottom: 2px;
 }
+
+.bunpou-loading {
+  margin-left: 4px;
+}
+.bunpou-loading.hidden {
+  display: none;
+}
+.bunpou-loading span {
+  display: inline-block;
+  width: 2px;
+  height: 100%;
+  border-radius: 2px;
+  background: #fb923c;
+  animation: load 1s ease infinite;
+  margin: 0 1px;
+}
+@keyframes load {
+  0%,
+  100% {
+    height: 10px;
+  }
+  50% {
+    height: 20px;
+    margin: -5px 1px;
+  }
+}
+.bunpou-loading span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.bunpou-loading span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.bunpou-loading span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+.bunpou-loading span:nth-child(5) {
+  animation-delay: 0.8s;
+}
