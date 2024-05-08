@@ -29,7 +29,7 @@ export default defineConfig({
 		nav: [
 			{ text: "首页", link: "/" },
 			{ text: "文法", link: "/docs/" },
-			{ text: "国内站点", link: "https://youzui.gitee.io/bunpou/" },
+			// { text: "国内站点", link: "https://youzui.gitee.io/bunpou/" },
 		],
 
 		// carbonAds: {
