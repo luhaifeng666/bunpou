@@ -49,18 +49,18 @@ onBeforeUnmount(() => {
 	isPlaying.value = false;
 });
 
-watch(
-	() => props.id,
-	(id) => {
-		id &&
-			import(`../../../public/voices/${id}.wav?url`).then((module) => {
-				audioSrc.value = module.default;
-			});
-	},
-	{
-		immediate: true,
-	}
-);
+// watch(
+// 	() => props.id,
+// 	(id) => {
+// 		id &&
+// 			import(`../../../public/voices/${id}.wav?url`).then((module) => {
+// 				audioSrc.value = module.default;
+// 			});
+// 	},
+// 	{
+// 		immediate: true,
+// 	}
+// );
 
 const handleIconVisible = () => {
 	canplay.value = !audio.value || isFinite(audio.value.duration);
