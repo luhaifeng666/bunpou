@@ -39,6 +39,6 @@
 
 <p align=center>有类似问题的小伙伴儿可以在右侧 <b>Releases</b> 中下载最新版本的桌面应用。我会在每周一发布新的版本。</p>
 
-<p align="center">国内站点部署暂时存在问题，短期内暂时不支持访问~</p>
+<p align="center">因 Gitee Pages 服务维护调整，导致国内站点无法部署，因此短期内暂时不支持访问国内站点~</p>
 
 <!-- <p align=center>如果不想下载应用，也可以访问 <a href="https://youzui.gitee.io/bunpou/"><u>国内站点</u></a>。</p> -->
