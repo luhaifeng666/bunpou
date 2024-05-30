@@ -69,9 +69,27 @@ title: 「と」的用法
 ::: info :books: 例句
 
 1. <grammer-content id='to-10' sentence="A: **「ファイル」**は[中国語/ちゅうごくご]で[何/なん]**と**[言/い]うんですか。" trans="A: 「ファイル」用中文怎么说？" />
-2. <grammer-content id='to-11' sentence="B: “文件”です。" trans="B: 叫“文件”。" />
-3. <grammer-content id='to-12' sentence="A: “手机”は[日本語/にほんご]で[何/なん]**と**[言/い]いますか。" trans="A: “手机”用日语怎么说？" />
-4. <grammer-content id='to-13' sentence="B: **「[携帯電話/けいたいでんわ]」と**[言/い]います。" trans="B: 说成「携帯電話」。" />
-5. <grammer-content id='to-14' sentence="[王/おう]**と**[申/もう]します。どうぞよろしくお[願/ねが]いします。" trans="我是小王。还请多多关照。" />
+   <grammer-content id='to-11' sentence="B: “文件”です。" trans="B: 叫“文件”。" />
+2. <grammer-content id='to-12' sentence="A: “手机”は[日本語/にほんご]で[何/なん]**と**[言/い]いますか。" trans="A: “手机”用日语怎么说？" />
+   <grammer-content id='to-13' sentence="B: **「[携帯電話/けいたいでんわ]」と**[言/い]います。" trans="B: 说成「携帯電話」。" />
+3. <grammer-content id='to-14' sentence="[王/おう]**と**[申/もう]します。どうぞよろしくお[願/ねが]いします。" trans="我是小王。还请多多关照。" />
+
+:::
+
+## 4. ~と<条件>
+
+* <grammer-content sentence="意义：表示在**某种条件下**通常会出现**某种必然的结果或现象**。在指示方位（指路）时也经常使用；" />
+* <grammer-content sentence="接续：**[动词原形 / Ⅰ类形容词原形 / Ⅱ类形容词词干 + だ / 名词 + だ]** + と；" />
+* 译文：一......就......；(如果)......就......；一......总是......
+
+::: tip :bookmark: 补充
+  该用法中，后句为 `非过去时结句`, 且 `不能表达` 邀请、要求、命令、愿望、许可等情态意义。
+:::
+
+::: info :books: 例句
+
+1. <grammer-content sentence="[国家/こっか][図書館/としょかん]を**[過ぎる/すぎる]と**、[左/ひだり]に[首都/しゅと][体育/館たいいくかん]が[見え/みえ]ます。" trans="过了国家图书馆，左边就能看到首都体育馆。" />
+2. <grammer-content sentence="[春/はる]に**なると**[花/はな]が[咲き/さき]ます。" trans="一到春天花就开。" />
+3. <grammer-content sentence="[気温/きおん]が**[低い/ひくい]と**[果物/くだもの]はおいしくならない。" trans="气温低水果不好吃。" />
 
 :::
