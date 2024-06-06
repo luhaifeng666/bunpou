@@ -42,3 +42,7 @@
 <p align="center">因 Gitee Pages 服务维护调整，导致国内站点无法部署，因此短期内暂时不支持访问国内站点~</p>
 
 <!-- <p align=center>如果不想下载应用，也可以访问 <a href="https://youzui.gitee.io/bunpou/"><u>国内站点</u></a>。</p> -->
+
+## Activity
+
+<p align="center"><img src="https://repobeats.axiom.co/api/embed/b725a74d6bb6443d50b10b34fa831b0ae6f58f76.svg" /></p>
