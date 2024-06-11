@@ -84,6 +84,7 @@ const SIDEBAR_CONFIG = {
 					{ path: 'course10', text: '第 10 課' },
 					{ path: 'course11', text: '第 11 課' },
 					{ path: 'course12', text: '第 12 課' },
+					{ path: 'course13', text: '第 13 課' },
 				]
 			},
 		]
