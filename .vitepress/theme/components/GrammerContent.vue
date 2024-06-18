@@ -101,7 +101,7 @@ const play = async () => {
 		isPlaying.value = true;
 		if (audioSrc.value) {
 			audio.value.play();
-		} else {
+		} else if (!!props.trans) {
 			loading.value = true;
 			await generateVoice(
 				props.sentence
