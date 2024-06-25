@@ -1,5 +1,10 @@
 ---
 title: 方位处所词
+meta:
+  - name: description
+    content: 方位处所词
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
             
 # 方位处所词

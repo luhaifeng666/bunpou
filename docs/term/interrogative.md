@@ -1,5 +1,10 @@
 ---
 title: 疑问词
+meta:
+  - name: description
+    content: 疑问词
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 疑问词

@@ -1,5 +1,10 @@
 ---
 title: こそあど系列
+meta:
+  - name: description
+    content: こそあど系列
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # こそあど系列

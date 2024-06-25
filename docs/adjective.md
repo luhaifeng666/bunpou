@@ -1,5 +1,10 @@
 ---
 title: 形容词
+meta:
+  - name: description
+    content: 形容词
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 形容词

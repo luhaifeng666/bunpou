@@ -1,5 +1,10 @@
 ---
 title: 活用
+meta:
+  - name: description
+    content: 活用
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
             
 # 活用

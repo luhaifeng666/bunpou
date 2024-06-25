@@ -1,5 +1,10 @@
 ---
 title: 动作动词和变化动词
+meta:
+  - name: description
+    content: 动作动词和变化动词
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 动作动词和变化动词
