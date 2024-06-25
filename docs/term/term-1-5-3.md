@@ -1,5 +1,10 @@
 ---
 title: 连体修饰
+meta:
+  - name: description
+    content: 连体修饰
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
             
 # 连体修饰

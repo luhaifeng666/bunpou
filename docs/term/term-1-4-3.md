@@ -1,5 +1,10 @@
 ---
 title: 名词谓语句
+meta:
+  - name: description
+    content: 名词谓语句
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 名词谓语句

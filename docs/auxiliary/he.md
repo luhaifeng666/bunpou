@@ -1,5 +1,10 @@
 ---
 title: 「へ」的用法
+meta:
+  - name: description
+    content: 「へ」的用法
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 「へ」的用法

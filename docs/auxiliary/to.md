@@ -1,5 +1,10 @@
 ---
 title: 「と」的用法
+meta:
+  - name: description
+    content: 「と」的用法
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 「と」的用法

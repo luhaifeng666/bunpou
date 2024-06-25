@@ -1,5 +1,10 @@
 ---
 title: 动词
+meta:
+  - name: description
+    content: 动词
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 动词

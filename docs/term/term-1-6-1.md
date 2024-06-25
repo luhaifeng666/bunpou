@@ -1,5 +1,10 @@
 ---
 title: 无助词现象
+meta:
+  - name: description
+    content: 无助词现象
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 无助词现象

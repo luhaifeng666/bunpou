@@ -1,5 +1,10 @@
 ---
 title: 自主动词 & 非自主动词
+meta:
+  - name: description
+    content: 自主动词 & 非自主动词
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 自主动词 & 非自助动词

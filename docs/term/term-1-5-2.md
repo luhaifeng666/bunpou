@@ -1,5 +1,10 @@
 ---
 title: 自动词&他动词
+meta:
+  - name: description
+    content: 自动词&他动词
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
 ---
 
 # 自动词&他动词
