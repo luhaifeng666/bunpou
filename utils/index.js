@@ -68,6 +68,7 @@ const SIDEBAR_CONFIG = {
 			{ text: "形容词", path: "adjective.md" },
 			{ text: "动词", path: "verb.md" },
 			{ text: "方位处所词", path: "directions.md" },
+			{ text: "频率副词", path: "frequency.md" },
 			{ text: "助词", path: "auxiliary" },
 			{ text: "术语", path: "term" },
 			{
