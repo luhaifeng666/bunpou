@@ -39,6 +39,14 @@ li>.grammer-container-inline {
   margin-bottom: 2px;
 }
 
+.bunpou-speak-box {
+  width: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+}
+
 .bunpou-loading {
   margin-left: 4px;
 }

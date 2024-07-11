@@ -71,13 +71,13 @@ const sentenceElement = computed(() => {
 	// 转换 ruby & strong 标签
 	return `<div ${
 		center ? 'style="justify-content: center;"' : ""
-	}><p>${sentence}</p>${
+	}><p>${sentence}</p><div class="bunpou-speak-box">${
 		iconVisible.value && trans
 			? '<img alt="speak" class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />'
 			: ""
 	}<div class="bunpou-loading ${loading.value ? "" : "hidden"}">
     <span></span><span></span><span></span><span></span><span></span>
-  </div></div>${
+  </div></div></div>${
 		trans
 			? `<p style="margin-top: 6px;line-height:1.5;${
 					center ? "text-align: center;" : ""
