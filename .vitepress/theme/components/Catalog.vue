@@ -43,7 +43,7 @@ import { computed } from "vue";
 
 import { useData, useRouter } from "vitepress";
 
-const { theme, isDark } = useData();
+const { theme } = useData();
 const router = useRouter();
 
 const menu = computed(() => {
@@ -55,8 +55,6 @@ const menu = computed(() => {
 const handleMenuSwitch = (menuItem) => {
   menuItem.link && router.go(menuItem.link.replace(".md", ""));
 };
-
-console.log(theme.value, isDark.value, menu.value);
 </script>
 
 <style scoped>
