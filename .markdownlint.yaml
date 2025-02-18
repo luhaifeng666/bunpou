@@ -17,11 +17,12 @@ MD033:
       "rb",
       "rt",
       "VPTeamMembers",
+      "Catalog",
       "script",
       "p",
       "h1",
       "h3",
       "b",
       "br",
-      "u"
+      "u",
     ]

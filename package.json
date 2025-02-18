@@ -27,7 +27,7 @@
     "audio-loader": "^1.0.3",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
-    "vitepress": "^1.0.1",
+    "vitepress": "^1.6.3",
     "zx": "^8.0.2"
   },
   "pnpm": {
