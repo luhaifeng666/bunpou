@@ -43,7 +43,7 @@ import { computed } from "vue";
 
 import { useData, useRouter } from "vitepress";
 
-const { theme } = useData();
+const { theme, site } = useData();
 const router = useRouter();
 
 const menu = computed(() => {
@@ -53,7 +53,8 @@ const menu = computed(() => {
 });
 
 const handleMenuSwitch = (menuItem) => {
-  menuItem.link && router.go(menuItem.link.replace(".md", ""));
+  menuItem.link &&
+    router.go(`${site.value.base}${menuItem.link.replace(".md", "")}`);
 };
 </script>
 
