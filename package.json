@@ -39,9 +39,9 @@
     }
   },
   "dependencies": {
+    "axios": "^1.7.9",
     "mdast-util-from-markdown": "^2.0.0",
     "mdast-util-to-markdown": "^2.0.0",
-    "microsoft-cognitiveservices-speech-sdk": "^1.36.0",
-    "openai": "^4.85.4"
+    "microsoft-cognitiveservices-speech-sdk": "^1.36.0"
   }
 }
