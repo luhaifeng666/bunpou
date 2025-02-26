@@ -20,49 +20,76 @@
       />
       <div class="bunpou-ds-window">
         <p class="bunpou-ds-tip" v-html="dialogTitle" />
-        <div class="bunpou-ds-dialog">
-          <div v-for="(item, index) in messages" :key="index" :class="['bunpou-ds-clear', {
-            'bunpou-ds-question': item.role === 'user',
-            'bunpou-ds-answer': item.role !== 'user'
-          }]">
-            <div v-html="item.role === 'user' ? item.question : item.content"></div>
+        <div ref="dialog" class="bunpou-ds-dialog">
+          <div
+            v-for="(item, index) in messages"
+            :key="index"
+            :class="[
+              'bunpou-ds-clear',
+              {
+                'bunpou-ds-question': item.role === 'user',
+                'bunpou-ds-answer': item.role !== 'user',
+              },
+            ]"
+          >
+            <div
+              v-html="item.role === 'user' ? item.question : item.content"
+            ></div>
           </div>
         </div>
         <div class="bunpou-ds-footer">
-          <input :disabled="loading" ref="input" type="text" v-model="inputMessage" placeholder="请输入你例句" />
+          <input
+            :disabled="loading"
+            ref="input"
+            type="text"
+            v-model="inputMessage"
+            placeholder="请输入你例句"
+          />
+          <img
+            :class="{
+              disabled: !inputMessage,
+            }"
+            src="../../../public/imgs/enter.svg"
+            @click="enterEvent"
+          />
           <img src="../../../public/imgs/stop.svg" @click="stopGenerate" />
         </div>
       </div>
     </template>
-
   </div>
 </template>
 
 <script setup>
 import axios from "axios";
-import { marked } from "marked"
-import { onMounted, onBeforeUnmount, ref, watch, computed } from "vue";
+import { marked } from "marked";
+import {
+  onMounted,
+  onBeforeUnmount,
+  ref,
+  watch,
+  computed,
+  nextTick,
+} from "vue";
 import { useData } from "vitepress";
 
 const { page, title } = useData();
 
 onMounted(async () => {
   await getBalance();
-  document.addEventListener('keydown', enterEvent);
-})
+});
 
 onBeforeUnmount(() => {
   clearMessages();
-  document.removeEventListener('keydown', enterEvent)
 });
 
 //refs
 const hasBalance = ref(true);
 const dsContentVisible = ref(false);
 const inputMessage = ref(""); // 用户输入的例句
-const input = ref(null)
-const loading = ref(false)
-const messages = ref([]) // 保存多轮对话
+const input = ref(null);
+const dialog = ref(null);
+const loading = ref(false);
+const messages = ref([]); // 保存多轮对话
 
 // watchers
 watch(page, () => {
@@ -78,56 +105,63 @@ watch(page, () => {
 const dsVisible = computed(
   () => page.value?.filePath.includes("course") && hasBalance.value
 );
-const grammer = computed(() => title.value.replace(
-    /\s\|\sBunpou/g,
-    ""
-))
+const grammer = computed(() => title.value.replace(/\s\|\sBunpou/g, ""));
 const dialogTitle = computed(
-  () =>
-    `请用<span>「${grammer.value}」</span>语法造句`
+  () => `请用<span>「${grammer.value}」</span>语法造句`
 );
 
 // methods
 // 监听回车键
-const enterEvent = async (event) => {
+const enterEvent = async () => {
   const setLastValue = (config, isCanceled) => {
     messages.value[messages.value.length - 1] = config || {
-      role: 'assistant',
-      content: isCanceled ? '好好好，反悔是吧！那就再好好思考下吧~' : '哦漏！网络开小差啦！过会儿再试下吧'
-    }
-  }
+      role: "error",
+      content: isCanceled
+        ? "好好好，反悔是吧！那就再好好思考下吧~"
+        : "哦漏！网络开小差啦！过会儿再试下吧",
+    };
+  };
   try {
-    if (!!input.value && !loading.value && !!inputMessage.value && event.key === 'Enter') {
-        // message队列中塞入新的提问
-        messages.value.push({
-          role: 'user',
-          content: `例句${inputMessage.value}是否使用了${grammer.value}这个语法？是否正确？如果不正确应该如何调整？`,
-          question: inputMessage.value
-        })
-        // 清空inputMessage
-        inputMessage.value = ''
-        // 触发失焦
-        input.value?.blur()
-        // 开始请求数据
-        loading.value = true
-        messages.value.push({
-          content: '<span class="bunpou-ds-loading" />',
-          role: 'loading'
-        })
-        const res = await getAIResult()
-        loading.value = false
-        const { choices } = res?.data || {}
-        setLastValue((choices || []).length ? {
-          ...choices[0].message,
-          content: marked(choices[0].message.content)
-        } : null)
+    if (!!input.value && !loading.value && !!inputMessage.value) {
+      // message队列中塞入新的提问
+      messages.value.push({
+        role: "user",
+        content: `例句${inputMessage.value}是否使用了${grammer.value}这个语法？是否正确？如果不正确应该如何调整？`,
+        question: inputMessage.value,
+      });
+      // 清空inputMessage
+      inputMessage.value = "";
+      // 触发失焦
+      input.value?.blur();
+      // 开始请求数据
+      loading.value = true;
+      messages.value.push({
+        content: '<span class="bunpou-ds-loading" />',
+        role: "loading",
+      });
+      await nextTick();
+      dialog.value?.scrollTo({
+        top: dialog.value?.scrollHeight,
+        behavior: "smooth",
+      });
+      const res = await getAIResult();
+      loading.value = false;
+      const { choices } = res?.data || {};
+      setLastValue(
+        (choices || []).length
+          ? {
+              ...choices[0].message,
+              content: marked(choices[0].message.content),
+            }
+          : null
+      );
     }
   } catch (error) {
-    const { code, message } = error || {}
-    setLastValue(null, code === "ERR_CANCELED" && message === "canceled")
-    loading.value = false
+    const { code, message } = error || {};
+    setLastValue(null, code === "ERR_CANCELED" && message === "canceled");
+    loading.value = false;
   }
-}
+};
 // 创建 controller
 let controller = new AbortController();
 // axios 实例
@@ -135,20 +169,21 @@ const instance = axios.create({
   baseURL: "https://api.deepseek.com",
   headers: {
     "Content-Type": "application/json",
-    Authorization: "Bearer sk-db5de1b9879c42ef96875beeccd51f56"
+    Authorization: "Bearer sk-db5de1b9879c42ef96875beeccd51f56",
   },
 });
 // 获取对话结果
-const getAIResult = async () => await instance.post("/v1/chat/completions", {
-  // 移除question
-  messages: messages.value.slice(0, messages.value.length - 1).map(item => ({
-    role: item.role,
-    content: item.content
-  })),
-  model: "deepseek-chat",
-}, {
-  signal: controller.signal
-})
+const getAIResult = async () =>
+  await instance.post(
+    "/v1/chat/completions",
+    {
+      messages: messages.value.filter((item) => item.role === "user").slice(-1),
+      model: "deepseek-chat",
+    },
+    {
+      signal: controller.signal,
+    }
+  );
 // 获取账户余额
 const getBalance = async () => {
   try {
@@ -173,9 +208,9 @@ const toggleFlod = () => {
 // 手动中断脚本
 const stopGenerate = () => {
   controller.abort();
-  loading.value = false
-  controller = new AbortController() // 手动取消请求后需要重新实例化
-}
+  loading.value = false;
+  controller = new AbortController(); // 手动取消请求后需要重新实例化
+};
 </script>
 
 <style scoped>
@@ -268,9 +303,12 @@ const stopGenerate = () => {
   flex: 1;
   color: white;
 }
+.bunpou-ds-footer > .disabled {
+  opacity: 0.5;
+}
 .bunpou-ds-question {
   float: right;
-  background-color: #4D6BFE;
+  background-color: #4d6bfe;
   color: #fff;
   font-size: 14px;
   padding: 4px 8px;
@@ -287,7 +325,7 @@ const stopGenerate = () => {
   align-items: flex-start;
 }
 .bunpou-ds-answer::before {
-  content: '';
+  content: "";
   display: block;
   width: 28px;
   height: 28px;
@@ -305,16 +343,16 @@ const stopGenerate = () => {
   height: 20px;
   margin-top: 4px;
   border: 2px solid transparent; /* 背景圆圈颜色 */
-  border-top: 2px solid #4D6BFE; /* 顶部颜色，仿 DeepSeek 风格 */
+  border-top: 2px solid #4d6bfe; /* 顶部颜色，仿 DeepSeek 风格 */
   border-radius: 50%;
   animation: spin 1s linear infinite; /* 旋转动画 */
 }
 @keyframes spin {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 </style>
