@@ -299,7 +299,7 @@ const stopGenerate = () => {
   line-height: 1;
   border-radius: 4px;
   background: rgba(0, 0, 0, 1);
-  padding: 8px;
+  padding: 12px;
   flex: 1;
   color: white;
 }
