@@ -20,7 +20,7 @@
       />
       <div class="bunpou-ds-window">
         <p class="bunpou-ds-tip" v-html="dialogTitle" />
-        <div class="bunpou-ds-dialog">
+        <div ref="dialog" class="bunpou-ds-dialog">
           <div
             v-for="(item, index) in messages"
             :key="index"
@@ -55,7 +55,14 @@
 <script setup>
 import axios from "axios";
 import { marked } from "marked";
-import { onMounted, onBeforeUnmount, ref, watch, computed } from "vue";
+import {
+  onMounted,
+  onBeforeUnmount,
+  ref,
+  watch,
+  computed,
+  nextTick,
+} from "vue";
 import { useData } from "vitepress";
 
 const { page, title } = useData();
@@ -75,6 +82,7 @@ const hasBalance = ref(true);
 const dsContentVisible = ref(false);
 const inputMessage = ref(""); // 用户输入的例句
 const input = ref(null);
+const dialog = ref(null);
 const loading = ref(false);
 const messages = ref([]); // 保存多轮对话
 
@@ -130,6 +138,11 @@ const enterEvent = async (event) => {
       messages.value.push({
         content: '<span class="bunpou-ds-loading" />',
         role: "loading",
+      });
+      await nextTick();
+      dialog.value?.scrollTo({
+        top: dialog.value?.scrollHeight,
+        behavior: "smooth",
       });
       const res = await getAIResult();
       loading.value = false;
