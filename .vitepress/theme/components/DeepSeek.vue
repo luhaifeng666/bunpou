@@ -45,6 +45,13 @@
             v-model="inputMessage"
             placeholder="请输入你例句"
           />
+          <img
+            :class="{
+              disabled: !inputMessage,
+            }"
+            src="../../../public/imgs/enter.svg"
+            @click="enterEvent"
+          />
           <img src="../../../public/imgs/stop.svg" @click="stopGenerate" />
         </div>
       </div>
@@ -69,12 +76,10 @@ const { page, title } = useData();
 
 onMounted(async () => {
   await getBalance();
-  document.addEventListener("keydown", enterEvent);
 });
 
 onBeforeUnmount(() => {
   clearMessages();
-  document.removeEventListener("keydown", enterEvent);
 });
 
 //refs
@@ -107,7 +112,7 @@ const dialogTitle = computed(
 
 // methods
 // 监听回车键
-const enterEvent = async (event) => {
+const enterEvent = async () => {
   const setLastValue = (config, isCanceled) => {
     messages.value[messages.value.length - 1] = config || {
       role: "error",
@@ -117,12 +122,7 @@ const enterEvent = async (event) => {
     };
   };
   try {
-    if (
-      !!input.value &&
-      !loading.value &&
-      !!inputMessage.value &&
-      event.key === "Enter"
-    ) {
+    if (!!input.value && !loading.value && !!inputMessage.value) {
       // message队列中塞入新的提问
       messages.value.push({
         role: "user",
@@ -302,6 +302,9 @@ const stopGenerate = () => {
   padding: 8px;
   flex: 1;
   color: white;
+}
+.bunpou-ds-footer > .disabled {
+  opacity: 0.5;
 }
 .bunpou-ds-question {
   float: right;
