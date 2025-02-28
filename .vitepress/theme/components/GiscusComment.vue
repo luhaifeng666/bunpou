@@ -1,22 +1,12 @@
-<!--
- * @Author: luhaifeng666 youzui@hotmail.com
- * @Date: 2023-11-29 11:07:39
- * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2023-12-27 16:27:20
- * @FilePath: /bunpou/.vitepress/theme/components/GiscusComment.vue
- * @Description: 
- * 
--->
-
 <template>
-  <DeepSeek />
+  <!-- <DeepSeek /> -->
   <section v-if="visible" ref="comments" style="margin-top: 40px"></section>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref, toRef, watch } from "vue";
 import { useData } from "vitepress";
-import DeepSeek from "./DeepSeek.vue";
+// import DeepSeek from "./DeepSeek.vue";
 
 const isDark = toRef(useData(), "isDark");
 const page = toRef(useData(), "page");
