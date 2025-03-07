@@ -1,12 +1,12 @@
 <template>
-  <!-- <DeepSeek /> -->
+  <DeepSeek />
   <section v-if="visible" ref="comments" style="margin-top: 40px"></section>
 </template>
 
 <script setup>
 import { onMounted, onUnmounted, ref, toRef, watch } from "vue";
 import { useData } from "vitepress";
-// import DeepSeek from "./DeepSeek.vue";
+import DeepSeek from "./DeepSeek.vue";
 
 const isDark = toRef(useData(), "isDark");
 const page = toRef(useData(), "page");
