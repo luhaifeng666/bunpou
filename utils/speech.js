@@ -1,10 +1,3 @@
-/*
- * @Author: luhaifeng666 youzui@hotmail.com
- * @Date: 2024-04-24 20:26:26
- * @LastEditors: luhaifeng666 youzui@hotmail.com
- * @LastEditTime: 2024-05-08 00:48:41
- * @Description: 
- */
 import { SpeechConfig, SpeechSynthesizer, ResultReason } from "microsoft-cognitiveservices-speech-sdk";
 
 export default function generateVoice(text, cb) {
