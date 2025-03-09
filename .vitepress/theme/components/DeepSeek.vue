@@ -166,7 +166,7 @@ const enterEvent = async () => {
 let controller = new AbortController();
 // axios 实例
 const instance = axios.create({
-  baseURL: "https://bunpou.cn"
+  baseURL: "https://www.bunpou.cn"
 });
 // 获取对话结果
 const getAIResult = async () => {
