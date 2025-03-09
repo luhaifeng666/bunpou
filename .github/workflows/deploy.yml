@@ -27,8 +27,9 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
-
     steps:
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -58,7 +59,8 @@ jobs:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Sync files to server
         run: |
-          scp -o StrictHostKeyChecking=no -r .vitepress/dist/* ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/www/wwwroot/bunpouService/pages/
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" \
+            .vitepress/dist/* ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/www/wwwroot/bunpouService/pages/
 
   # 部署工作
   deploy:

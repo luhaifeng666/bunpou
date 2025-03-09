@@ -16,7 +16,9 @@
     "generate:voice": "node utils/generateVoice.js --cover",
     "generate:voice:filter": "node utils/generateVoice.js --cover --filter",
     "generate:voice:only": "node utils/generateVoice.js",
-    "check:voice": "node utils/checkVoice.js"
+    "check:voice": "node utils/checkVoice.js",
+    "sync:file": "scp -r .vitepress/dist/* root@47.116.168.184:/www/wwwroot/bunpouService/pages/",
+    "pub": "docs:build && sync:file"
   },
   "keywords": [],
   "author": "",
