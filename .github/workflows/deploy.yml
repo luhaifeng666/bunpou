@@ -27,7 +27,7 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
-    # container: alpine:latest
+    container: alpine:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
