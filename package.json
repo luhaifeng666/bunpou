@@ -18,7 +18,7 @@
     "generate:voice:only": "node utils/generateVoice.js",
     "check:voice": "node utils/checkVoice.js",
     "sync:file": "scp -r .vitepress/dist/* root@47.116.168.184:/www/wwwroot/bunpouService/pages/",
-    "pub": "docs:build && sync:file"
+    "pub": "pnpm docs:build:nobase && pnpm sync:file"
   },
   "keywords": [],
   "author": "",
