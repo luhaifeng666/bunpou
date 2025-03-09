@@ -1,16 +1,7 @@
-<!--
- * @Author: luhaifeng666 youzui@hotmail.com
- * @Date: 2023-12-13 16:31:07
- * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2024-04-24 23:28:05
- * @FilePath: /bunpou/.vitepress/theme/components/Visitors.vue
- * @Description: 
- * 
--->
 <template>
   <div class="bunpou-homepage-ad">
     <img src="../../../public/imgs/wx.jpg" alt="二花老师wx" />
-    <p>可以添加二花老师微信，领取免费日语试听课以及日语学习资料哦~</p>
+    <p>添加二花老师微信，可以免费领取日语试听课以及日语学习资料哦~</p>
   </div>
   <div class="bunpou-start">
     <grammer-content
