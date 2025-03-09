@@ -367,7 +367,6 @@ const generateLuhnValidNumber = () => {
   font-size: 14px;
   padding: 4px 8px;
   border-radius: 6px;
-  max-width: 50%;
   text-align: justify;
 }
 .bunpou-ds-answer {
