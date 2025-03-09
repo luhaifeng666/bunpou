@@ -2,7 +2,7 @@
  * @Author: haifeng.lu haifeng.lu@ly.com
  * @Date: 2023-07-11 09:52:29
  * @LastEditors: haifeng.lu haifeng.lu@ly.com
- * @LastEditTime: 2024-01-24 17:04:41
+ * @LastEditTime: 2025-03-09 11:49:44
  * @FilePath: /bunpou/.vitepress/config.ts
  * @Description:
  *
@@ -29,7 +29,7 @@ export default defineConfig({
 		nav: [
 			{ text: "首页", link: "/" },
 			{ text: "文法", link: "/docs/" },
-			// { text: "国内站点", link: "https://youzui.gitee.io/bunpou/" },
+			{ text: "国内站点", link: "https://www.bunpou.cn/" },
 		],
 
 		// carbonAds: {
@@ -56,5 +56,9 @@ export default defineConfig({
 				link: "https://gitee.com/youzui/bunpou",
 			},
 		],
+    footer: {
+      message: '基于 MIT 许可发布 · 备案号: 苏ICP备2025165290号-1',
+      copyright: 'Copyright © 2025-present luhaifeng666'
+    }
 	},
 });
