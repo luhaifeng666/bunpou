@@ -51,6 +51,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install -y rsync
       - name: Install SSH key
         uses: webfactory/ssh-agent@v0.7.0
         with:
