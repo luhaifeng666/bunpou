@@ -27,7 +27,7 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
-    container: alpine:latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,14 +57,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Sync files to server
-        uses: easingthemes/ssh-deploy@v2.1.5
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} 
-          REMOTE_HOST: ${{ secrets.SERVER_IP }}
-          REMOTE_USER: ${{ secrets.SSH_USER }}
-          REMOTE_PORT: 22
-          SOURCE: .vitepress/dist
-          TARGET: /www/wwwroot/bunpouService/pages/
+        run: |
+          scp -o StrictHostKeyChecking=no -r .vitepress/dist ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/www/wwwroot/bunpouService/pages/
 
   # 部署工作
   deploy:
