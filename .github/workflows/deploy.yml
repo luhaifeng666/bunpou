@@ -27,6 +27,7 @@ jobs:
   # 构建工作
   build:
     runs-on: ubuntu-latest
+    # container: alpine:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,16 +52,19 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
-      - name: Install rsync
-        run: sudo apt-get update && sudo apt-get install -y rsync
       - name: Install SSH key
         uses: webfactory/ssh-agent@v0.7.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Sync files to server
-        run: |
-          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" \
-            .vitepress/dist ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/www/wwwroot/bunpouService/pages/
+        uses: easingthemes/ssh-deploy@v2.1.5
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} 
+          REMOTE_HOST: ${{ secrets.SERVER_IP }}
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          REMOTE_PORT: 22
+          SOURCE: .vitepress/dist
+          TARGET: /www/wwwroot/bunpouService/pages/
 
   # 部署工作
   deploy:
