@@ -166,38 +166,42 @@ const enterEvent = async () => {
 let controller = new AbortController();
 // axios 实例
 const instance = axios.create({
-  baseURL: "https://www.bunpou.cn"
+  baseURL: "https://www.bunpou.cn",
 });
 // 获取对话结果
 const getAIResult = async () => {
-  const _messages = JSON.parse(JSON.stringify(messages.value.filter((item) => item.role === "user").slice(-1)))
-  delete _messages[0].question
+  const _messages = JSON.parse(
+    JSON.stringify(
+      messages.value.filter((item) => item.role === "user").slice(-1)
+    )
+  );
+  delete _messages[0].question;
   return await instance.post(
     "/deepseek",
     {
-      messages: _messages
+      messages: _messages,
     },
     {
       signal: controller.signal,
       headers: {
-        lkey: generateLuhnValidNumber() + _messages[0].content.length
-      }
+        lkey: generateLuhnValidNumber() + _messages[0].content.length,
+      },
     }
   );
-}
+};
 // 获取账户余额
 const getBalance = async () => {
   try {
     const res = await instance.get("/getBalance", {
       headers: {
-        lkey: generateLuhnValidNumber()
-      }
+        lkey: generateLuhnValidNumber(),
+      },
     });
     const { is_available, balance_infos } = res?.data || {};
     hasBalance.value =
       is_available && Number(balance_infos?.[0].total_balance) > 0;
   } catch (error) {
-    console.warn("GetBalance error: ", JSON.stringifyerror);
+    console.warn("GetBalance error: ", JSON.stringify(error));
   }
 };
 // 清空对话
@@ -218,53 +222,53 @@ const stopGenerate = () => {
 };
 // 生成指定位数的随机数字（不包含校验位）
 const generateRandomNumber = (length) => {
-	let randomNumber = '';
-	for (let i = 0; i < length - 1; i++) {
-	  randomNumber += Math.floor(Math.random() * 10); // 生成 0-9 的随机数字
-	}
-	return randomNumber;
-}
-  
-  // 计算卢恩校验位
-const generateLuhnCheckDigit = (number) => {
-	const cleaned = number.replace(/\D/g, '');
-  
-	if (!cleaned || !/^\d+$/.test(cleaned)) {
-	  throw new Error('Invalid input: must be a numeric string');
-	}
-  
-	let sum = 0;
-	for (let i = 0; i < cleaned.length; i++) {
-	  let digit = parseInt(cleaned[cleaned.length - 1 - i], 10);
-  
-	  // 奇数位数字乘以 2
-	  if (i % 2 === 0) {
-		digit *= 2;
-		if (digit > 9) {
-		  digit -= 9;
-		}
+  let randomNumber = "";
+  for (let i = 0; i < length - 1; i++) {
+    randomNumber += Math.floor(Math.random() * 10); // 生成 0-9 的随机数字
   }
-  
-  sum += digit;
-}
-  
-	// 计算校验位
-const checkDigit = (10 - (sum % 10)) % 10;
+  return randomNumber;
+};
+
+// 计算卢恩校验位
+const generateLuhnCheckDigit = (number) => {
+  const cleaned = number.replace(/\D/g, "");
+
+  if (!cleaned || !/^\d+$/.test(cleaned)) {
+    throw new Error("Invalid input: must be a numeric string");
+  }
+
+  let sum = 0;
+  for (let i = 0; i < cleaned.length; i++) {
+    let digit = parseInt(cleaned[cleaned.length - 1 - i], 10);
+
+    // 奇数位数字乘以 2
+    if (i % 2 === 0) {
+      digit *= 2;
+      if (digit > 9) {
+        digit -= 9;
+      }
+    }
+
+    sum += digit;
+  }
+
+  // 计算校验位
+  const checkDigit = (10 - (sum % 10)) % 10;
   return checkDigit;
-}
-    
-  // 生成符合卢恩算法的完整数字
+};
+
+// 生成符合卢恩算法的完整数字
 const generateLuhnValidNumber = () => {
-	const length = Math.ceil(Math.random() * 20) + 1
-	// 生成随机基础数字（不包含校验位）
-	const baseNumber = generateRandomNumber(length);
-  
-	// 计算校验位
-	const checkDigit = generateLuhnCheckDigit(baseNumber);
-  
-	// 返回完整数字
-	return baseNumber + checkDigit;
-}
+  const length = Math.ceil(Math.random() * 20) + 1;
+  // 生成随机基础数字（不包含校验位）
+  const baseNumber = generateRandomNumber(length);
+
+  // 计算校验位
+  const checkDigit = generateLuhnCheckDigit(baseNumber);
+
+  // 返回完整数字
+  return baseNumber + checkDigit;
+};
 </script>
 
 <style scoped>
