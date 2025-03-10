@@ -28,24 +28,6 @@
       人
     </span>
   </div>
-
-  <!-- <div class="busuanzi">
-		<span id="busuanzi_container_site_pv">
-			总访问量
-			<strong id="page_pv" class="busuanzi_value"
-				><i class="loading"></i
-			></strong>
-			次
-		</span>
-		<span class="division"></span>
-		<span id="busuanzi_container_site_uv">
-			访客数
-			<strong id="page_uv" class="busuanzi_value"
-				><i class="loading"></i
-			></strong>
-			人
-		</span>
-	</div> -->
 </template>
 
 <script setup>
