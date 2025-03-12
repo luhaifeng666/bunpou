@@ -226,7 +226,7 @@ const getAIResult = async (isQuestion) => {
     {
       signal: controller.signal,
       headers: {
-        lkey: generateLuhnValidNumber() + _messages[0].content.length,
+        lkey: generateLuhnValidNumber(),
       },
     }
   );
