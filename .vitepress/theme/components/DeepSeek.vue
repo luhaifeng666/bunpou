@@ -20,6 +20,7 @@
       />
       <div class="bunpou-ds-window">
         <p class="bunpou-ds-tip" v-html="dialogTitle" />
+        <p class="bunpou-ds-example" @click="generateAQuestion">帮我举个🌰~(🌰不行？重新点下！)</p>
         <div ref="dialog" class="bunpou-ds-dialog">
           <div
             v-for="(item, index) in messages"
@@ -111,57 +112,78 @@ const dialogTitle = computed(
 );
 
 // methods
+// 覆盖最后一条记录
+const setLastValue = (config) => {
+  config ? (messages.value[messages.value.length - 1] = config) : messages.value.pop();
+};
 // 监听回车键
-const enterEvent = async () => {
-  const setLastValue = (config, isCanceled) => {
-    messages.value[messages.value.length - 1] = config || {
-      role: "error",
-      content: isCanceled
-        ? "好好好，反悔是吧！那就再好好思考下吧~"
-        : "哦漏！网络开小差啦！过会儿再试下吧",
-    };
-  };
-  try {
-    if (!!input.value && !loading.value && !!inputMessage.value) {
-      // message队列中塞入新的提问
-      messages.value.push({
-        role: "user",
-        content: `例句${inputMessage.value}是否使用了${grammer.value}这个语法？是否正确？如果不正确应该如何调整？`,
-        question: inputMessage.value,
-      });
-      // 清空inputMessage
-      inputMessage.value = "";
-      // 触发失焦
-      input.value?.blur();
-      // 开始请求数据
-      loading.value = true;
-      messages.value.push({
-        content: '<span class="bunpou-ds-loading" />',
-        role: "loading",
-      });
-      await nextTick();
-      dialog.value?.scrollTo({
-        top: dialog.value?.scrollHeight,
-        behavior: "smooth",
-      });
-      const res = await getAIResult();
-      loading.value = false;
-      const { choices } = res?.data || {};
-      setLastValue(
-        (choices || []).length
-          ? {
-              ...choices[0].message,
-              content: marked(choices[0].message.content),
-            }
-          : null
-      );
-    }
-  } catch (error) {
-    const { code, message } = error || {};
-    setLastValue(null, code === "ERR_CANCELED" && message === "canceled");
-    loading.value = false;
+const enterEvent = () => {
+  if (!!input.value && !loading.value && !!inputMessage.value) {
+    // message队列中塞入新的提问
+    messages.value.push({
+      role: "user",
+      content: `例句${inputMessage.value}是否是个使用了${grammer.value}这个语法的日语句子？如果不是该如何调整？`,
+      question: inputMessage.value,
+    });
+    // 清空inputMessage
+    inputMessage.value = "";
+    // 触发失焦
+    input.value?.blur();
+    // 开始请求
+    handleAIResult()
   }
 };
+// 请求结果
+const handleAIResult = async (isQuestion = false) => {
+  try {
+    // 开始请求数据
+    loading.value = true;
+    messages.value.push({
+      content: '<span class="bunpou-ds-loading" />',
+      role: "loading",
+    });
+    await nextTick();
+    dialog.value?.scrollTo({
+      top: dialog.value?.scrollHeight,
+      behavior: "smooth",
+    });
+    const res = await getAIResult(isQuestion);
+    loading.value = false;
+    const { choices } = res?.data || {};
+    setLastValue(
+      (choices || []).length
+        ? {
+            ...choices[0].message,
+            content: marked(choices[0].message.content),
+            isExample: isQuestion
+          }
+        : {
+            role: "error",
+            content: "哦漏！网络开小差啦！过会儿再试下吧"
+        }
+    );
+  } catch (error) {
+    const { code, message } = error || {};
+    setLastValue({
+      role: "error",
+      content: code === "ERR_CANCELED" && message === "canceled"
+        ? "好好好，反悔是吧！🤪"
+        : "哦漏！网络开小差啦！过会儿再试下吧",
+    });
+    loading.value = false;
+  }
+}
+// 创建例题
+const generateAQuestion = () => {
+  if (!loading.value) {
+    messages.value.push({
+      role: "user",
+      content: `只生成一个符合"${grammer.value}"语法的中文句子`,
+      question: '帮我举个🌰~'
+    });
+    handleAIResult(true)
+  }
+}
 // 创建 controller
 let controller = new AbortController();
 // axios 实例
@@ -169,13 +191,33 @@ const instance = axios.create({
   baseURL: "https://www.bunpou.cn",
 });
 // 获取对话结果
-const getAIResult = async () => {
-  const _messages = JSON.parse(
-    JSON.stringify(
-      messages.value.filter((item) => item.role === "user").slice(-1)
-    )
-  );
-  delete _messages[0].question;
+const getAIResult = async (isQuestion) => {
+  const getTargetMessage = (role) => {
+    return JSON.parse(
+      JSON.stringify(
+        messages.value.filter((item) => item.role === role).slice(-1) || '[]'
+      )
+    );
+  }
+  const _messages = getTargetMessage('user');
+  // 如果不是提问消息，需要回溯之前的列表，看最近一条非error类型的回答是否是例句
+  if (!isQuestion) {
+    const lastAnswer = getTargetMessage('assistant');
+    if ((lastAnswer[0] || {}).isExample) {
+      _messages[0].content = `例句"${_messages[0].question}"是否是个使用了"${grammer.value}"这个语法的日语句子？是否符合上例的句意？若不正确或不符合则提供一个满足条件的例句。`
+      _messages.unshift({
+        ...lastAnswer[0],
+        content: lastAnswer[0].content.replace(/<[^>]+>/g, '')
+      })
+    }
+  }
+  // 移除多余参数
+  _messages.forEach(item => {
+    ['question', 'isExample'].forEach(key => {
+      delete item[key];
+    })
+  })
+  
   return await instance.post(
     "/deepseek",
     {
@@ -373,10 +415,13 @@ const generateLuhnValidNumber = () => {
   border-radius: 6px;
   text-align: justify;
 }
+.bunpou-ds-question:not(:first-child) {
+  margin-top: 20px;
+}
 .bunpou-ds-answer {
   font-size: 14px;
   float: left;
-  margin: 20px 0;
+  margin-top: 20px;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -403,6 +448,11 @@ const generateLuhnValidNumber = () => {
   border-top: 2px solid #4d6bfe; /* 顶部颜色，仿 DeepSeek 风格 */
   border-radius: 50%;
   animation: spin 1s linear infinite; /* 旋转动画 */
+}
+.bunpou-ds-example {
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
 }
 @keyframes spin {
   0% {
