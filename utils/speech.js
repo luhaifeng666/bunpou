@@ -24,7 +24,7 @@ export default function generateVoice(text, cb) {
           cb && cb();
           clearTimeout(timer);
         }, result.audioDuration / 1e4);
-        synthesizer = null;
+        synthesizer.close();
         success ? resolve(success) : reject(success);
       },
       function (err) {
