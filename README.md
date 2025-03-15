@@ -35,13 +35,9 @@
 
 <h3 align=center>关于访问速度慢</h3>
 
-<p align=center>由于文档部署的是 Github Page, 访问速度可能会比较慢，甚至会有打不开的情况。</p>
+<p align=center>由于文档部署的是 Github Page, 访问速度可能会比较慢，此类情况可以访问 <a href="https://www.bunpou.cn/"><u>国内站点</u></a>。</p>
 
-<p align=center>有类似问题的小伙伴儿可以在右侧 <b>Releases</b> 中下载最新版本的桌面应用。我会在每周一发布新的版本。</p>
-
-<p align="center">因 Gitee Pages 服务维护调整，导致国内站点无法部署，因此短期内暂时不支持访问国内站点~</p>
-
-<!-- <p align=center>如果不想下载应用，也可以访问 <a href="https://youzui.gitee.io/bunpou/"><u>国内站点</u></a>。</p> -->
+<!-- <p align=center>有类似问题的小伙伴儿可以在右侧 <b>Releases</b> 中下载最新版本的桌面应用。我会在每周一发布新的版本。</p> -->
 
 ## Activity
 

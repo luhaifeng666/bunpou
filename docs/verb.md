@@ -68,7 +68,7 @@ meta:
 * <grammer-content sentence="[切/き]る；切" />
 * <grammer-content sentence="[喋/しゃべ]る；聊天" />
 
-<grammer-content sentence="速记口诀： **走、知、要、归、入、切、喋。**" />
+<grammer-content sentence="速记口诀： **走、知、要、归、入、切、喋。**在一般情况下，二类动词る之前的 `い段` 或 `え段` 会以**假名的形式出现，而不会出现在汉字的读音里**。这种规律可以用来区分二类动词与这些特殊的一类动词" />
 
 :::
 
