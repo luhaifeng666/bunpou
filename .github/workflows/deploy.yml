@@ -56,7 +56,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: Sync files to server
-        run: cd /www/wwwroot/default & node build.js
+        with:
+          script: node /www/wwwroot/default/build.js
 
   # 部署工作
   deploy:
