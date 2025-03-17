@@ -58,6 +58,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}  # SSH 用户名
           key: ${{ secrets.SSH_PRIVATE_KEY }}   # SSH 私钥
           script: |
+            source ~/.bashrc
             cd /www/wwwroot/default  # 跳转到指定目录
             node build.js            # 执行 Node.js 脚本
       # - name: Install SSH key
