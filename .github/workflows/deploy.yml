@@ -51,13 +51,12 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: .vitepress/dist
-      # - name: Install SSH key
-      #   uses: webfactory/ssh-agent@v0.7.0
-      #   with:
-      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      # - name: Sync files to server
-      #   run: |
-      #     find .vitepress/dist/ -type f ! -path '*/voices/*' | xargs -I {} scp {} ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/www/wwwroot/bunpouService/pages/
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Sync files to server
+        run: cd /www/wwwroot/default & node build.js
 
   # 部署工作
   deploy:
