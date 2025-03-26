@@ -20,7 +20,9 @@
       />
       <div class="bunpou-ds-window">
         <p class="bunpou-ds-tip" v-html="dialogTitle" />
-        <p class="bunpou-ds-example" @click="generateAQuestion">帮我举个🌰~(🌰不行？重新点下！)</p>
+        <p class="bunpou-ds-example" @click="generateAQuestion">
+          帮我举个🌰~(🌰不行？重新点下！)
+        </p>
         <div ref="dialog" class="bunpou-ds-dialog">
           <div
             v-for="(item, index) in messages"
@@ -114,7 +116,9 @@ const dialogTitle = computed(
 // methods
 // 覆盖最后一条记录
 const setLastValue = (config) => {
-  config ? (messages.value[messages.value.length - 1] = config) : messages.value.pop();
+  config
+    ? (messages.value[messages.value.length - 1] = config)
+    : messages.value.pop();
 };
 // 监听回车键
 const enterEvent = () => {
@@ -130,7 +134,7 @@ const enterEvent = () => {
     // 触发失焦
     input.value?.blur();
     // 开始请求
-    handleAIResult()
+    handleAIResult();
   }
 };
 // 请求结果
@@ -147,43 +151,41 @@ const handleAIResult = async (isQuestion = false) => {
       top: dialog.value?.scrollHeight,
       behavior: "smooth",
     });
-    const res = await getAIResult(isQuestion);
+    await getAIResult(isQuestion);
+    // const res = await getAIResult(isQuestion);
     loading.value = false;
-    const { choices } = res?.data || {};
-    setLastValue(
-      (choices || []).length
-        ? {
-            ...choices[0].message,
-            content: marked(choices[0].message.content),
-            isExample: isQuestion
-          }
-        : {
-            role: "error",
-            content: "哦漏！网络开小差啦！过会儿再试下吧"
-        }
-    );
+    // const { choices } = res?.data || {};
+    // setLastValue(
+    //   (choices || []).length
+    //     ? {
+    //         ...choices[0].message,
+    //         content: marked(choices[0].message.content),
+    //         isExample: isQuestion
+    //       }
+    //     : {
+    //         role: "error",
+    //         content: "哦漏！网络开小差啦！过会儿再试下吧"
+    //     }
+    // );
   } catch (error) {
-    const { code, message } = error || {};
     setLastValue({
       role: "error",
-      content: code === "ERR_CANCELED" && message === "canceled"
-        ? "好好好，反悔是吧！🤪"
-        : "哦漏！网络开小差啦！过会儿再试下吧",
+      content: "哦漏！网络开小差啦！过会儿再试下吧",
     });
     loading.value = false;
   }
-}
+};
 // 创建例题
 const generateAQuestion = () => {
   if (!loading.value) {
     messages.value.push({
       role: "user",
-      content: `只生成一个符合"${grammer.value}"语法的中文句子`,
-      question: '帮我举个🌰~'
+      content: `只生成一个符合"${grammer.value}"语法的中译日翻译练习题，只要题目不要答案。`,
+      question: "帮我举个🌰~",
     });
-    handleAIResult(true)
+    handleAIResult(true);
   }
-}
+};
 // 创建 controller
 let controller = new AbortController();
 // axios 实例
@@ -195,41 +197,109 @@ const getAIResult = async (isQuestion) => {
   const getTargetMessage = (role) => {
     return JSON.parse(
       JSON.stringify(
-        messages.value.filter((item) => item.role === role).slice(-1) || '[]'
+        messages.value.filter((item) => item.role === role).slice(-1) || "[]"
       )
     );
-  }
-  const _messages = getTargetMessage('user');
+  };
+  const _messages = getTargetMessage("user");
   // 如果不是提问消息，需要回溯之前的列表，看最近一条非error类型的回答是否是例句
   if (!isQuestion) {
-    const lastAnswer = getTargetMessage('assistant');
+    const lastAnswer = getTargetMessage("assistant");
     if ((lastAnswer[0] || {}).isExample) {
-      _messages[0].content = `例句"${_messages[0].question}"是否是个使用了"${grammer.value}"这个语法的日语句子？是否符合上例的句意？若不正确或不符合则提供一个满足条件的例句。`
+      _messages[0].content = `例句"${_messages[0].question}"是否是个使用了"${grammer.value}"这个语法的日语句子？是否符合上例的句意？若不正确或不符合则提供一个满足条件的例句。`;
       _messages.unshift({
         ...lastAnswer[0],
-        content: lastAnswer[0].content.replace(/<[^>]+>/g, '')
-      })
+        content: lastAnswer[0].content.replace(/<[^>]+>/g, ""),
+      });
     }
   }
   // 移除多余参数
-  _messages.forEach(item => {
-    ['question', 'isExample'].forEach(key => {
+  _messages.forEach((item) => {
+    ["question", "isExample"].forEach((key) => {
       delete item[key];
-    })
-  })
-  
-  return await instance.post(
-    "/deepseek",
-    {
-      messages: _messages,
-    },
-    {
+    });
+  });
+
+  try {
+    const apiResponse = await fetch("https://www.bunpou.cn/deepseekV2", {
+      method: "POST",
       signal: controller.signal,
       headers: {
+        "Content-Type": "application/json",
         lkey: generateLuhnValidNumber(),
       },
+      body: JSON.stringify({
+        messages: _messages,
+      }),
+    });
+    const reader = apiResponse.body.getReader();
+    const decoder = new TextDecoder();
+    let lastContentHasReset = false;
+    let content = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      const chunk = decoder.decode(value);
+      // const lines = chunk.split("\n").filter((l) => l.trim());
+
+      // let text = "";
+
+      // for (const line of lines) {
+      //   if (line.startsWith("data:")) {
+      //     const data = line.replace("data:", "").trim();
+      //     if (data === "[DONE]") break;
+
+      //     const parsed = JSON.parse(data);
+      //     if (parsed.content) {
+      //       text += parsed.content;
+      //     }
+      //   } else {
+      //     text += line;
+      //   }
+      // }
+
+      content += chunk;
+
+      if (!lastContentHasReset) {
+        setLastValue({
+          role: "assistant",
+          content: marked.parse(content),
+          isExample: isQuestion,
+        });
+        lastContentHasReset = true;
+      } else {
+        messages.value[messages.value.length - 1].content =
+          marked.parse(content);
+      }
+      dialog.value?.scrollTo({
+        top: dialog.value?.scrollHeight,
+        behavior: "smooth",
+      });
     }
-  );
+  } catch (error) {
+    const { code, message } = error || {};
+    setLastValue({
+      role: "error",
+      content:
+        code === "ERR_CANCELED" && message === "canceled"
+          ? "好好好，反悔是吧！🤪"
+          : "哦漏！网络开小差啦！过会儿再试下吧",
+    });
+  }
+
+  // return await instance.post(
+  //   "/deepseek",
+  //   {
+  //     messages: _messages,
+  //   },
+  //   {
+  //     signal: controller.signal,
+  //     headers: {
+  //       lkey: generateLuhnValidNumber(),
+  //     },
+  //   }
+  // );
 };
 // 获取账户余额
 const getBalance = async () => {
@@ -258,7 +328,10 @@ const toggleFlod = () => {
 };
 // 手动中断脚本
 const stopGenerate = () => {
-  controller.abort();
+  controller.abort({
+    message: "canceled",
+    code: "ERR_CANCELED",
+  });
   loading.value = false;
   controller = new AbortController(); // 手动取消请求后需要重新实例化
 };
@@ -325,6 +398,14 @@ const generateLuhnValidNumber = () => {
 :deep(.bunpou-ds-answer ol),
 :deep(.bunpou-ds-answer ul) {
   list-style: revert;
+  padding: 10px 10px 10px 30px;
+  margin: 10px 0;
+  background-color: var(--vp-custom-block-tip-code-bg);
+  border-radius: 6px;
+}
+:deep(.bunpou-ds-answer ol) li,
+:deep(.bunpou-ds-answer ul) li {
+  color: var(--vp-c-tip-1);
 }
 .bunpou-ds.unflod {
   height: 500px;
