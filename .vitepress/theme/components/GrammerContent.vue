@@ -21,12 +21,6 @@
   ></audio>
 </template>
 
-<style>
-.grammer-container:not(:last-of-type) {
-  margin-bottom: 16px !important;
-}
-</style>
-
 <script setup>
 import { computed, ref, onBeforeUnmount, watch } from "vue";
 import { isPlaying } from "../store";
@@ -71,13 +65,13 @@ const sentenceElement = computed(() => {
   // 转换 ruby & strong 标签
   return `<div ${
     center ? 'style="justify-content: center;"' : ""
-  }><p>${sentence}</p><div class="bunpou-speak-box">${
+  }><p>${sentence}</p>${iconVisible.value && trans ? `<div class="bunpou-speak-box">${
     iconVisible.value && trans
       ? '<img alt="speak" class="bunpou-speak" src="https://foruda.gitee.com/images/1712595434454521309/3ebc063a_78758.png" />'
       : ""
   }<div class="bunpou-loading ${loading.value ? "" : "hidden"}">
     <span></span><span></span><span></span><span></span><span></span>
-  </div></div></div>${
+  </div></div>` : ''}</div>${
     trans
       ? `<p style="margin-top: 6px;line-height:1.5;${
           center ? "text-align: center;" : ""
@@ -113,7 +107,8 @@ const play = async () => {
             }
           )
           .replace(/\<del\>.*?\<\/del\>/g, "") // 删除del标签及其中的内容
-          .replace(/\<\/{0,1}u\>/g, ""), // 移除 u 标签
+          .replace(/\<\/{0,1}u\>/g, "") // 移除 u 标签
+          .replace(/\.|\·/g, ""), // 英文，日文中的·不要读出来....
         // .replace(
         // 	/[^\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\u31F0-\u31FF\uFF00-\uFFEF\u4E00-\u9FAF\u3400-\u4DBF]|[\(|（](.*?)[）|\)]/g,
         // 	""
