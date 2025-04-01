@@ -141,9 +141,19 @@ meta:
 
 :::
 
-::: info :books: 3. 表示 `原因理由`
+::: info :books: 3. 表示 `轻微的`原因或理由
+
+<grammer-content sentence='接续形式为: **Vて(动词的て形)** + 主句。' inline />[形容词的第二连用形有与之相同的用法](./adjective.md#形容词的连用形)。
+
+::: danger :warning: 注意
+
+主句只能叙述客观事实，不能用于建议、命令、主张、愿望等表达方式。
+
+<div class="bunpou-block">
 
 <grammer-content id='verb-13' sentence="[風邪/かぜ]を**[引/ひ]いて**[学校/がっこう]を[休/やす]みました。" trans='我感冒了，所以没去上学。' />
+
+</div>
 
 :::
 

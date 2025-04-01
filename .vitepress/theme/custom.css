@@ -19,6 +19,7 @@ u {
 .grammer-container>div:first-child {
   display: flex;
   align-items: flex-end;
+  cursor: pointer;
 }
 
 .grammer-container>div:first-child p {
