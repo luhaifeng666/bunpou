@@ -1,6 +1,19 @@
 import { defineConfig } from "vitepress";
 import { getSideBar } from "../utils";
 
+const getNav = () => [
+  { text: "首页", link: "/" },
+  { text: "文法", link: "/docs/" },
+  ...(!process.env.DOMAIN || process.env.DOMAIN.includes("github.io")
+    ? [
+        {
+          text: "国内站点",
+          link: "https://www.bunpou.cn/",
+        },
+      ]
+    : []),
+];
+
 export default defineConfig({
   title: "Bunpou",
   description: "用于查阅日语语法",
@@ -17,11 +30,7 @@ export default defineConfig({
         `https://github.com/luhaifeng666/bunpou/blob/test/${filePath}`,
       text: "GitHubでこのページを編集する",
     },
-    nav: [
-      { text: "首页", link: "/" },
-      { text: "文法", link: "/docs/" },
-      { text: "国内站点", link: "https://www.bunpou.cn/" },
-    ],
+    nav: getNav(),
 
     search: {
       provider: "local",
