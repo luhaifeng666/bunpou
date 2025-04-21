@@ -69,6 +69,7 @@ const SIDEBAR_CONFIG = {
 			{ text: "动词", path: "verb.md" },
 			{ text: "方位处所词", path: "directions.md" },
 			{ text: "频率副词", path: "frequency.md" },
+			{ text: "穿戴相关词汇", path: "wear.md" },
 			{ text: "助词", path: "auxiliary" },
 			{ text: "术语", path: "term" },
 			{
