@@ -1,3 +1,12 @@
+---
+title: 快查目录
+meta:
+  - name: description
+    content: 快查目录
+  - name: keywords
+    content: bunpou, bp, BP, Bp, bP, Bunpou, 日语, 语法, 日语语法
+---
+
 # 快查目录
 
 <Catalog></Catalog>
