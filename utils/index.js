@@ -64,6 +64,7 @@ const SIDEBAR_CONFIG = {
 	"docs/": [{
 		text: '文法',
 		items: [
+			{ text: "快查目录", path: "index.md" },
 			{ text: "こそあど系列", path: "kosoado.md" },
 			{ text: "形容词", path: "adjective.md" },
 			{ text: "动词", path: "verb.md" },
@@ -89,6 +90,7 @@ const SIDEBAR_CONFIG = {
 					{ path: 'course13', text: '第 13 課' },
 					{ path: 'course14', text: '第 14 課' },
 					{ path: 'course15', text: '第 15 課' },
+					{ path: 'course16', text: '第 16 課' },
 				]
 			},
 		]
