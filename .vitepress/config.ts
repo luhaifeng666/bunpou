@@ -1,10 +1,12 @@
 import { defineConfig } from "vitepress";
 import { getSideBar } from "../utils";
 
+const isOversea =
+  !process.env.DOMAIN || process.env.DOMAIN.includes("github.io");
 const getNav = () => [
   { text: "首页", link: "/" },
   { text: "文法", link: "/docs/" },
-  ...(!process.env.DOMAIN || process.env.DOMAIN.includes("github.io")
+  ...(isOversea
     ? [
         {
           text: "国内站点",
@@ -58,7 +60,9 @@ export default defineConfig({
       },
     ],
     footer: {
-      message: "基于 MIT 许可发布 · 备案号: 苏ICP备2025165290号-1",
+      message: `基于 MIT 许可发布${
+        isOversea ? "" : " · 备案号: 苏ICP备2025165290号-1"
+      }`,
       copyright: "Copyright © 2025-present luhaifeng666",
     },
   },
