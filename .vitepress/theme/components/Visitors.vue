@@ -1,8 +1,8 @@
 <template>
-  <div class="bunpou-homepage-ad">
+  <!-- <div class="bunpou-homepage-ad">
     <img src="../../../public/imgs/wx.jpg" alt="二花老师wx" />
     <p>添加二花老师微信，可以免费领取日语试听课以及日语学习资料哦~</p>
-  </div>
+  </div> -->
   <div class="bunpou-start">
     <grammer-content
       id="start"
