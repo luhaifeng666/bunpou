@@ -4,8 +4,9 @@ import { getSideBar } from "../utils";
 const isOversea =
   !process.env.DOMAIN || process.env.DOMAIN.includes("github.io");
 const getNav = () => [
-  { text: "首页", link: "/" },
-  { text: "文法", link: "/docs/" },
+  { text: "学习首页", link: "/" },
+  { text: "快查目录", link: "/docs/" },
+  { text: "课程文法", link: "/docs/bunpou/course1/1-2-1" },
   ...(isOversea
     ? [
         {
@@ -18,9 +19,13 @@ const getNav = () => [
 
 export default defineConfig({
   title: "Bunpou",
-  description: "用于查阅日语语法",
+  description: "离线可用的日语语法学习与查阅应用",
   head: [
     ["link", { rel: "icon", type: "image/x-icon", href: "imgs/favicon.ico" }],
+    ["meta", { name: "theme-color", content: "#fb923c" }],
+    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
+    ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "default" }],
+    ["meta", { name: "format-detection", content: "telephone=no" }],
   ],
   themeConfig: {
     lastUpdated: {
@@ -63,7 +68,7 @@ export default defineConfig({
       message: `基于 MIT 许可发布${
         isOversea ? "" : " · 备案号: 苏ICP备2025165290号-1"
       }`,
-      copyright: "Copyright © 2025-present luhaifeng666",
+      copyright: "Copyright © 2025-present Bunpou",
     },
   },
 });

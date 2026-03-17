@@ -11,7 +11,7 @@
       center
     />
   </div>
-  <div class="busuanzi">
+  <div v-if="!isDesktopApp" class="busuanzi">
     <span id="busuanzi_container_site_pv">
       总访问量
       <strong id="busuanzi_value_site_pv" class="busuanzi_value"
@@ -36,8 +36,13 @@ import { useData } from "vitepress";
 
 const loading = ref(true);
 const page = toRef(useData(), "page");
+const isClient = typeof document !== "undefined";
+const isDesktopApp = typeof window !== "undefined" && "__TAURI_IPC__" in window;
 
 const loadData = () => {
+  if (!isClient || isDesktopApp) {
+    return;
+  }
   const script = document.createElement("script");
   script.src =
     // "https://webviso.yestool.org/js/index.min.js"
@@ -64,9 +69,12 @@ watch(page, () => {
 <style>
 .busuanzi {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  gap: 8px;
   font-size: 14px;
+  text-align: center;
 }
 .busuanzi .busuanzi_value {
   color: rgb(52, 81, 178);
@@ -88,6 +96,21 @@ watch(page, () => {
 
 .bunpou-start {
   margin: 30px 0;
+}
+
+@media (max-width: 640px) {
+  .busuanzi {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .division {
+    display: none;
+  }
+
+  .bunpou-start {
+    margin: 20px 0;
+  }
 }
 
 .bunpou-homepage-ad {

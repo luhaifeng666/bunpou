@@ -13,8 +13,13 @@ const page = toRef(useData(), "page");
 const comments = ref();
 const themeName = ref("noborder_dark");
 const visible = ref(true);
+const isClient = typeof document !== "undefined" && typeof window !== "undefined";
+const isDesktopApp = isClient && "__TAURI_IPC__" in window;
 
 const setComments = () => {
+  if (!isClient || !comments.value || !visible.value) {
+    return;
+  }
   const script = document.createElement("script");
   const configs = {
     "data-repo": "luhaifeng666/bunpou",
@@ -41,6 +46,9 @@ const setComments = () => {
 };
 
 const setTheme = (val) => {
+  if (!isClient) {
+    return;
+  }
   themeName.value = val ? "noborder_dark" : "light";
   const iframe = document.querySelector("iframe.giscus-frame");
   if (iframe) {
@@ -72,6 +80,10 @@ watch(isDark, setTheme, {
 });
 
 onMounted(() => {
+  if (!isClient || isDesktopApp) {
+    visible.value = false;
+    return;
+  }
   visible.value = ["luhaifeng666.github.io", "localhost"].includes(
     window.location.hostname
   );
@@ -80,6 +92,9 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
+  if (!isClient || isDesktopApp) {
+    return;
+  }
   window.removeEventListener("message", watchMsg);
 });
 </script>

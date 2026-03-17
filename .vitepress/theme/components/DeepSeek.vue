@@ -47,6 +47,11 @@
             type="text"
             v-model="inputMessage"
             placeholder="请输入你例句"
+            enterkeyhint="send"
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            @keydown.enter.prevent="enterEvent"
           />
           <img
             :class="{
@@ -76,6 +81,7 @@ import {
 import { useData } from "vitepress";
 
 const { page, title } = useData();
+const isDesktopApp = typeof window !== "undefined" && "__TAURI_IPC__" in window;
 
 onMounted(async () => {
   await getBalance();
@@ -106,7 +112,7 @@ watch(page, () => {
 
 // reactive
 const dsVisible = computed(
-  () => page.value?.filePath.includes("course") && hasBalance.value
+  () => !isDesktopApp && page.value?.filePath.includes("course") && hasBalance.value
 );
 const grammer = computed(() => title.value.replace(/\s\|\sBunpou/g, ""));
 const dialogTitle = computed(
@@ -408,7 +414,8 @@ const generateLuhnValidNumber = () => {
   color: var(--vp-c-tip-1);
 }
 .bunpou-ds.unflod {
-  height: 500px;
+  height: min(500px, calc(100dvh - 160px));
+  min-height: 420px;
 }
 .bunpou-ds-btn {
   display: flex;
@@ -450,8 +457,9 @@ const generateLuhnValidNumber = () => {
 .bunpou-ds-dialog {
   flex: 1;
   margin: 16px 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 .bunpou-ds-dialog::-webkit-scrollbar {
   display: none;
@@ -466,6 +474,7 @@ const generateLuhnValidNumber = () => {
   display: block;
   width: 26px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 .bunpou-ds-close {
   width: 16px;
@@ -474,6 +483,7 @@ const generateLuhnValidNumber = () => {
   top: 8px;
   right: 8px;
   z-index: 1;
+  cursor: pointer;
 }
 .bunpou-ds-footer > input {
   font-size: 14px;
@@ -482,6 +492,7 @@ const generateLuhnValidNumber = () => {
   background: rgba(0, 0, 0, 1);
   padding: 12px;
   flex: 1;
+  min-width: 0;
   color: white;
 }
 .bunpou-ds-footer > .disabled {
@@ -541,6 +552,45 @@ const generateLuhnValidNumber = () => {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .bunpou-ds {
+    padding: 0 12px;
+  }
+
+  .bunpou-ds.unflod {
+    height: min(540px, calc(100dvh - 120px));
+    min-height: 360px;
+  }
+
+  .bunpou-ds-window {
+    margin: 12px 0;
+    height: calc(100% - 24px);
+  }
+
+  .bunpou-ds-dialog {
+    margin: 12px 0;
+  }
+
+  .bunpou-ds-footer {
+    gap: 8px;
+  }
+
+  .bunpou-ds-footer > input {
+    padding: 11px 12px;
+    font-size: 16px;
+  }
+
+  .bunpou-ds-footer > img {
+    width: 28px;
+  }
+
+  .bunpou-ds-question,
+  .bunpou-ds-answer {
+    font-size: 13px;
+    line-height: 1.6;
   }
 }
 </style>
