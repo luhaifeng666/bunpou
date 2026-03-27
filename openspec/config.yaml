@@ -1,5 +1,10 @@
 schema: spec-driven
 
+context: |
+  当前技术栈: Vitepress + Tauri
+
+specs:
+  - 使用 Given/When/Then 格式描述测试场景
 # Project context (optional)
 # This is shown to AI when creating artifacts.
 # Add your tech stack, conventions, style guides, domain knowledge, etc.

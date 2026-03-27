@@ -11,7 +11,7 @@
       center
     />
   </div>
-  <div v-if="!isDesktopApp" class="busuanzi">
+  <div v-if="visitorsVisible" class="busuanzi">
     <span id="busuanzi_container_site_pv">
       总访问量
       <strong id="busuanzi_value_site_pv" class="busuanzi_value"
@@ -31,109 +31,113 @@
 </template>
 
 <script setup>
-import { onMounted, ref, toRef, watch } from "vue";
-import { useData } from "vitepress";
+  import { onMounted, ref, toRef, watch } from 'vue';
+  import { useData } from 'vitepress';
+  import { getRuntimeKind, isEntryVisible } from '../runtime';
 
-const loading = ref(true);
-const page = toRef(useData(), "page");
-const isClient = typeof document !== "undefined";
-const isDesktopApp = typeof window !== "undefined" && "__TAURI_IPC__" in window;
+  const loading = ref(true);
+  const page = toRef(useData(), 'page');
+  const isClient = typeof document !== 'undefined';
+  const runtime = getRuntimeKind();
+  const visitorsVisible = isEntryVisible('visitors-entry', runtime);
 
-const loadData = () => {
-  if (!isClient || isDesktopApp) {
-    return;
-  }
-  const script = document.createElement("script");
-  script.src =
-    // "https://webviso.yestool.org/js/index.min.js"
-    // "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
-    "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
-  script.async = true;
-  script.onload = () => {
-    setTimeout(() => {
-      loading.value = false;
-    }, 1000);
+  const loadData = () => {
+    if (!isClient || !visitorsVisible) {
+      return;
+    }
+    const script = document.createElement('script');
+    script.src =
+      // "https://webviso.yestool.org/js/index.min.js"
+      // "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
+      'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    script.async = true;
+    script.onload = () => {
+      setTimeout(() => {
+        loading.value = false;
+      }, 1000);
+    };
+    document.body.appendChild(script);
   };
-  document.body.appendChild(script);
-};
 
-onMounted(() => {
-  loadData();
-});
+  onMounted(() => {
+    loadData();
+  });
 
-watch(page, () => {
-  loadData();
-});
+  watch(page, () => {
+    loadData();
+  });
 </script>
 
 <style>
-.busuanzi {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  text-align: center;
-}
-.busuanzi .busuanzi_value {
-  color: rgb(52, 81, 178);
-}
-.division {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin: 0 10px;
-  background: url(../../../public/imgs/BP.svg) no-repeat center / cover;
-}
-.loading {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background: url(../../../public/imgs/loading.png) no-repeat center / contain;
-  animation: loading 1s linear infinite;
-}
-
-.bunpou-start {
-  margin: 30px 0;
-}
-
-@media (max-width: 640px) {
   .busuanzi {
-    flex-direction: column;
-    gap: 6px;
-  }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-align: center;
 
+    gap: 8px;
+  }
+  .busuanzi .busuanzi_value {
+    color: rgb(52, 81, 178);
+  }
   .division {
-    display: none;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 10px;
+    background: url(../../../public/imgs/BP.svg) no-repeat center / cover;
+  }
+  .loading {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(../../../public/imgs/loading.png) no-repeat center / contain;
+    animation: loading 1s linear infinite;
   }
 
   .bunpou-start {
-    margin: 20px 0;
+    margin: 30px 0;
   }
-}
 
-.bunpou-homepage-ad {
-  text-align: center;
-}
+  @media (max-width: 640px) {
+    .busuanzi {
+      flex-direction: column;
 
-.bunpou-homepage-ad > img {
-  display: block;
-  width: 200px;
-  margin: 20px auto;
-  border-radius: 12px;
-}
+      gap: 6px;
+    }
 
-.bunpou-homepage-ad > p {
-  margin: 0 40px;
-}
+    .division {
+      display: none;
+    }
 
-@keyframes loading {
-  0% {
-    transform: rotate(0deg);
+    .bunpou-start {
+      margin: 20px 0;
+    }
   }
-  100% {
-    transform: rotate(360deg);
+
+  .bunpou-homepage-ad {
+    text-align: center;
   }
-}
+
+  .bunpou-homepage-ad > img {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    border-radius: 12px;
+  }
+
+  .bunpou-homepage-ad > p {
+    margin: 0 40px;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
