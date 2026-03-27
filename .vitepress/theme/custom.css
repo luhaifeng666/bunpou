@@ -21,6 +21,8 @@ u {
 }
 
 .VPHome {
+  margin-bottom: 0 !important;
+  height: 100vh;
   background: var(--bunpou-hero-gradient);
 }
 

@@ -25,29 +25,6 @@
     </div>
 
     <div class="shell-grid">
-      <article class="shell-panel">
-        <div class="shell-panel-head">
-          <h3>开始学习</h3>
-          <a href="/docs/">打开目录</a>
-        </div>
-        <div class="shell-link-list">
-          <a v-for="item in quickLinks" :key="item.link" :href="item.link">
-            <strong>{{ item.title }}</strong>
-            <span>{{ item.copy }}</span>
-          </a>
-        </div>
-      </article>
-
-      <article class="shell-panel">
-        <div class="shell-panel-head">
-          <h3>专题入口</h3>
-          <span>用于回查与专项学习</span>
-        </div>
-        <div class="shell-chip-grid">
-          <a v-for="item in topicLinks" :key="item.link" :href="item.link">{{ item.title }}</a>
-        </div>
-      </article>
-
       <article class="shell-panel shell-panel-wide">
         <div class="shell-panel-head">
           <h3>课程推进</h3>
