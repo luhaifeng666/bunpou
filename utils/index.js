@@ -75,23 +75,11 @@ const SIDEBAR_CONFIG = {
 			{ text: "术语", path: "term" },
 			{
 				text: "语法", path: "bunpou", leaves: [
-					{ path: 'course1', text: '第 1 課' },
-					{ path: 'course2', text: '第 2 課' },
-					{ path: 'course3', text: '第 3 課' },
-					{ path: 'course4', text: '第 4 課' },
-					{ path: 'course5', text: '第 5 課' },
-					{ path: 'course6', text: '第 6 課' },
-					{ path: 'course7', text: '第 7 課' },
-					{ path: 'course8', text: '第 8 課' },
-					{ path: 'course9', text: '第 9 課' },
-					{ path: 'course10', text: '第 10 課' },
-					{ path: 'course11', text: '第 11 課' },
-					{ path: 'course12', text: '第 12 課' },
-					{ path: 'course13', text: '第 13 課' },
-					{ path: 'course14', text: '第 14 課' },
-					{ path: 'course15', text: '第 15 課' },
-					{ path: 'course16', text: '第 16 課' },
-					{ path: 'course17', text: '第 17 課' },
+					{ path: 'N1', text: 'N1' },
+					{ path: 'N2', text: 'N2' },
+					{ path: 'N3', text: 'N3' },
+					{ path: 'N4', text: 'N4' },
+					{ path: 'N5', text: 'N5' },
 				]
 			},
 		]

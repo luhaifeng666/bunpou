@@ -1,22 +1,29 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "npm run docs:build:nobase",
-    "beforeDevCommand": "npm run docs:dev",
+    "beforeBuildCommand": "pnpm docs:build:nobase",
+    "beforeDevCommand": "pnpm docs:dev",
     "devPath": "http://localhost:5173",
     "distDir": "../.vitepress/dist"
   },
   "package": {
-    "productName": "bunpou",
+    "productName": "Bunpou",
     "version": "1.2.1"
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "all": false,
+      "shell": {
+        "all": false,
+        "execute": false,
+        "open": true,
+        "scope": [],
+        "sidecar": false
+      }
     },
     "bundle": {
       "active": true,
-      "category": "DeveloperTool",
+      "category": "Education",
       "copyright": "",
       "deb": {
         "depends": []
@@ -29,8 +36,8 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "io.github.luhaifeng666",
-      "longDescription": "",
+      "identifier": "cn.bunpou.desktop",
+      "longDescription": "Bunpou 是一个面向日语学习者的桌面语法学习应用，提供课程化浏览、快速索引与离线例句音频。",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
@@ -39,7 +46,7 @@
         "signingIdentity": null
       },
       "resources": [],
-      "shortDescription": "",
+      "shortDescription": "离线可用的日语语法学习与查阅应用",
       "targets": "all",
       "windows": {
         "certificateThumbprint": null,
@@ -55,11 +62,14 @@
     },
     "windows": [
       {
+        "center": true,
         "fullscreen": false,
-        "height": 600,
+        "height": 820,
+        "minHeight": 720,
+        "minWidth": 1120,
         "resizable": true,
-        "title": "日语语法文档",
-        "width": 800
+        "title": "Bunpou · 日语语法学习",
+        "width": 1280
       }
     ]
   }

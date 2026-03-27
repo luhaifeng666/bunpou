@@ -4,29 +4,36 @@ layout: home
 
 hero:
   name: "Bunpou"
-  text: "文法"
-  tagline: 日语语法收录
+  text: "日语语法学习"
+  tagline: 离线可读、离线可听、按课程与语法点快速进入，桌面和移动浏览器都可使用。
   image:
     src: imgs/BP.svg
     alt: Bunpou
   actions:
     - theme: brand
-      text: 语法文档
+      text: 开始学习
       link: /docs/
     - theme: alt
-      text: 假名&单词练习
-      link: https://luhaifeng666.github.io/kana-playground/
+      text: 快查目录
+      link: /docs/
+    - theme: alt
+      text: GitHub
+      link: https://github.com/luhaifeng666/bunpou
 features:
-  - icon: 🈂
-    title: こそあど
-    details: 收录こそあど系列语法以及相应用法。
-  - icon: 😵‍💫
-    title: 助词・动词・形容词
-    details: 收录日语中令人头秃的各种助词的用法， 以及动词/形容词的变形等。
-  - icon: 📝
-    title: 文法
-    details: 收录日语中常见的语法以及相应的用法。
-  - icon: ⚒️
-    title: 共建
-    details: 该文档收录常用的日语语法， 旨在帮助所有喜爱或者正在学习日语的小伙伴。点击文档例句后的小喇叭，可以听到例句的语音哦~文档或语音若有错漏， 欢迎大佬们补充指正！也可以点击页面右上角的小红书链接联系我~
+  - icon: 📚
+    title: N5~N1
+    details: 从 N5 到 N1 由浅入深学习，适合持续推进。
+  - icon: 🧭
+    title: 快速查阅
+    details: 助词、术语、こそあど、动词和形容词入口独立可达，适合回查。
+  - icon: 🔊
+    title: 人声音频
+    details: 张不开嘴？那就从听开始吧~
+  - icon: 📱
+    title: 多端可用
+    details: 桌面端，移动端，PC端，未来还有App，填补你的碎片时间~
 ---
+
+<!-- markdownlint-disable MD033 -->
+<!-- <AppShellHome /> -->
+<!-- markdownlint-enable MD033 -->

@@ -12,6 +12,9 @@
     "docs:build:nobase": "DOMAIN=bunpou.cn vitepress build",
     "docs:preview": "vitepress preview",
     "docs:menu": "node utils/generateMenu.js",
+    "build:app": "tauri build",
+    "release:desktop": "pnpm build:app",
+    "release:smoke": "node utils/verifyRelease.js",
     "build": "tauri build",
     "generate:voice": "node utils/generateVoice.js --cover",
     "generate:voice:filter": "node utils/generateVoice.js --cover --filter",
@@ -41,6 +44,7 @@
     }
   },
   "dependencies": {
+    "@tauri-apps/api": "^1.4.0",
     "axios": "^1.7.9",
     "marked": "^15.0.7",
     "mdast-util-from-markdown": "^2.0.0",

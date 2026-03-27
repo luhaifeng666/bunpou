@@ -11,7 +11,7 @@
       center
     />
   </div>
-  <div class="busuanzi">
+  <div v-if="visitorsVisible" class="busuanzi">
     <span id="busuanzi_container_site_pv">
       总访问量
       <strong id="busuanzi_value_site_pv" class="busuanzi_value"
@@ -31,86 +31,113 @@
 </template>
 
 <script setup>
-import { onMounted, ref, toRef, watch } from "vue";
-import { useData } from "vitepress";
+  import { onMounted, ref, toRef, watch } from 'vue';
+  import { useData } from 'vitepress';
+  import { getRuntimeKind, isEntryVisible } from '../runtime';
 
-const loading = ref(true);
-const page = toRef(useData(), "page");
+  const loading = ref(true);
+  const page = toRef(useData(), 'page');
+  const isClient = typeof document !== 'undefined';
+  const runtime = getRuntimeKind();
+  const visitorsVisible = isEntryVisible('visitors-entry', runtime);
 
-const loadData = () => {
-  const script = document.createElement("script");
-  script.src =
-    // "https://webviso.yestool.org/js/index.min.js"
-    // "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
-    "https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js";
-  script.async = true;
-  script.onload = () => {
-    setTimeout(() => {
-      loading.value = false;
-    }, 1000);
+  const loadData = () => {
+    if (!isClient || !visitorsVisible) {
+      return;
+    }
+    const script = document.createElement('script');
+    script.src =
+      // "https://webviso.yestool.org/js/index.min.js"
+      // "https://busuanzi.icodeq.com/busuanzi.pure.mini.js";
+      'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    script.async = true;
+    script.onload = () => {
+      setTimeout(() => {
+        loading.value = false;
+      }, 1000);
+    };
+    document.body.appendChild(script);
   };
-  document.body.appendChild(script);
-};
 
-onMounted(() => {
-  loadData();
-});
+  onMounted(() => {
+    loadData();
+  });
 
-watch(page, () => {
-  loadData();
-});
+  watch(page, () => {
+    loadData();
+  });
 </script>
 
 <style>
-.busuanzi {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 14px;
-}
-.busuanzi .busuanzi_value {
-  color: rgb(52, 81, 178);
-}
-.division {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin: 0 10px;
-  background: url(../../../public/imgs/BP.svg) no-repeat center / cover;
-}
-.loading {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background: url(../../../public/imgs/loading.png) no-repeat center / contain;
-  animation: loading 1s linear infinite;
-}
+  .busuanzi {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-align: center;
 
-.bunpou-start {
-  margin: 30px 0;
-}
-
-.bunpou-homepage-ad {
-  text-align: center;
-}
-
-.bunpou-homepage-ad > img {
-  display: block;
-  width: 200px;
-  margin: 20px auto;
-  border-radius: 12px;
-}
-
-.bunpou-homepage-ad > p {
-  margin: 0 40px;
-}
-
-@keyframes loading {
-  0% {
-    transform: rotate(0deg);
+    gap: 8px;
   }
-  100% {
-    transform: rotate(360deg);
+  .busuanzi .busuanzi_value {
+    color: rgb(52, 81, 178);
   }
-}
+  .division {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin: 0 10px;
+    background: url(../../../public/imgs/BP.svg) no-repeat center / cover;
+  }
+  .loading {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(../../../public/imgs/loading.png) no-repeat center / contain;
+    animation: loading 1s linear infinite;
+  }
+
+  .bunpou-start {
+    margin: 30px 0;
+  }
+
+  @media (max-width: 640px) {
+    .busuanzi {
+      flex-direction: column;
+
+      gap: 6px;
+    }
+
+    .division {
+      display: none;
+    }
+
+    .bunpou-start {
+      margin: 20px 0;
+    }
+  }
+
+  .bunpou-homepage-ad {
+    text-align: center;
+  }
+
+  .bunpou-homepage-ad > img {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    border-radius: 12px;
+  }
+
+  .bunpou-homepage-ad > p {
+    margin: 0 40px;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
