@@ -112,7 +112,8 @@ watch(page, () => {
 
 // reactive
 const dsVisible = computed(
-  () => !isDesktopApp && page.value?.filePath.includes("course") && hasBalance.value
+  // () => !isDesktopApp && page.value?.filePath.includes("N") && hasBalance.value
+  () => false // 暂时关闭DS入口
 );
 const grammer = computed(() => title.value.replace(/\s\|\sBunpou/g, ""));
 const dialogTitle = computed(
