@@ -20,16 +20,6 @@ u {
   --bunpou-shadow: 0 24px 60px rgba(2, 6, 23, 0.35);
 }
 
-.VPHome {
-  margin-bottom: 0 !important;
-  height: 100vh;
-  background: var(--bunpou-hero-gradient);
-}
-
-.VPHome .VPHero {
-  padding-top: 56px;
-}
-
 .VPHome .VPFeatures {
   padding-bottom: 16px;
 }

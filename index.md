@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Bunpou"
   text: "日语语法学习"
-  tagline: 离线可读、离线可听、按课程与语法点快速进入，桌面和移动浏览器都可使用。
+  tagline: 收录N5~N1日语语法
   image:
     src: imgs/BP.svg
     alt: Bunpou
