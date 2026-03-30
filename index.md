@@ -3,8 +3,8 @@
 layout: home
 
 hero:
-  name: "Bunpou"
-  text: "日语语法学习"
+  name: 'Bunpou'
+  text: '日语语法学习'
   tagline: 收录N5~N1日语语法
   image:
     src: imgs/BP.svg
@@ -33,7 +33,3 @@ features:
     title: 多端可用
     details: 桌面端，移动端，PC端，未来还有App，填补你的碎片时间~
 ---
-
-<!-- markdownlint-disable MD033 -->
-<!-- <AppShellHome /> -->
-<!-- markdownlint-enable MD033 -->

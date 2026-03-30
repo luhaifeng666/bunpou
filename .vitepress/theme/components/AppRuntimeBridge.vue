@@ -54,6 +54,68 @@
     window.open(href, '_blank', 'noopener,noreferrer');
   };
 
+  const getGrammarMenuToggle = () => {
+    const sidebarItems = Array.from(
+      document.querySelectorAll('.VPSidebarItem'),
+    );
+    for (const sidebarItem of sidebarItems) {
+      if (!sidebarItem.textContent?.includes('语法')) {
+        continue;
+      }
+      const button = sidebarItem.querySelector('button[aria-expanded]');
+      if (button instanceof HTMLButtonElement) {
+        return button;
+      }
+    }
+
+    const fallbackButtons = Array.from(
+      document.querySelectorAll('button[aria-expanded]'),
+    );
+    return (
+      fallbackButtons.find(
+        (button) =>
+          button instanceof HTMLButtonElement &&
+          button.textContent?.includes('语法'),
+      ) || null
+    );
+  };
+
+  const expandGrammarMenuIfRequested = () => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('expand') !== 'grammar') {
+      return;
+    }
+
+    let attemptCount = 0;
+    const maxAttempts = 12;
+    const timer = window.setInterval(() => {
+      attemptCount += 1;
+      const grammarToggle = getGrammarMenuToggle();
+      if (!(grammarToggle instanceof HTMLButtonElement)) {
+        if (attemptCount >= maxAttempts) {
+          window.clearInterval(timer);
+        }
+        return;
+      }
+
+      if (grammarToggle.getAttribute('aria-expanded') === 'false') {
+        grammarToggle.click();
+      }
+
+      params.delete('expand');
+      const query = params.toString();
+      const cleanUrl = `${window.location.pathname}${query ? `?${query}` : ''}${
+        window.location.hash
+      }`;
+      window.history.replaceState(null, '', cleanUrl);
+      window.clearInterval(timer);
+    }, 100);
+  };
+
   const handleDocumentClick = async (event: MouseEvent) => {
     if (!isDesktopApp || !isPlainLeftClick(event) || handledEvents.has(event)) {
       return;
@@ -87,6 +149,8 @@
   };
 
   onMounted(() => {
+    expandGrammarMenuIfRequested();
+
     if (!isDesktopApp) {
       return;
     }
