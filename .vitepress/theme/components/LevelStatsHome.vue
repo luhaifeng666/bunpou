@@ -4,18 +4,19 @@
       <div class="level-stats-card">
         <h3>N5~N1语法收录数</h3>
         <div class="level-stats-grid">
-          <article
+          <a
             v-for="item in levelCounts"
             :key="item.level"
-            class="level-card"
+            class="level-card level-link"
+            :href="item.link"
           >
             <strong>{{ item.count }}<em class="unit">个</em></strong>
             <span>{{ item.level }}</span>
-          </article>
-          <article class="level-card total-card">
+          </a>
+          <a class="level-card total-card level-link" :href="totalLink">
             <strong>{{ totalCount }}<em class="unit">个</em></strong>
             <span>总计</span>
-          </article>
+          </a>
         </div>
       </div>
     </div>
@@ -26,9 +27,18 @@
   import { computed } from 'vue';
   import { useData } from 'vitepress';
 
-  const { theme } = useData();
+  const { theme, site } = useData();
 
-  const levelCounts = computed(() => {
+  type LevelCount = {
+    level: string;
+    count: number;
+    link: string;
+  };
+
+  const withBase = (link: string) =>
+    `${site.value.base}${link.replace(/^\//, '')}`;
+
+  const levelCounts = computed<LevelCount[]>(() => {
     const rootItems = theme.value?.sidebar?.['docs/']?.items?.[0]?.items || [];
     const grammarEntry = rootItems.find(
       (item: { text?: string }) => item?.text === '语法',
@@ -37,15 +47,23 @@
 
     return levels
       .filter((item: { text?: string }) => /^N[1-5]$/.test(item?.text || ''))
-      .map((item: { text: string; items?: Array<unknown> }) => ({
+      .map((item: { text: string; items?: Array<{ link?: string }> }) => ({
         level: item.text,
         count: item.items?.length || 0,
+        link: withBase((item.items?.[0]?.link || '/docs/').replace('.md', '')),
       }))
-      .sort((left, right) => left.level.localeCompare(right.level));
+      .sort((left: LevelCount, right: LevelCount) =>
+        left.level.localeCompare(right.level),
+      );
   });
 
+  const totalLink = computed(() => withBase('/docs/?expand=grammar'));
+
   const totalCount = computed(() =>
-    levelCounts.value.reduce((sum, item) => sum + item.count, 0),
+    levelCounts.value.reduce(
+      (sum: number, item: LevelCount) => sum + item.count,
+      0,
+    ),
   );
 </script>
 
@@ -55,14 +73,13 @@
   }
 
   .level-stats-container {
-    box-sizing: border-box;
-    width: 100%;
     max-width: 1184px;
     padding: 0 24px;
     margin: 0 auto;
   }
 
   .level-stats-card {
+    width: 100%;
     padding: 20px;
     background: var(--bunpou-panel-bg);
     border: 1px solid var(--bunpou-panel-border);
@@ -89,6 +106,11 @@
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(15, 23, 42, 0.1);
     border-radius: 14px;
+  }
+
+  .level-link {
+    color: inherit;
+    text-decoration: none;
   }
 
   .dark .level-card {
@@ -124,6 +146,10 @@
   }
 
   @media (max-width: 768px) {
+    .level-stats-container {
+      padding: 0 16px;
+    }
+
     .level-stats-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
