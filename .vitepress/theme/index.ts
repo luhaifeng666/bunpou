@@ -18,10 +18,7 @@ export default {
       h(DefaultTheme.Layout, null, {
         'doc-after': () => h(GiscusComment),
         'home-features-after': () =>
-          h(Fragment, [
-            h(LevelStatsHome),
-            h(Visitors),
-          ]),
+          h(Fragment, [h(LevelStatsHome), h(Visitors)]),
         'aside-bottom': () => h(Ad),
       }),
     ]);

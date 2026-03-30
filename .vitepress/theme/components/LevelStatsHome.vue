@@ -4,7 +4,11 @@
       <div class="level-stats-card">
         <h3>N5~N1语法收录数</h3>
         <div class="level-stats-grid">
-          <article v-for="item in levelCounts" :key="item.level" class="level-card">
+          <article
+            v-for="item in levelCounts"
+            :key="item.level"
+            class="level-card"
+          >
             <strong>{{ item.count }}<em class="unit">个</em></strong>
             <span>{{ item.level }}</span>
           </article>
@@ -54,8 +58,8 @@
     box-sizing: border-box;
     width: 100%;
     max-width: 1184px;
-    margin: 0 auto;
     padding: 0 24px;
+    margin: 0 auto;
   }
 
   .level-stats-card {
@@ -95,17 +99,18 @@
   .level-card strong {
     display: inline-flex;
     align-items: baseline;
-    gap: 2px;
     font-size: 24px;
     line-height: 1;
+
+    gap: 2px;
   }
 
   .level-card .unit {
     align-self: flex-end;
-    font-style: normal;
-    font-size: 12px;
-    line-height: 1;
     color: var(--vp-c-text-2);
+    font-size: 12px;
+    font-style: normal;
+    line-height: 1;
   }
 
   .level-card span {
