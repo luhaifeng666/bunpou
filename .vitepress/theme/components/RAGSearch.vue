@@ -1,131 +1,133 @@
 <template>
-  <div :class="['bunpou-rag', { unflod: ragVisible }]">
-    <!-- 悬浮按钮 -->
-    <div v-if="!ragVisible" class="bunpou-rag-btn" @click="toggleFlod">
-      <img src="../../../public/imgs/rag.svg" />
-      <span>日语助手</span>
-    </div>
-
-    <!-- 对话窗口 -->
-    <template v-else>
-      <div class="bunpou-rag-header">
-        <span class="bunpou-rag-title">📚 日语语法助手</span>
-        <img
-          class="bunpou-rag-close"
-          src="../../../public/imgs/close.svg"
-          @click="toggleFlod"
-        />
+  <Teleport to="body">
+    <div :class="['bunpou-rag', { unflod: ragVisible }]">
+      <!-- 悬浮按钮 -->
+      <div v-if="!ragVisible" class="bunpou-rag-btn" @click="toggleFlod">
+        <img src="../../../public/imgs/rag.svg" />
+        <span>日语助手</span>
       </div>
 
-      <div class="bunpou-rag-hint">
-        用自然语言问我日语语法问题，我会从语法库中为你解答
-      </div>
-
-      <!-- 对话列表 -->
-      <div ref="dialog" class="bunpou-rag-dialog">
-        <!-- 欢迎消息 -->
-        <div v-if="messages.length === 0" class="bunpou-rag-welcome">
-          <p>你好！我是日语语法助手，你可以问我：</p>
-          <div class="bunpou-rag-suggestions">
-            <div
-              class="suggestion-item"
-              @click="askSuggestion('怎样表达持续变化？')"
-            >
-              怎样表达持续变化？
-            </div>
-            <div
-              class="suggestion-item"
-              @click="askSuggestion('授受动词有什么区别？')"
-            >
-              授受动词有什么区别？
-            </div>
-            <div
-              class="suggestion-item"
-              @click="askSuggestion('表示原因的语法有哪些？')"
-            >
-              表示原因的语法有哪些？
-            </div>
-            <div
-              class="suggestion-item"
-              @click="askSuggestion('假定形怎么接续？')"
-            >
-              假定形怎么接续？
-            </div>
-          </div>
+      <!-- 对话窗口 -->
+      <template v-else>
+        <div class="bunpou-rag-header">
+          <span class="bunpou-rag-title">📚 日语语法助手</span>
+          <img
+            class="bunpou-rag-close"
+            src="../../../public/imgs/close.svg"
+            @click="toggleFlod"
+          />
         </div>
 
-        <!-- 消息列表 -->
-        <div
-          v-for="(item, index) in messages"
-          :key="index"
-          :class="[
-            'bunpou-rag-clear',
-            {
-              'bunpou-rag-question': item.role === 'user',
-              'bunpou-rag-answer': item.role === 'assistant',
-              'bunpou-rag-error': item.role === 'error',
-            },
-          ]"
-        >
-          <div v-if="item.role === 'user'" class="message-question">
-            {{ item.content }}
-          </div>
-          <template v-else-if="item.role === 'assistant'">
-            <div class="message-answer" v-html="item.content"></div>
-            <div
-              v-if="item.sources && item.sources.length > 0"
-              class="message-sources"
-            >
-              <div class="sources-title">📖 参考文档</div>
+        <div class="bunpou-rag-hint">
+          用自然语言问我日语语法问题，我会从语法库中为你解答
+        </div>
+
+        <!-- 对话列表 -->
+        <div ref="dialog" class="bunpou-rag-dialog">
+          <!-- 欢迎消息 -->
+          <div v-if="messages.length === 0" class="bunpou-rag-welcome">
+            <p>你好！我是日语语法助手，你可以问我：</p>
+            <div class="bunpou-rag-suggestions">
               <div
-                v-for="source in item.sources"
-                :key="source.id"
-                class="source-item"
-                @click="openSource(source)"
+                class="suggestion-item"
+                @click="askSuggestion('怎样表达持续变化？')"
               >
-                <span class="source-level" :class="`level-${source.level}`">
-                  {{ source.level }}
-                </span>
-                <span class="source-title">{{ source.title }}</span>
+                怎样表达持续变化？
+              </div>
+              <div
+                class="suggestion-item"
+                @click="askSuggestion('授受动词有什么区别？')"
+              >
+                授受动词有什么区别？
+              </div>
+              <div
+                class="suggestion-item"
+                @click="askSuggestion('表示原因的语法有哪些？')"
+              >
+                表示原因的语法有哪些？
+              </div>
+              <div
+                class="suggestion-item"
+                @click="askSuggestion('假定形怎么接续？')"
+              >
+                假定形怎么接续？
               </div>
             </div>
-          </template>
-          <div v-else-if="item.role === 'error'" class="message-error">
-            {{ item.content }}
           </div>
-          <div v-else-if="item.role === 'loading'" class="message-loading">
-            <span class="loading-dot"></span>
-            <span class="loading-dot"></span>
-            <span class="loading-dot"></span>
+
+          <!-- 消息列表 -->
+          <div
+            v-for="(item, index) in messages"
+            :key="index"
+            :class="[
+              'bunpou-rag-clear',
+              {
+                'bunpou-rag-question': item.role === 'user',
+                'bunpou-rag-answer': item.role === 'assistant',
+                'bunpou-rag-error': item.role === 'error',
+              },
+            ]"
+          >
+            <div v-if="item.role === 'user'" class="message-question">
+              {{ item.content }}
+            </div>
+            <template v-else-if="item.role === 'assistant'">
+              <div class="message-answer" v-html="item.content"></div>
+              <div
+                v-if="item.sources && item.sources.length > 0"
+                class="message-sources"
+              >
+                <div class="sources-title">📖 参考文档</div>
+                <div
+                  v-for="source in item.sources"
+                  :key="source.id"
+                  class="source-item"
+                  @click="openSource(source)"
+                >
+                  <span class="source-level" :class="`level-${source.level}`">
+                    {{ source.level }}
+                  </span>
+                  <span class="source-title">{{ source.title }}</span>
+                </div>
+              </div>
+            </template>
+            <div v-else-if="item.role === 'error'" class="message-error">
+              {{ item.content }}
+            </div>
+            <div v-else-if="item.role === 'loading'" class="message-loading">
+              <span class="loading-dot"></span>
+              <span class="loading-dot"></span>
+              <span class="loading-dot"></span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- 输入区域 -->
-      <div class="bunpou-rag-footer">
-        <input
-          :disabled="loading"
-          ref="input"
-          type="text"
-          v-model="inputMessage"
-          placeholder="问我任何日语语法问题..."
-          enterkeyhint="send"
-          autocomplete="off"
-          @keydown.enter.prevent="sendMessage"
-        />
-        <img
-          :class="{ disabled: !inputMessage || loading }"
-          src="../../../public/imgs/enter.svg"
-          @click="sendMessage"
-        />
-        <img
-          v-if="loading"
-          src="../../../public/imgs/stop.svg"
-          @click="stopGenerate"
-        />
-      </div>
-    </template>
-  </div>
+        <!-- 输入区域 -->
+        <div class="bunpou-rag-footer">
+          <input
+            :disabled="loading"
+            ref="input"
+            type="text"
+            v-model="inputMessage"
+            placeholder="问我任何日语语法问题..."
+            enterkeyhint="send"
+            autocomplete="off"
+            @keydown.enter.prevent="sendMessage"
+          />
+          <img
+            :class="{ disabled: !inputMessage || loading }"
+            src="../../../public/imgs/enter.svg"
+            @click="sendMessage"
+          />
+          <img
+            v-if="loading"
+            src="../../../public/imgs/stop.svg"
+            @click="stopGenerate"
+          />
+        </div>
+      </template>
+    </div>
+  </Teleport>
 </template>
 
 <script setup>
