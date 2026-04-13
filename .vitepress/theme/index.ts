@@ -7,6 +7,7 @@ import Visitors from './components/Visitors.vue';
 import GiscusComment from './components/GiscusComment.vue';
 import Ad from './components/Ad.vue';
 import LevelStatsHome from './components/LevelStatsHome.vue';
+import RAGSearch from './components/RAGSearch.vue';
 import { Fragment, h } from 'vue';
 import './custom.css';
 
@@ -21,6 +22,7 @@ export default {
           h(Fragment, [h(LevelStatsHome), h(Visitors)]),
         'aside-bottom': () => h(Ad),
       }),
+      h(RAGSearch), // RAG 对话框，fixed 定位
     ]);
   },
   enhanceApp(ctx) {
@@ -28,5 +30,6 @@ export default {
     ctx.app.component('Catalog', Catalog);
     ctx.app.component('AppShellHome', AppShellHome);
     ctx.app.component('LevelStatsHome', LevelStatsHome);
+    ctx.app.component('RAGSearch', RAGSearch);
   },
 };
