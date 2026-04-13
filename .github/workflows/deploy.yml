@@ -52,15 +52,17 @@ jobs:
         with:
           path: .vitepress/dist
       - name: Run Node script via SSH
-        uses: appleboy/ssh-action@master  # 使用 ssh-action 插件
+        uses: appleboy/ssh-action@master # 使用 ssh-action 插件
         with:
-          host: ${{ secrets.SERVER_IP }}      # 远程服务器地址
-          username: ${{ secrets.SSH_USER }}  # SSH 用户名
-          key: ${{ secrets.SSH_PRIVATE_KEY }}   # SSH 私钥
+          host: ${{ secrets.SERVER_IP }} # 远程服务器地址
+          username: ${{ secrets.SSH_USER }} # SSH 用户名
+          key: ${{ secrets.SSH_PRIVATE_KEY }} # SSH 私钥
           script: |
             source ~/.bashrc
             cd /www/wwwroot/default  # 跳转到指定目录
             node build.js            # 执行 Node.js 脚本
+            cd /www/wwwroot/bunpouService/rag # 跳转到 RAG 目录
+            python3.11 build_index.py  # 执行 Python 脚本, 更新向量数据库
       # - name: Install SSH key
       #   uses: webfactory/ssh-agent@v0.7.0
       #   with:
