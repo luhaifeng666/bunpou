@@ -131,143 +131,147 @@
 </template>
 
 <script setup>
-  import { ref, watch, nextTick } from 'vue';
-  import { useData, useRouter } from 'vitepress';
+    import { ref, watch, nextTick } from 'vue';
+    import { useData, useRouter } from 'vitepress';
 
-  const { page } = useData();
-  const router = useRouter();
+    const { page } = useData();
+    const router = useRouter();
 
-  const ragVisible = ref(false);
-  const inputMessage = ref('');
-  const input = ref(null);
-  const dialog = ref(null);
-  const loading = ref(false);
-  const messages = ref([]);
-  let controller = new AbortController();
+    const ragVisible = ref(false);
+    const inputMessage = ref('');
+    const input = ref(null);
+    const dialog = ref(null);
+    const loading = ref(false);
+    const messages = ref([]);
+    let controller = new AbortController();
 
-  // 切换显示/隐藏
-  const toggleFlod = () => {
-    if (ragVisible.value) {
-      stopGenerate();
-    }
-    ragVisible.value = !ragVisible.value;
-  };
-
-  // 发送消息
-  const sendMessage = async () => {
-    if (!inputMessage.value.trim() || loading.value) return;
-
-    const question = inputMessage.value.trim();
-    messages.value.push({
-      role: 'user',
-      content: question,
-    });
-    inputMessage.value = '';
-    input.value?.blur();
-
-    await nextTick();
-    scrollToBottom();
-
-    await handleResponse(question);
-  };
-
-  // 处理 RAG 响应
-  const handleResponse = async (question) => {
-    try {
-      loading.value = true;
-      messages.value.push({
-        role: 'loading',
-        content: '',
-      });
-      await nextTick();
-      scrollToBottom();
-
-      const response = await fetch('https://www.bunpou.cn/api/rag-query', {
-        method: 'POST',
-        signal: controller.signal,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question }),
-      });
-
-      if (!response.ok) {
-        throw new Error('请求失败');
+    // 切换显示/隐藏
+    const toggleFlod = () => {
+      if (ragVisible.value) {
+        stopGenerate();
       }
+      ragVisible.value = !ragVisible.value;
+    };
 
-      const result = await response.json();
+    // 发送消息
+    const sendMessage = async () => {
+      if (!inputMessage.value.trim() || loading.value) return;
 
-      // 替换 loading 消息
-      messages.value[messages.value.length - 1] = {
-        role: 'assistant',
-        content: formatAnswer(result.answer),
-        sources: result.sources || [],
-      };
+      const question = inputMessage.value.trim();
+      messages.value.push({
+        role: 'user',
+        content: question,
+      });
+      inputMessage.value = '';
+      input.value?.blur();
 
       await nextTick();
       scrollToBottom();
-    } catch (error) {
-      const { code, message } = error || {};
-      messages.value[messages.value.length - 1] = {
-        role: 'error',
-        content:
-          code === 'ERR_CANCELED'
-            ? '已取消生成'
-            : '抱歉，遇到了点问题，请稍后重试',
-      };
-    } finally {
+
+      await handleResponse(question);
+    };
+
+    // 处理 RAG 响应
+    const handleResponse = async (question) => {
+      try {
+        loading.value = true;
+        messages.value.push({
+          role: 'loading',
+          content: '',
+        });
+        await nextTick();
+        scrollToBottom();
+
+        const response = await fetch('https://www.bunpou.cn/api/rag-query', {
+          method: 'POST',
+          signal: controller.signal,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ question }),
+        });
+
+        if (!response.ok) {
+          throw new Error('请求失败');
+        }
+
+        const result = await response.json();
+
+        // 替换 loading 消息
+        messages.value[messages.value.length - 1] = {
+          role: 'assistant',
+          content: formatAnswer(result.answer),
+          sources: result.sources || [],
+        };
+
+        await nextTick();
+        scrollToBottom();
+      } catch (error) {
+        const { code, message } = error || {};
+        messages.value[messages.value.length - 1] = {
+          role: 'error',
+          content:
+            code === 'ERR_CANCELED'
+              ? '已取消生成'
+              : '抱歉，遇到了点问题，请稍后重试',
+        };
+      } finally {
+        loading.value = false;
+        controller = new AbortController();
+      }
+    };
+
+    // 格式化回答
+    const formatAnswer = (text) => {
+      if (!text) return '';
+      // 简单的 Markdown 转换
+      return text
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n/g, '<br>')
+        .replace(/^/, '<p>')
+        .replace(/$/, '</p>');
+    };
+
+    // 滚动到底部
+    const scrollToBottom = () => {
+      nextTick(() => {
+        if (dialog.value) {
+          dialog.value.scrollTop = dialog.value.scrollHeight;
+        }
+      });
+    };
+
+    // 停止生成
+    const stopGenerate = () => {
+      controller.abort({ message: 'canceled', code: 'ERR_CANCELED' });
       loading.value = false;
       controller = new AbortController();
-    }
-  };
+    };
 
-  // 格式化回答
-  const formatAnswer = (text) => {
-    if (!text) return '';
-    // 简单的 Markdown 转换
-    return text
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>')
-      .replace(/\n\n/g, '</p><p>')
-      .replace(/\n/g, '<br>')
-      .replace(/^/, '<p>')
-      .replace(/$/, '</p>');
-  };
-
-  // 滚动到底部
-  const scrollToBottom = () => {
-    nextTick(() => {
-      if (dialog.value) {
-        dialog.value.scrollTop = dialog.value.scrollHeight;
+    // 快捷问题
+    const askSuggestion = (question) => {
+      if (!loading.value) {
+        inputMessage.value = question;
+        sendMessage();
       }
+    };
+
+    // 打开参考文档
+    const openSource = (source) => {
+      let prePath = '/bunpou'
+      if (source?.id?.includes('auxiliary/') || source?.id?.includes('term/') || !source?.id?.includes('/')) {
+        prePath = '/'
+      }
+      const path = `/docs${prePath}/${source.id}`;
+      router.go(path);
+    };
+
+    // 监听页面变化，清空对话
+    watch(page, () => {
+      // 不自动清空，保持对话上下文
     });
-  };
-
-  // 停止生成
-  const stopGenerate = () => {
-    controller.abort({ message: 'canceled', code: 'ERR_CANCELED' });
-    loading.value = false;
-    controller = new AbortController();
-  };
-
-  // 快捷问题
-  const askSuggestion = (question) => {
-    if (!loading.value) {
-      inputMessage.value = question;
-      sendMessage();
-    }
-  };
-
-  // 打开参考文档
-  const openSource = (source) => {
-    const path = `/docs/bunpou/${source.id}`;
-    router.go(path);
-  };
-
-  // 监听页面变化，清空对话
-  watch(page, () => {
-    // 不自动清空，保持对话上下文
-  });
 </script>
 
 <style scoped>
