@@ -72,7 +72,10 @@
               {{ item.content }}
             </div>
             <template v-else-if="item.role === 'assistant'">
-              <div class="message-answer" v-html="item.content"></div>
+              <div
+                class="message-answer"
+                v-html="marked.parse(item.content)"
+              ></div>
               <div
                 v-if="item.sources && item.sources.length > 0"
                 class="message-sources"
@@ -131,6 +134,7 @@
 </template>
 
 <script setup>
+  import { marked } from 'marked';
   import { ref, watch, nextTick } from 'vue';
   import { useData, useRouter } from 'vitepress';
 
