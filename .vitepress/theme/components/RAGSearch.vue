@@ -1,6 +1,22 @@
 <template>
   <Teleport to="body">
-    <div :class="['bunpou-rag', { unflod: ragVisible }]">
+    <div
+      v-if="ragVisible && isFullscreen && !isMobile"
+      class="bunpou-rag-overlay"
+      @click="exitFullscreen"
+    ></div>
+
+    <div
+      :class="[
+        'bunpou-rag',
+        {
+          unflod: ragVisible,
+          fullscreen: ragVisible && isFullscreen,
+          mobile: isMobile,
+        },
+      ]"
+      @click.stop
+    >
       <!-- 悬浮按钮 -->
       <div v-if="!ragVisible" class="bunpou-rag-btn" @click="toggleFlod">
         <img src="../../../public/imgs/rag.svg" />
@@ -11,11 +27,18 @@
       <template v-else>
         <div class="bunpou-rag-header">
           <span class="bunpou-rag-title">📚 Bunpou小助手</span>
-          <img
-            class="bunpou-rag-close"
-            src="../../../public/imgs/close.svg"
-            @click="toggleFlod"
-          />
+          <div class="bunpou-rag-actions">
+            <button class="bunpou-rag-resize" @click="toggleFullscreen">
+              {{
+                isFullscreen ? '窗口模式' : isMobile ? '全屏输入' : '放大窗口'
+              }}
+            </button>
+            <img
+              class="bunpou-rag-close"
+              src="../../../public/imgs/close.svg"
+              @click="toggleFlod"
+            />
+          </div>
         </div>
 
         <div class="bunpou-rag-hint">
@@ -132,7 +155,7 @@
 
 <script setup>
   import { marked } from 'marked';
-  import { ref, watch, nextTick } from 'vue';
+  import { ref, watch, nextTick, onMounted, onBeforeUnmount } from 'vue';
   import { useData, useRouter } from 'vitepress';
 
   const { page } = useData();
@@ -144,14 +167,64 @@
   const dialog = ref(null);
   const loading = ref(false);
   const messages = ref([]);
+  const isFullscreen = ref(false);
+  const isMobile = ref(false);
   let controller = new AbortController();
+
+  const updateDeviceType = () => {
+    isMobile.value =
+      window.matchMedia('(max-width: 768px)').matches ||
+      window.matchMedia('(pointer: coarse)').matches;
+  };
 
   // 切换显示/隐藏
   const toggleFlod = () => {
     if (ragVisible.value) {
       stopGenerate();
+      isFullscreen.value = false;
     }
     ragVisible.value = !ragVisible.value;
+  };
+
+  const toggleFullscreen = () => {
+    isFullscreen.value = !isFullscreen.value;
+    if (isFullscreen.value) {
+      nextTick(() => {
+        if (isMobile.value) {
+          focusInputForTyping();
+        } else {
+          input.value?.focus();
+        }
+        scrollToBottom();
+      });
+    }
+  };
+
+  const focusInputForTyping = () => {
+    if (!input.value) return;
+
+    // 移动端键盘弹出存在平台差异，分帧与延迟重复聚焦可提升成功率。
+    input.value.focus({ preventScroll: true });
+    requestAnimationFrame(() => {
+      input.value?.focus({ preventScroll: true });
+      scrollToBottom();
+    });
+    setTimeout(() => {
+      input.value?.focus({ preventScroll: true });
+      scrollToBottom();
+    }, 180);
+  };
+
+  const handleVisualViewportResize = () => {
+    if (ragVisible.value && isMobile.value && isFullscreen.value) {
+      scrollToBottom();
+    }
+  };
+
+  const exitFullscreen = () => {
+    if (!isMobile.value) {
+      isFullscreen.value = false;
+    }
   };
 
   // 发送消息
@@ -270,9 +343,33 @@
   watch(page, () => {
     // 不自动清空，保持对话上下文
   });
+
+  onMounted(() => {
+    updateDeviceType();
+    window.addEventListener('resize', updateDeviceType);
+    window.visualViewport?.addEventListener(
+      'resize',
+      handleVisualViewportResize,
+    );
+  });
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('resize', updateDeviceType);
+    window.visualViewport?.removeEventListener(
+      'resize',
+      handleVisualViewportResize,
+    );
+  });
 </script>
 
 <style scoped>
+  .bunpou-rag-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: transparent;
+  }
+
   .bunpou-rag {
     position: fixed;
     right: 20px;
@@ -321,6 +418,17 @@
     border: 1px solid var(--vp-c-divider);
   }
 
+  .bunpou-rag.unflod.fullscreen:not(.mobile) {
+    left: 50%;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    width: min(960px, calc(100vw - 120px));
+    height: min(780px, calc(100vh - 80px));
+    max-height: none;
+    transform: translate(-50%, -50%);
+  }
+
   /* 头部 */
   .bunpou-rag-header {
     display: flex;
@@ -334,6 +442,27 @@
     font-size: 15px;
     font-weight: 600;
     color: var(--vp-c-text-1);
+  }
+  .bunpou-rag-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .bunpou-rag-resize {
+    border: 1px solid var(--vp-c-divider);
+    background: var(--vp-c-bg-soft);
+    color: var(--vp-c-text-1);
+    border-radius: 999px;
+    font-size: 12px;
+    line-height: 1;
+    padding: 7px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .bunpou-rag-resize:hover {
+    border-color: var(--vp-c-brand-1);
+    color: var(--vp-c-brand-1);
+    background: var(--vp-c-bg-elv);
   }
   .bunpou-rag-close {
     width: 16px;
@@ -582,6 +711,25 @@
       width: calc(100vw - 32px);
       max-width: 400px;
       height: min(540px, calc(100dvh - 100px));
+    }
+    .bunpou-rag.unflod.mobile.fullscreen {
+      right: 0;
+      bottom: 0;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      max-width: none;
+      height: 100dvh;
+      max-height: none;
+      border-radius: 0;
+      transform: none;
+    }
+    .bunpou-rag.unflod.mobile.fullscreen .bunpou-rag-footer {
+      padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    }
+    .bunpou-rag-resize {
+      padding: 6px 9px;
+      font-size: 11px;
     }
   }
 </style>
