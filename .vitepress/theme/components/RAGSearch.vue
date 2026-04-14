@@ -10,7 +10,7 @@
       <!-- 对话窗口 -->
       <template v-else>
         <div class="bunpou-rag-header">
-          <span class="bunpou-rag-title">📚 日语语法助手</span>
+          <span class="bunpou-rag-title">📚 Bunpou小助手</span>
           <img
             class="bunpou-rag-close"
             src="../../../public/imgs/close.svg"
@@ -26,7 +26,7 @@
         <div ref="dialog" class="bunpou-rag-dialog">
           <!-- 欢迎消息 -->
           <div v-if="messages.length === 0" class="bunpou-rag-welcome">
-            <p>你好！我是日语语法助手，你可以问我：</p>
+            <p>你好！我是Bunpou小助手，你可以问我：</p>
             <div class="bunpou-rag-suggestions">
               <div
                 class="suggestion-item"
@@ -72,10 +72,7 @@
               {{ item.content }}
             </div>
             <template v-else-if="item.role === 'assistant'">
-              <div
-                class="message-answer"
-                v-html="marked.parse(item.content)"
-              ></div>
+              <div class="message-answer" v-html="item.content"></div>
               <div
                 v-if="item.sources && item.sources.length > 0"
                 class="message-sources"
@@ -228,14 +225,7 @@
   // 格式化回答
   const formatAnswer = (text) => {
     if (!text) return '';
-    // 简单的 Markdown 转换
-    return text
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.+?)\*/g, '<em>$1</em>')
-      .replace(/\n\n/g, '</p><p>')
-      .replace(/\n/g, '<br>')
-      .replace(/^/, '<p>')
-      .replace(/$/, '</p>');
+    return marked.parse(text);
   };
 
   // 滚动到底部
