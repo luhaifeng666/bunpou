@@ -63,6 +63,9 @@ jobs:
             node build.js            # 执行 Node.js 脚本
             cd /www/wwwroot/bunpouService/rag # 跳转到 RAG 目录
             python3.11 build_index.py  # 执行 Python 脚本, 更新向量数据库
+            # 通知 RAG 服务重新加载文档缓存
+            curl -s -X POST http://127.0.0.1:8000/reload || true
+            curl -s http://127.0.0.1:8000/health || true
       # - name: Install SSH key
       #   uses: webfactory/ssh-agent@v0.7.0
       #   with:

@@ -256,27 +256,75 @@
       await nextTick();
       scrollToBottom();
 
+      const isStreaming = true;
       const response = await fetch('https://www.bunpou.cn/api/rag-query', {
         method: 'POST',
         signal: controller.signal,
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question }),
+        body: JSON.stringify({ question, stream: isStreaming }),
       });
 
       if (!response.ok) {
         throw new Error('请求失败');
       }
 
-      const result = await response.json();
+      if (isStreaming && response.body) {
+        // SSE 流式接收
+        messages.value[messages.value.length - 1] = {
+          role: 'assistant',
+          content: '',
+          sources: [],
+        };
 
-      // 替换 loading 消息
-      messages.value[messages.value.length - 1] = {
-        role: 'assistant',
-        content: formatAnswer(result.answer),
-        sources: result.sources || [],
-      };
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop() || '';
+
+          for (const line of lines) {
+            if (!line.startsWith('data:')) continue;
+            const data = line.slice(5).trim();
+            if (!data || data === '[DONE]') continue;
+
+            try {
+              const parsed = JSON.parse(data);
+              if (parsed.type === 'token') {
+                messages.value[messages.value.length - 1].content += parsed.content;
+                await nextTick();
+                scrollToBottom();
+              } else if (parsed.type === 'done') {
+                messages.value[messages.value.length - 1].sources = parsed.sources || [];
+                messages.value[messages.value.length - 1].content =
+                  formatAnswer(messages.value[messages.value.length - 1].content);
+              }
+            } catch {
+              // 非 JSON 的纯文本 token，直接追加
+              messages.value[messages.value.length - 1].content += data;
+              await nextTick();
+              scrollToBottom();
+            }
+          }
+        }
+      } else {
+        // 非流式回退
+        const result = await response.json();
+        messages.value[messages.value.length - 1] = {
+          role: 'assistant',
+          content: formatAnswer(result.answer),
+          sources: result.sources || [],
+        };
+        await nextTick();
+        scrollToBottom();
+      }
 
       await nextTick();
       scrollToBottom();
