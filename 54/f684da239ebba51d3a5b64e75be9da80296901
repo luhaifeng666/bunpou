@@ -1,0 +1,22 @@
+.vitepress/theme/components/FeedbackError.vue
+  s_690599118afee2::t_72eef877a7d177 1-54
+.vitepress/theme/index.ts
+  s_690599118afee2::t_6e157c4cce7ab4 21
+  s_690599118afee2::t_e59f9aa20d93d9 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "54f684da239ebba51d3a5b64e75be9da80296901",
+  "prompts": {},
+  "sessions": {
+    "s_690599118afee2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0f571d0f-e3cb-4d4c-951a-96ba9d27a978",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    }
+  }
+}
