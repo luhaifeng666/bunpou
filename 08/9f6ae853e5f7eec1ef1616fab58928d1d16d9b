@@ -1,0 +1,50 @@
+start_rag.sh
+  s_690599118afee2::t_aa6bfa81d441c0 1-62
+rag_server.py
+  s_690599118afee2::t_3a44bc006a71ff 28
+  s_690599118afee2::t_bdde2fac2b46e7 1-27,29-257
+CLAUDE.md
+  s_3ffb948110ce2f::t_e9637e87f70ebc 1-90
+.github/workflows/deploy.yml
+  s_690599118afee2::t_0bffc3881cff1d 66-68
+.vitepress/theme/components/RAGSearch.vue
+  s_690599118afee2::t_2161bb88242a46 325-326
+  s_690599118afee2::t_ab39442ba472d6 259,266,273-279,281-324,327
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.4",
+  "base_commit_sha": "089f6ae853e5f7eec1ef1616fab58928d1d16d9b",
+  "prompts": {
+    "45806f3b40ff2074": {
+      "agent_id": {
+        "tool": "github-copilot",
+        "id": "1d4f955f-f48b-4812-941b-534f5079f9e8",
+        "model": "copilot/gpt-5.4"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>",
+      "total_additions": 14,
+      "total_deletions": 0,
+      "accepted_lines": 14,
+      "overriden_lines": 0
+    }
+  },
+  "sessions": {
+    "s_3ffb948110ce2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "76edfac8-d4c4-4908-acc4-ba348f80bb3b",
+        "model": "deepseek-v4-flash"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    },
+    "s_690599118afee2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "0f571d0f-e3cb-4d4c-951a-96ba9d27a978",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    }
+  }
+}
