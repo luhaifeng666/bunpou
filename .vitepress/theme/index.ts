@@ -5,6 +5,7 @@ import AppShellHome from './components/AppShellHome.vue';
 import AppRuntimeBridge from './components/AppRuntimeBridge.vue';
 import Visitors from './components/Visitors.vue';
 import GiscusComment from './components/GiscusComment.vue';
+import FeedbackError from './components/FeedbackError.vue';
 import Ad from './components/Ad.vue';
 import LevelStatsHome from './components/LevelStatsHome.vue';
 import RAGSearch from './components/RAGSearch.vue';
@@ -17,7 +18,7 @@ export default {
     return h(Fragment, [
       h(AppRuntimeBridge),
       h(DefaultTheme.Layout, null, {
-        'doc-after': () => h(GiscusComment),
+        'doc-after': () => h(Fragment, [h(FeedbackError), h(GiscusComment)]),
         'home-features-after': () =>
           h(Fragment, [h(LevelStatsHome), h(Visitors)]),
         'aside-bottom': () => h(Ad),
