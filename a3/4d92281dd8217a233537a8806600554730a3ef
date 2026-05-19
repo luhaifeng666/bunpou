@@ -1,0 +1,20 @@
+.vitepress/theme/components/RAGSearch.vue
+  s_f9bd2e524d0349::t_b53259a34cc3c6 29
+  s_f9bd2e524d0349::t_b11be6be978031 52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "a34d92281dd8217a233537a8806600554730a3ef",
+  "prompts": {},
+  "sessions": {
+    "s_f9bd2e524d0349": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "17121030-3ba4-4c98-b5ea-e4975096cd31",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    }
+  }
+}
