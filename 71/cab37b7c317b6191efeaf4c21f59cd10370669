@@ -1,0 +1,63 @@
+docs/bunpou/N2/N2-34.md
+  s_6df5e73eeccba4::t_b668eb65d5704a 2,5
+docs/bunpou/N2/N2-23.md
+  s_6df5e73eeccba4::t_44f61feb20730c 2,5
+docs/bunpou/N3/N3-05.md
+  s_6df5e73eeccba4::t_8b76cd6da8523e 2,5
+docs/bunpou/N1/N1-05.md
+  s_6df5e73eeccba4::t_9e05a9cfc79bc7 2,5
+docs/bunpou/N3/N3-16.md
+  s_6df5e73eeccba4::t_655d44a136bcc3 2,5
+docs/bunpou/N3/N3-32.md
+  s_6df5e73eeccba4::t_9be047bfb7828b 2,5
+docs/bunpou/N3/N3-41.md
+  s_6df5e73eeccba4::t_cdc0ec5ad9e7ae 2,5
+docs/bunpou/N4/N4-03.md
+  s_6df5e73eeccba4::t_fbd0b28dadd417 2,5
+docs/bunpou/N2/N2-08.md
+  s_6df5e73eeccba4::t_b76b82d6da303b 2,5
+docs/bunpou/N3/N3-36.md
+  s_6df5e73eeccba4::t_c3661b5ce04ab6 2,5
+docs/bunpou/N3/N3-42.md
+  s_6df5e73eeccba4::t_42bbddedd7a5c7 2,5
+docs/bunpou/N4/N4-02.md
+  s_6df5e73eeccba4::t_3e213d5ded72fd 2,5
+docs/bunpou/N2/N2-24.md
+  s_6df5e73eeccba4::t_1d7199b4d99794 2,5
+docs/bunpou/N1/N1-01.md
+  s_6df5e73eeccba4::t_a5d97af67690ac 2,5
+docs/bunpou/N3/N3-33.md
+  s_6df5e73eeccba4::t_1b5aab5611cd8c 2,5
+docs/bunpou/N2/N2-26.md
+  s_6df5e73eeccba4::t_af7796929639e3 2,5
+docs/bunpou/N3/N3-01.md
+  s_6df5e73eeccba4::t_5f2d501f679643 2,5
+docs/bunpou/N2/N2-12.md
+  s_6df5e73eeccba4::t_28580bd29d048a 2,5
+docs/bunpou/N3/N3-07.md
+  s_6df5e73eeccba4::t_25cf1355981ea3 2,5
+docs/bunpou/N3/N3-17.md
+  s_6df5e73eeccba4::t_7b39b812c5b795 2,5
+docs/bunpou/N4/N4-06.md
+  s_6df5e73eeccba4::t_f405ecc31e1023 2,5
+docs/bunpou/N3/N3-12.md
+  s_6df5e73eeccba4::t_9f98d450e5a5e5 2,5
+docs/bunpou/N3/N3-18.md
+  s_6df5e73eeccba4::t_ca660323f3241c 2,5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "71cab37b7c317b6191efeaf4c21f59cd10370669",
+  "prompts": {},
+  "sessions": {
+    "s_6df5e73eeccba4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a7151f81-1142-4546-85b4-f40d491ed7aa",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    }
+  }
+}
