@@ -1,0 +1,21 @@
+docs/bunpou/N1/N1-04.md
+  s_6a416bef344bef::t_be011e00679bdc 20
+  s_6a416bef344bef::t_4c550818071b1d 22
+  s_6a416bef344bef::t_66c60e2b36716d 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "1a3e0f297036620295e0fc6a05dbace4a1cc0f2d",
+  "prompts": {},
+  "sessions": {
+    "s_6a416bef344bef": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ccdd3b67-32f4-4821-9667-4c31e6f32c8b",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    }
+  }
+}
