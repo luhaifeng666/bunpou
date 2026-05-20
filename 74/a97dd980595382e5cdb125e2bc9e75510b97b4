@@ -1,0 +1,69 @@
+docs/bunpou/N2/N2-08.md
+  s_3a03f15dd31155::t_29c1e159dfc3d6 10
+docs/bunpou/N3/N3-01.md
+  s_3a03f15dd31155::t_dbb49e0741da30 2
+  s_3a03f15dd31155::t_7cedddba9e463a 5
+  s_3a03f15dd31155::t_ddadced777e878 10
+docs/bunpou/N2/N2-24.md
+  s_3a03f15dd31155::t_61c53dbcca4271 10
+docs/bunpou/N1/N1-05.md
+  s_3a03f15dd31155::t_9a073f22e3ce3a 10
+docs/bunpou/N3/N3-05.md
+  s_3a03f15dd31155::t_376a354442f65c 10
+docs/bunpou/N2/N2-26.md
+  s_3a03f15dd31155::t_d9557243c832b2 10
+docs/bunpou/N3/N3-33.md
+  s_3a03f15dd31155::t_15ae8448fe00be 10
+docs/bunpou/N3/N3-41.md
+  s_3a03f15dd31155::t_9fa657362026f1 10
+docs/bunpou/N3/N3-16.md
+  s_3a03f15dd31155::t_274b946c48be67 2
+  s_3a03f15dd31155::t_1f9902fbbef540 5
+  s_3a03f15dd31155::t_57b1bd3c453089 10
+docs/bunpou/N3/N3-07.md
+  s_3a03f15dd31155::t_8fa326f11b02bb 10
+docs/bunpou/N3/N3-36.md
+  s_3a03f15dd31155::t_316678ff73d2b0 10
+docs/bunpou/N4/N4-02.md
+  s_3a03f15dd31155::t_e22e09fcf657ec 5
+  s_3a03f15dd31155::t_868ed66f3d62d8 2
+  s_3a03f15dd31155::t_495d5fd1a09c3d 10
+docs/bunpou/N3/N3-18.md
+  s_3a03f15dd31155::t_10fdf5f75f1699 10
+docs/bunpou/N2/N2-34.md
+  s_3a03f15dd31155::t_1120b038fab5aa 10
+docs/bunpou/N3/N3-42.md
+  s_3a03f15dd31155::t_53add713fbecde 10
+docs/bunpou/N4/N4-03.md
+  s_3a03f15dd31155::t_ce9c54f16c14e7 10
+docs/bunpou/N3/N3-17.md
+  s_3a03f15dd31155::t_682d40979ba9e2 10
+docs/bunpou/N2/N2-23.md
+  s_3a03f15dd31155::t_854489274bf6e7 10
+docs/bunpou/N4/N4-06.md
+  s_3a03f15dd31155::t_44c4fa4608ec2c 10
+docs/bunpou/N1/N1-01.md
+  s_3a03f15dd31155::t_ef0331fc6ef132 10
+docs/bunpou/N3/N3-32.md
+  s_3a03f15dd31155::t_d8667b0d87a1f3 10
+docs/bunpou/N3/N3-12.md
+  s_3a03f15dd31155::t_a4b410b5a56478 10
+docs/bunpou/N2/N2-12.md
+  s_3a03f15dd31155::t_a4fc284ce34114 10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "74a97dd980595382e5cdb125e2bc9e75510b97b4",
+  "prompts": {},
+  "sessions": {
+    "s_3a03f15dd31155": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b464fbc4-6f65-4ceb-9b1b-e43de21a667a",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    }
+  }
+}
