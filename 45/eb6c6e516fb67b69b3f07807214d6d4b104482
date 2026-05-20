@@ -1,0 +1,22 @@
+docs/bunpou/N3/N3-65.md
+  s_00bcb99f893ae5::t_44597e1357b542 18
+  s_00bcb99f893ae5::t_cdf659e9f8a87b 19
+  s_00bcb99f893ae5::t_8a8fe5d94e42a4 20
+  s_00bcb99f893ae5::t_10e7ebf324f42e 21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "45eb6c6e516fb67b69b3f07807214d6d4b104482",
+  "prompts": {},
+  "sessions": {
+    "s_00bcb99f893ae5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4f53697e-4a94-4f4d-9e76-d8acb77fbe86",
+        "model": "deepseek-v4-pro"
+      },
+      "human_author": "haifeng.lu <haifeng.lu@ly.com>"
+    }
+  }
+}
