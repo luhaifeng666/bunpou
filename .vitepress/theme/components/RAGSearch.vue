@@ -20,13 +20,13 @@
       <!-- 悬浮按钮 -->
       <div v-if="!ragVisible" class="bunpou-rag-btn" @click="toggleFlod">
         <img src="../../../public/imgs/rag.svg" />
-        <span>日语助手</span>
+        <span>Bunpou 小助手</span>
       </div>
 
       <!-- 对话窗口 -->
       <template v-else>
         <div class="bunpou-rag-header">
-          <span class="bunpou-rag-title">📚 Bunpou助手</span>
+          <span class="bunpou-rag-title">📚 Bunpou 小助手</span>
           <div class="bunpou-rag-actions">
             <button class="bunpou-rag-resize" @click="toggleFullscreen">
               {{
@@ -49,7 +49,7 @@
         <div ref="dialog" class="bunpou-rag-dialog">
           <!-- 欢迎消息 -->
           <div v-if="messages.length === 0" class="bunpou-rag-welcome">
-            <p>你好！我是Bunpou助手，你可以问我：</p>
+            <p>你好！我是Bunpou 小助手，你可以问我：</p>
             <div class="bunpou-rag-suggestions">
               <div
                 class="suggestion-item"
