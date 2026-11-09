@@ -1,0 +1,5 @@
+--- a/rag_server.py
++++ b/rag_server.py
+@@ -30 +30 @@
+-MIMO_MODEL = "mimo-v2-pro"
++MIMO_MODEL = "mimo-v2.6-pro"
