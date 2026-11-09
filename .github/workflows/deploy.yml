@@ -54,20 +54,34 @@ jobs:
         with:
           path: .vitepress/dist
       - name: Run Node script via SSH
-        uses: appleboy/ssh-action@master # 使用 ssh-action 插件
-        with:
-          host: ${{ secrets.SERVER_IP }} # 远程服务器地址
-          username: ${{ secrets.SSH_USER }} # SSH 用户名
-          key: ${{ secrets.SSH_PRIVATE_KEY }} # SSH 私钥
-          script: |
-            source ~/.bashrc
-            cd /www/wwwroot/default  # 跳转到指定目录
-            node build.js            # 执行 Node.js 脚本
-            cd /www/wwwroot/bunpouService/rag # 跳转到 RAG 目录
-            python3.11 build_index.py  # 执行 Python 脚本, 更新向量数据库
-            # 通知 RAG 服务重新加载文档缓存
-            curl -s -X POST http://127.0.0.1:8000/reload || true
-            curl -s http://127.0.0.1:8000/health || true
+        env:
+          BUNPOU_SERVER_HOST: ${{ secrets.SERVER_IP }}
+          BUNPOU_SSH_USER: ${{ secrets.SSH_USER }}
+          BUNPOU_SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          bunpou_ssh_key=$(mktemp)
+          bunpou_known_hosts=$(mktemp)
+          trap 'rm -f "$bunpou_ssh_key" "$bunpou_known_hosts"' EXIT
+          printf '%s\n' "$BUNPOU_SSH_PRIVATE_KEY" | tr -d '\r' > "$bunpou_ssh_key"
+          chmod 600 "$bunpou_ssh_key"
+          ssh -T -i "$bunpou_ssh_key" \
+            -o BatchMode=yes \
+            -o ConnectionAttempts=2 \
+            -o ConnectTimeout=20 \
+            -o ServerAliveInterval=30 \
+            -o StrictHostKeyChecking=accept-new \
+            -o UserKnownHostsFile="$bunpou_known_hosts" \
+            "$BUNPOU_SSH_USER@$BUNPOU_SERVER_HOST" 'bash -s' <<'REMOTE_SCRIPT'
+          source ~/.bashrc
+          cd /www/wwwroot/default
+          node build.js
+          cd /www/wwwroot/bunpouService/rag
+          python3.11 build_index.py
+          # 通知 RAG 服务重新加载文档缓存
+          curl -s -X POST http://127.0.0.1:8000/reload || true
+          curl -s http://127.0.0.1:8000/health || true
+          REMOTE_SCRIPT
       # - name: Install SSH key
       #   uses: webfactory/ssh-agent@v0.7.0
       #   with:
