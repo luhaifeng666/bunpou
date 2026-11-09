@@ -310,7 +310,8 @@ function checkTraditionalChinese(file, text) {
       : line.match(/^#\s+(.+)/)[1];
 
     const found = [];
-    let remaining = textToCheck;
+    // 「を問わず」中的「問」是日语用字。
+    let remaining = textToCheck.replaceAll('を問わず', 'をとわず');
 
     while (remaining.length > 0) {
       let matched = false;
