@@ -1,134 +1,74 @@
-# 构建 VitePress 站点并将其部署到 GitHub Pages 的示例工作流程
-#
-name: Deploy VitePress site to Pages
+name: Restore and verify Bunpou assistant
 
 on:
-  # 在针对 `main` 分支的推送上运行。如果你
-  # 使用 `master` 分支作为默认分支，请将其更改为 `master`
-  push:
-    branches: [main]
-
-  # 允许你从 Actions 选项卡手动运行此工作流程
   workflow_dispatch:
 
-# 设置 GITHUB_TOKEN 的权限，以允许部署到 GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-# 只允许同时进行一次部署，跳过正在运行和最新队列之间的运行队列
-# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
-  # 构建工作
-  build:
+  repair:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      - uses: pnpm/action-setup@v3 # 如果使用 pnpm，请取消此区域注释
-        with:
-          version: 9
-      # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 24
-          # cache: npm # 或 pnpm / yarn
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Install dependencies
-        run: pnpm install # 或 pnpm install / yarn install / bun install
-      - name: Lint content
-        run: pnpm lint:content
-      - name: Build with VitePress
-        run: pnpm docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .vitepress/dist
-      - name: Run Node script via SSH
+      - name: Restore model and RAG routing
         env:
-          BUNPOU_SERVER_HOST: ${{ secrets.SERVER_IP }}
-          BUNPOU_SSH_USER: ${{ secrets.SSH_USER }}
-          BUNPOU_SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          RAG_SSH_HOST: ${{ secrets.SERVER_IP }}
+          RAG_SSH_USER: ${{ secrets.SSH_USER }}
+          RAG_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
           set -euo pipefail
-          bunpou_ssh_key=$(mktemp)
-          bunpou_known_hosts=$(mktemp)
-          trap 'rm -f "$bunpou_ssh_key" "$bunpou_known_hosts"' EXIT
-          printf '%s\n' "$BUNPOU_SSH_PRIVATE_KEY" | tr -d '\r' > "$bunpou_ssh_key"
-          chmod 600 "$bunpou_ssh_key"
-          ssh -T -i "$bunpou_ssh_key" \
-            -o BatchMode=yes \
-            -o ConnectionAttempts=2 \
-            -o ConnectTimeout=20 \
-            -o ServerAliveInterval=30 \
-            -o StrictHostKeyChecking=accept-new \
-            -o UserKnownHostsFile="$bunpou_known_hosts" \
-            "$BUNPOU_SSH_USER@$BUNPOU_SERVER_HOST" 'bash -s' <<'REMOTE_SCRIPT'
-          source ~/.bashrc
-          cd /www/wwwroot/default
-          node build.js
-          cd /www/wwwroot/bunpouService/rag
-          python3.11 build_index.py
-          # 通知 RAG 服务重新加载文档缓存
-          curl -s -X POST http://127.0.0.1:8000/reload || true
-          curl -s http://127.0.0.1:8000/health || true
-          REMOTE_SCRIPT
-      # - name: Install SSH key
-      #   uses: webfactory/ssh-agent@v0.7.0
-      #   with:
-      #     ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      # - name: Sync files to server
-      #   run: |
-      #     find .vitepress/dist/ -type f ! -path '*/voices/*' | xargs -I {} scp {} ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:/www/wwwroot/bunpouService/pages/
+          rag_ssh_key=$(mktemp)
+          rag_remote_script=$(mktemp)
+          rag_known_hosts=$(mktemp)
+          trap 'rm -f "$rag_ssh_key" "$rag_remote_script" "$rag_known_hosts"' EXIT
+          printf '%s\n' "$RAG_SSH_KEY" | tr -d '\r' > "$rag_ssh_key"
+          chmod 600 "$rag_ssh_key"
+          cat > "$rag_remote_script" <<'RAG_REMOTE_SCRIPT'
+          source ~/.bashrc >/dev/null 2>&1 || true
+          python3.11 - <<'PY'
+          import ast
+          import json
+          import pathlib
+          import sqlite3
+          import numpy as np
+          from sentence_transformers import SentenceTransformer
 
-  # 部署工作
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-      # 将文档产物提交到gh-pages分支
-      # - name: Deploy for Gitee
-      #   uses: JamesIves/github-pages-deploy-action@v4.4.1
-      #   with:
-      #     branch: gh-pages
-      #     folder: .vitepress/dist
-      #     # enable single-commit to reduce the repo size
-      #     single-commit: true
-      #     clean: true
-
-      # - name: Sync to Gitee
-      #   uses: wearerequired/git-mirror-action@v1.2.0
-      #   env:
-      #     SSH_PRIVATE_KEY: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
-      #   with:
-      #     # GitHub 仓库地址
-      #     source-repo: git@github.com:luhaifeng666/bunpou.git
-      #     # Gitee 仓库地址
-      #     destination-repo: git@gitee.com:youzui/bunpou.git
-      # - name: Build Gitee Pages
-      #   uses: yanglbme/gitee-pages-action@main
-      #   with:
-      #     # 替换为你的 Gitee 用户名
-      #     gitee-username: youzui
-      #     # 注意在 Settings->Secrets 配置 GITEE_PASSWORD
-      #     gitee-password: ${{ secrets.GITEE_PASSWORD }}
-      #     # 注意替换为你的 Gitee 仓库，仓库名严格区分大小写，请准确填写，否则会出错
-      #     gitee-repo: youzui/bunpou
-      #     # 要部署的分支，默认是 master，若是其他分支，则需要指定（指定的分支必须存在）
-      #     branch: gh-pages
+          directory = pathlib.Path("/www/wwwroot/bunpouService/rag")
+          server = (directory / "rag_server.py").read_text()
+          tree = ast.parse(server)
+          names = {"_reload_cache", "_retrieve", "_build_context", "_build_sources", "query", "reload_cache", "health"}
+          functions = {node.name: ast.get_source_segment(server, node) for node in tree.body if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name in names}
+          prompt = next((ast.literal_eval(n.value) for n in tree.body if isinstance(n, ast.Assign) and any(isinstance(t, ast.Name) and t.id == "SYSTEM_PROMPT" for t in n.targets)), "")
+          connection = sqlite3.connect("file:" + str(directory / "bunpou_rag.db") + "?mode=ro", uri=True)
+          connection.row_factory = sqlite3.Row
+          rows = [dict(row) for row in connection.execute("SELECT id,title,level,content,clean_text,embedding FROM grammar_docs")]
+          connection.close()
+          canonical = lambda key: key.removeprefix("docs/").removeprefix("bunpou/")
+          targets = [r for r in rows if canonical(r["id"]) in ("N3/1-11-2", "N2/N2-87")]
+          snapshot = {
+              "functions": functions,
+              "system_prompt": prompt,
+              "build_index_source": (directory / "build_index.py").read_text(),
+              "row_count": len(rows),
+              "canonical_document_count": len({canonical(r["id"]) for r in rows}),
+              "targets": [{k:v for k,v in r.items() if k != "embedding"} for r in targets],
+          }
+          model = SentenceTransformer(str(directory / "models/paraphrase-multilingual-MiniLM-L12-v2"))
+          questions = ["如果我想翻译：这件衣服比另一件好看。要怎么翻译？用什么语法？", "比较 N1はN2より N1のほうがN2より 比……更……", "「こともあって」表示什么？"]
+          vectors = model.encode(questions)
+          matrix = np.array([json.loads(row["embedding"]) for row in rows], dtype=np.float32)
+          matrix /= np.maximum(np.linalg.norm(matrix, axis=1, keepdims=True), 1e-9)
+          rankings = []
+          for question, vector in zip(questions, vectors):
+              scores = matrix @ (vector / max(np.linalg.norm(vector), 1e-9))
+              order = np.argsort(-scores)
+              entries = [{"id": rows[i]["id"], "title": rows[i]["title"], "score": round(float(scores[i]), 4)} for i in order[:10]]
+              target_ranks = {r["id"]: int(np.flatnonzero(order == i)[0]) + 1 for i,r in enumerate(rows) if canonical(r["id"]) in ("N3/1-11-2", "N2/N2-87")}
+              rankings.append({"question":question,"top":entries,"target_ranks":target_ranks})
+          snapshot["rankings"] = rankings
+          payload = json.dumps(snapshot, ensure_ascii=False).encode().hex()
+          assert "sk-" not in json.dumps(snapshot)
+          print("RAG_SNAPSHOT_HEX " + payload)
+          PY
+          RAG_REMOTE_SCRIPT
+          timeout 600 ssh -T -i "$rag_ssh_key" -o BatchMode=yes -o ConnectionAttempts=2 -o ConnectTimeout=20 -o ServerAliveInterval=30 -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile="$rag_known_hosts" "$RAG_SSH_USER@$RAG_SSH_HOST" 'bash -s' < "$rag_remote_script"
