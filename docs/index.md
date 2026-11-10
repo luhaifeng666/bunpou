@@ -58,3 +58,4 @@ const members = [
 - [トップページ - 日本語NET](https://nihongokyoshi-net.com/): 这个网站知名度比较高，`网站的语言是日语`。里面的功能也更加全面，单词，语法，教材啥的都有；
 - [かな Playground](https://luhaifeng666.github.io/kana-playground/): 这个是我自己做的一个站点，适合新手小伙伴`练习50音`~
 - **识日App**: 这个是独立开发者[独立开发Jin（惊鹊云）](https://www.xiaohongshu.com/user/profile/5e607c560000000001009f46?xsec_token=AB7kj9yR_Kynv_sOwwuE2hEYxtUpOwC3_dXTYFCaj28_U%3D&xsec_source=pc_search)开发的一款日语背词App。软件的界面非常清爽且友好，你可以选择自己想要的教材进行练习。当然，如果你觉得不得劲儿，你也可以选择自己上传词单。软件也接入了 **DeepSeek**，遇到有疑惑的地方可以随时随地问AI，非常贴心了有没有！如果屏幕前的你对这款软件有兴趣的话，赶紧去下载一个试下吧~非常感谢开发者开发了这款亲民好用的软件，致敬~！
+- [OK JLPT](https://okjlpt.com/zh-Hans): JLPT 练习网站，N5–N1 按年份整理的整卷练习，带听力，在线作答、交卷自动估分并附中文解析。N5、N4 免费，N3–N1 各有一套免费；估分计算器、助词和动词变形练习也免费；
